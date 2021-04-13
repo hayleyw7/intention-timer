@@ -1,1 +1,64 @@
-
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap"/>
+    <link rel="stylesheet" href="./styles.css"/>
+    <title>Intention Timer</title>
+  </head>
+  <body>
+    <header class="flex">
+      <h1>INTENTION TIMER</h1>
+    </header>
+    <section id="main" class="flex">
+      <section id="new-container">
+        <h2 id="new">New Activity</h2>
+        <article id="card">
+          <h3>Select A Category:</h3>
+          <div id="box-container" class="flex">
+            <div class="box flex">
+              <img src="assets/study.svg" />
+              <h3>Study</h3>
+            </div>
+            <div class="box flex">
+              <img src="assets/meditate.svg" />
+              <h3>Meditate</h3>
+            </div>
+            <div class="box flex">
+              <img src="assets/exercise.svg" />
+              <h3>Exercise</h3>
+            </div>
+          </div>
+          <h3>What would you like to accomplish during this time</h3>
+          <form>
+            <input type="text" id="goal" name="goal" class="borderless"/>
+          </form>
+          <div id="time-box" class="flex">
+            <div id="minutes-box">
+              <h3>Minutes</h3>
+              <form>
+                <input type="text" id="minutes" name="minutes" class="borderless"/>
+              </form>
+            </div>
+         <div id="seconds-box">
+          <h3>Seconds</h3>
+          <form>
+            <input type="text" id="seconds" name="seconds" class="borderless"/>
+          </form>
+        </div>
+        </div>
+          <button class="start-btn">START ACTIVITY</button>
+        </article>
+      </section>
+      <section id="past-container" class="flex">
+        <h2 id="past">Past Activities</h2>
+        <p>You haven’t logged any activities today!</br>Complete the form to the left to get started!</p>
+      </section>
+    </section>
+  </body>
+  <script src="main.js"></script>
+</html>
