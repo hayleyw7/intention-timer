@@ -25,6 +25,7 @@ body {
   background-color: var(--darkBG);
   height: 100%;
   width: 100%;
+  border: var(--lightBG) solid 1px;
 }
 
 /* HEADER */
@@ -43,8 +44,93 @@ h1 {
   font-size: 1.6rem;
 }
 
+/* MAIN */
+
+#main {
+  flex-direction: row;
+}
+
 /* UTILITY */
 
 .flex {
   display: flex;
+}
+
+img {
+  height: 2rem;
+  width: 2rem;
+}
+
+/* LEFT CONTAINER  */
+
+#new-container {
+  flex-grow: 2;
+  border: white solid 1px;
+  padding: 2rem 2rem;
+}
+
+/* RIGHT CONTAINER */
+
+#past-container {
+  flex-grow: 1;
+  flex-direction: column;
+  text-align: center;
+  border: white solid 1px;
+  padding: 2rem 2rem;
+}
+
+h2,
+p {
+  color: var(--mainText);
+}
+
+p {
+  margin-top: 1.7rem;
+  line-height: 1.9rem;
+  font-size: 1.4rem;
+}
+    
+#new,
+#past {
+  align-self: flex-start;
+  font-weight: 300;
+  font-size: 2rem;
+}
+
+  /* margin: 2rem 2rem; */
+
+h3 {
+  color: var(--whiteText);
+  text-align: left;
+}
+
+#card {
+  align-self: center;
+  justify-content: center;
+  margin-top: .8rem;
+  padding: 6rem 10rem;
+  background-color: var(--lightBG);
+  min-width: 25rem;
+  min-height: 25rem;
+}
+
+#box-container {
+  flex-direction: row;
+}
+
+.box {
+  border: var(--whiteText) solid 1px;
+  width: 10rem;
+  height: 4.3rem;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  padding: 0;
+  margin: 1rem 1.5rem;
+  border-radius: 4px;
+
+}
+
+.box h3 {
+
 }

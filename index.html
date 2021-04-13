@@ -14,22 +14,24 @@
     <header class="flex">
       <h1>INTENTION TIMER</h1>
     </header>
-    <section>
-      <section class="new-activity">
-        <h2>New Activity</h2>
-        <article class="left-container">
+    <section id="main" class="flex">
+      <section id="new-container">
+        <h2 id="new">New Activity</h2>
+        <article id="card">
           <h3>Select A Category:</h3>
-          <div class="box">
-            <img src="assets/study.svg" />
-            <h3>Study</h3>
-          </div>
-          <div class="box">
-            <img src="assets/meditate.svg" />
-            <h3>Meditate</h3>
-          </div>
-          <div class="box">
-            <img src="assets/exercise.svg" />
-            <h3>Exercise</h3>
+          <div id="box-container" class="flex">
+            <div class="box flex">
+              <img src="assets/study.svg" />
+              <h3>Study</h3>
+            </div>
+            <div class="box flex">
+              <img src="assets/meditate.svg" />
+              <h3>Meditate</h3>
+            </div>
+            <div class="box flex">
+              <img src="assets/exercise.svg" />
+              <h3>Exercise</h3>
+            </div>
           </div>
           <h3>What would you like to accomplish during this time</h3>
           <form>
@@ -46,9 +48,9 @@
           <button class="start-btn">START ACTIVITY</button>
         </article>
       </section>
-      <section class="past-activities">
-        <h2>Past Activites</h2>
-        <p>You haven’t logged any activities today!</p>
+      <section id="past-container" class="flex">
+        <h2 id="past">Past Activities</h2>
+        <p>You haven’t logged any activities today!</br>Complete the form to the left to get started!</p>
       </section>
     </section>
   </body>
