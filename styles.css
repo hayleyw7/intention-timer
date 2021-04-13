@@ -70,6 +70,12 @@ img {
   padding-bottom: .1rem;
 }
 
+.hidden {
+  position: absolute !important;
+  top: -9999px !important;
+  left: -9999px !important;
+}
+
 /* BUTTON */
 .start-btn {
   background: var(--whiteText);
@@ -131,7 +137,6 @@ h3 {
 
 }
 
-
 :is(.box, h3, img) {
   margin: .2rem;
   align-self: center;
@@ -139,7 +144,8 @@ h3 {
 
 #time-box {
   flex-direction: row;
-  justify-content: ;
+  justify-content: space-between;
+  padding-right: 13rem
 }
 
 #minutes-box, #seconds-box {
@@ -173,8 +179,6 @@ h3 {
 
 
 /* MISC */
-
-
 
 input:focus {
   outline: none;
