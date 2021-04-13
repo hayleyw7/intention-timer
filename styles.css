@@ -1,1 +1,50 @@
+:root {
+  /* THEME */
+  --darkBG: #2B2733;
+  --mainText: #CBC9CF;
+  --lightBG: #46424D;
+  --whiteText: #FFF;
+  /* ICONS */
+  --study: #B3FD78;
+  --meditate: #C278FD;
+  --exercise: #FD8078;
+  /* UTILITY */
+  --error: #EFB7EC;
+  --cardShadow: #26222D;
+}
 
+* {
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  box-sizing: border-box;
+  background-color: var(--darkBG);
+  height: 100%;
+  width: 100%;
+}
+
+/* HEADER */
+
+header {
+  min-height: 10vh;
+  background-color: var(--lightBG);
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  color: var(--whiteText);
+  font-weight: 300;
+  font-size: 1.6rem;
+}
+
+/* UTILITY */
+
+.flex {
+  display: flex;
+}
