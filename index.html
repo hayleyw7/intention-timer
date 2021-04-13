@@ -35,16 +35,22 @@
           </div>
           <h3>What would you like to accomplish during this time</h3>
           <form>
-            <input type="text" id="goal" name="goal" />
+            <input type="text" id="goal" name="goal" class="borderless"/>
           </form>
-          <h3>Minutes</h3>
-          <form>
-            <input type="text" id="minutes" name="minutes" />
-          </form>
+          <div id="time-box" class="flex">
+            <div id="minutes-box">
+              <h3>Minutes</h3>
+              <form>
+                <input type="text" id="minutes" name="minutes" class="borderless"/>
+              </form>
+            </div>
+         <div id="seconds-box">
           <h3>Seconds</h3>
           <form>
-            <input type="text" id="seconds" name="seconds" />
+            <input type="text" id="seconds" name="seconds" class="borderless"/>
           </form>
+        </div>
+        </div>
           <button class="start-btn">START ACTIVITY</button>
         </article>
       </section>
