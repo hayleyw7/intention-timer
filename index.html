@@ -1,59 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Intention Timer</title>
-</head>
-<body>
-  
-<header>
-<h1>INTENTION TIMER</h1>
-</header>
-
-<section>
-  <section class="new-activity">
-    <h2>New Activity</h2>
-      <article class="left-container">
-        <h3>Select A Category:</h3>
-        <div class="box">
-          <img src="assets/study.svg">
-          <h3>Study</h3>
-        </div>
-        <div class="box">
-          <img src="assets/meditate.svg">
-          <h3>Meditate</h3>
-        </div>
-        <div class="box">
-          <img src="assets/exercise.svg">
-          <h3>Exercise</h3>
-        </div>
-      <h3>What would you like to accomplish during this time</h3>
-      <form>
-        <input type="text" id="goal" name="goal">
-      </form>
-      <h3>Minutes</h3>
-      <form>
-        <input type="text" id="minutes" name="minutes">
-      </form>
-      <h3>Seconds</h3>
-      <form>
-        <input type="text" id="seconds" name="seconds">
-      </form>
-      <button class="start-btn">START ACTIVITY</button>
-      </article>
-  </section>
-  <section class="past-activities">
-    <h2>Past Activites</h2>
-    <p>You haven’t logged any activities today!</p>
-  </section>
-</section>
-
-
-
-
-
-</body>
-<script src="main.js"></script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap"/>
+    <link rel="stylesheet" href="./styles.css"/>
+    <title>Intention Timer</title>
+  </head>
+  <body>
+    <header class="flex">
+      <h1>INTENTION TIMER</h1>
+    </header>
+    <section>
+      <section class="new-activity">
+        <h2>New Activity</h2>
+        <article class="left-container">
+          <h3>Select A Category:</h3>
+          <div class="box">
+            <img src="assets/study.svg" />
+            <h3>Study</h3>
+          </div>
+          <div class="box">
+            <img src="assets/meditate.svg" />
+            <h3>Meditate</h3>
+          </div>
+          <div class="box">
+            <img src="assets/exercise.svg" />
+            <h3>Exercise</h3>
+          </div>
+          <h3>What would you like to accomplish during this time</h3>
+          <form>
+            <input type="text" id="goal" name="goal" />
+          </form>
+          <h3>Minutes</h3>
+          <form>
+            <input type="text" id="minutes" name="minutes" />
+          </form>
+          <h3>Seconds</h3>
+          <form>
+            <input type="text" id="seconds" name="seconds" />
+          </form>
+          <button class="start-btn">START ACTIVITY</button>
+        </article>
+      </section>
+      <section class="past-activities">
+        <h2>Past Activites</h2>
+        <p>You haven’t logged any activities today!</p>
+      </section>
+    </section>
+  </body>
+  <script src="main.js"></script>
 </html>
