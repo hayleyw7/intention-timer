@@ -33,6 +33,7 @@ header {
   justify-content: center;
   align-items: center;
 }
+
 h1 {
   color: var(--whiteText);
   font-weight: 300;
@@ -144,7 +145,6 @@ h3 {
 }
 
 #button-container {
-  border: 1px pink solid;
   align-content: flex-end;
   justify-content: flex-end;
 }
@@ -168,7 +168,7 @@ h3 {
   font-size: 1.4rem;
 }
 /* MISC */
-input:focus {
+input {
   outline: none;
   color: var(--whiteText);
-} 
+}
