@@ -65,6 +65,9 @@ img {
 #goal {
   width: 100%;
 }
+/* .alsohidden {
+  display: none;
+} */
 .hidden {
   position: absolute !important;
   top: -9999px !important;
