@@ -12,7 +12,6 @@
   --error: #EFB7EC;
   --cardShadow: #26222D;
 }
-
 * {
   padding: 0;
   margin: 0;
@@ -39,11 +38,10 @@ h1 {
   font-weight: 300;
   font-size: 1.6rem;
 }
-
+/* MAIN */
 #main {
   flex-direction: row;
 }
-
 /* UTILITY */
 .flex {
   display: flex;
@@ -55,7 +53,6 @@ img {
 .form-padding {
   padding: 1rem 0 0 0;
 }
-
 .borderless {
   border-top: 0;
   border-left: 0;
@@ -65,28 +62,23 @@ img {
   padding-bottom: .1rem;
   width: 12rem;
 }
-
+#goal {
+  width: 100%;
+}
 .hidden {
   position: absolute !important;
   top: -9999px !important;
   left: -9999px !important;
 }
-
 /* BUTTON */
-.btn {
+.start-btn {
   background: var(--whiteText);
   font-size: 18px;
   color: var(--darkBG);
   border-radius: 4px;
-  border: none;
-  outline:none;
-}
-
-#start-btn {
   padding: 0.7rem 2.5rem;
   margin-top: 1.2rem;
 }
-
 /* BOTH CONTAINERS */
 #new,
 #past {
@@ -94,13 +86,11 @@ img {
   font-weight: 300;
   font-size: 2rem;
 }
-
 /* LEFT CONTAINER  */
 #new-container {
   flex-grow: 2;
   padding: 1.6rem 2rem;
 }
-
 #card {
   align-self: center;
   justify-content: center;
@@ -112,13 +102,11 @@ img {
   min-width: 25rem;
   min-height: 25rem;
 }
-
 h3 {
   color: var(--whiteText);
   font-weight: 400;
   font-size: 13px;
 }
-
 #box-container {
   flex-direction: row;
   justify-content: space-between;
@@ -136,37 +124,24 @@ h3 {
   margin: 1rem 1.5rem;
   border-radius: 4px;
 }
-
 :is(.box, h3, img) {
   margin: .1rem;
   align-self: center;
 }
-
-#accomplish {
-  margin-top: 1.5rem;
-}
-
-#goal {
-  width: 100%;
-}
-
 #time-box {
   flex-direction: row;
   display: flex;
   justify-content: space-between;
+  /* padding-right: 15rem; */
 }
-
-#minutes-box, #seconds-box {
+#minutes-box,
+#seconds-box {
   flex-direction: column;
-  margin: 1rem 0 2rem 0;
-}
-
-#minutes-box h3,
-#seconds-box h3 {
-  font-size: 1.2rem;
+  margin: 1rem 0 2rem 0
 }
 
 #button-container {
+  border: 1px pink solid;
   align-content: flex-end;
   justify-content: flex-end;
 }
@@ -183,7 +158,6 @@ h3 {
 :is(#past-container, h2, p) {
   color: var(--mainText);
 }
-
 #past-container p {
   position: absolute;
   margin: 5rem 5rem;
@@ -195,4 +169,3 @@ input:focus {
   outline: none;
   color: var(--whiteText);
 } 
-
