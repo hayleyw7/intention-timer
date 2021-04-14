@@ -62,22 +62,25 @@ function filterEventBubbles() {
 }
 
 //https://stackoverflow.com/questions/20618355/how-to-write-a-countdown-timer-in-javascript
-function beginCountdown(minutes, seconds) {
-  var duration = (minutes * 60) + seconds
+function beginCountdown(minutes,seconds) {
+  var duration = minutes * 60 + seconds;
   var timer = duration, minutes, seconds;
   setInterval(function () {
-      // minutes = parseInt(timer / 60, 10);
-      // seconds = parseInt(timer % 60, 10);
+    minutes = parseInt(timer / 60, 10);
+    seconds = parseInt(timer % 60, 10);
 
-      minutes = minutes < 10 ? "0" + minutes : minutes;
-      seconds = seconds < 10 ? "0" + seconds : seconds;
+    minutes = minutes < 10 ? "0" + minutes : minutes;
+    seconds = seconds < 10 ? "0" + seconds : seconds;
 
-      display.textContent = minutes + ":" + seconds;
+    timeSpan.textContent = minutes + ":" + seconds;
 
-      if (--timer < 0) {
-          timer = 0;
-      }
+    if (--timer <= 0) {
+      timer = 0;
+      currentActivity.markComplete();
+      return alert("You have some empty fields! Fill em in.");
+    }
   }, 1000);
+  showCongrats();
 }
 
 // Update DOM
