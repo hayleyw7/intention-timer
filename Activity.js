@@ -15,9 +15,7 @@ class Activity {
     // congratulations screen with log activity button appears after alert goes away
     //^I'm guessing call a function AFTER a certain amount of time (updates DOM)
     //^^I have a showCongrats() in the js to inject the html for this
-
     beginCountdown(this.minutes, this.seconds);
-  
   }
   // updates data model
   markComplete() {

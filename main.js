@@ -29,8 +29,7 @@ var activities = [];
 
 // create a random id number for the instance of Activity class below it
 function generateRandomID() {
-  var id = Math.floor((1 + Math.random()) * 0x100000)
-  return id
+  return Math.floor((1 + Math.random()) * 0x100000)
 }
 
 // update Data Model
@@ -62,7 +61,7 @@ function filterEventBubbles() {
 }
 
 //https://stackoverflow.com/questions/20618355/how-to-write-a-countdown-timer-in-javascript
-function beginCountdown(minutes,seconds) {
+function beginCountdown(minutes, seconds) {
   var duration = minutes * 60 + seconds;
   var timer = duration, minutes, seconds;
   setInterval(function () {
@@ -77,7 +76,7 @@ function beginCountdown(minutes,seconds) {
     if (--timer <= 0) {
       timer = 0;
       currentActivity.markComplete();
-      return alert("You have some empty fields! Fill em in.");
+      return alert("Congrats! You made it!");
     }
   }, 1000);
   showCongrats();
