@@ -28,10 +28,14 @@ function makeStudyImageChange() {
 
 
 
+  var activitiesSection = document.querySelector('#new-container');
   function displayCountdown() {
     activitiesSection.innerHTML = `
-    ${currentActivity.description}
-    ${currentActivity.minutes}:${currentActivity.seconds}
-    // start button with id="startBTN"
+    <h2 id="new">Completed Activity</h2>
+    <article id="card">
+      ${currentActivity.description}
+      ${currentActivity.minutes}:${currentActivity.seconds}
+      // start button with id="startBTN"
+    </article>
     `
   }
