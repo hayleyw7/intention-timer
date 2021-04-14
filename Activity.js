@@ -22,3 +22,5 @@ class Activity {
     showCompletedActivitiesSection()
   }
 }
+
+var currentActivity;

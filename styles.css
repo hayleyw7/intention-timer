@@ -47,6 +47,12 @@ h1 {
 .flex {
   display: flex;
 }
+
+.absolute {
+  position: absolute;
+}
+
+
 img {
   height: 1.2rem;
   width: 1.2rem;
@@ -116,6 +122,7 @@ h3 {
   justify-content: space-between;
   width: 100%;
   margin-top: 0.8rem;
+  position: relative;
 }
 .box {
   border: var(--whiteText) solid 1px;
@@ -128,6 +135,9 @@ h3 {
   margin: 1rem 1.5rem;
   border-radius: 4px;
 }
+
+
+
 :is(.box, h3, img) {
   margin: .1rem;
   align-self: center;
