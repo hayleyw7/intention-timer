@@ -23,7 +23,6 @@ startNewActivityButton.addEventListener('click', startNewActivity);
 
 // global variables
 var currentActivity;
-var activities = [];
 
 // PART 1 Create Activity --> Show Start
 
