@@ -40,17 +40,23 @@
           </div>
           <h3 class="form-padding">What would you like to accomplish during this time</h3>
           <input type="text" id="goal" name="goal" value="" class="form-padding borderless">
-        <div id="warning" class="hidden flex">
+        <div id="warning-1" class="warning hidden flex">
           <img src="/assets/warning.svg"><p>A description is required.</p>
         </div>
           <div id="time-box" class="flex">
             <div id="minutes-box">
               <h3 class="form-padding">Minutes</h3>
               <input type="number" min="0" id="minutes" name="minutes" value="" class="form-padding borderless">
+              <div id="warning-2" class="warning hidden flex">
+                <img src="/assets/warning.svg"><p>A description is required.</p>
+              </div>
             </div>
             <div id="seconds-box">
               <h3 class="form-padding">Seconds</h3>
               <input type="number" min="0" id="seconds" name="seconds" value="" class="form-padding borderless">
+              <div id="warning-3" class="warning hidden flex">
+                <img src="/assets/warning.svg"><p>A description is required.</p>
+              </div>
             </div>
           </div>
           <div id="button-container" class="flex">

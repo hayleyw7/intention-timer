@@ -11,12 +11,16 @@ var mOn = document.querySelector('#m-on')
 var mOff = document.querySelector('#m-off')
 var eOn = document.querySelector('#e-on')
 var eOff = document.querySelector('#e-off')
-//Forms
+// Forms
 var goalForm = document.querySelector('#goal')
 var minutesForm = document.querySelector('#minutes')
 var secondsForm = document.querySelector('#seconds')
 var startBtn = document.querySelector('#button-container')
-var error = document.querySelector('#warning')
+// Warning
+var error = document.getElementById('#warning')
+var goalWarning = document.querySelector('#warning-1')
+var minutesWarning = document.querySelector('#warning-2')
+var secondsWarning = document.querySelector('#warning-3')
 
 // Event Listeners
 studyBtn.addEventListener('click', activateStudy);
@@ -58,31 +62,20 @@ function activateExcercise() {
 
 function something(e) {
 e.preventDefault()
-  resetFade(error)
-  show(error)
-  animateFade(error)
+goalForm.value === "" ? show(goalWarning) : hide(goalWarning)
+!minutesForm.value ? show(minutesWarning) : hide(minutesWarning)
+!secondsForm.value ? show(secondsWarning) : hide(secondsWarning)
+// if(goalForm.value === "") { 
+//   show(goalWarning)
+// } else if (!minutesForm.value) {
+//   show(minutesWarning)
+// } else (
+//   show(secondsWarning)
+// )
 }
 
-   
 
 
-
-// function createActivity(form) {
-//   currentActivity = new Activity(form.category.value, form.goal.value, form.minutes.value, form.seconds.value, generateRandomID());
-//   displayCountdown();
-// }
-
-// var activitiesSection = document.querySelector('#new-container');
-// function displayCountdown() {
-//   activitiesSection.innerHTML = `
-//   <h2 id="new">Completed Activity</h2>
-//   <article id="card">
-//     ${currentActivity.description}
-//     ${currentActivity.minutes}:${currentActivity.seconds}
-//     // start button with id="startBTN"
-//   </article>
-//   `
-// }
 
 // Helper Functions
 function generateRandomID() {
@@ -102,9 +95,7 @@ function animateFade(e) {
 }
 
 function resetFade(e) {
-  e.classList.remove('fade')
-  console.log('This works')
-  console.log(warning)
+  e.classList.toggle('fade')
 }
 
 
@@ -116,4 +107,21 @@ function resetFade(e) {
 // }
 // function makeExerciseBtnChange() {
 //   exerciseBtn.innerHTML = `<input type="hidden" name="category" value="Exercise"><img src="assets/exercise-active.svg"/><h3>Exercise</h3></input>`
+// }
+
+// function createActivity(form) {
+//   currentActivity = new Activity(form.category.value, form.goal.value, form.minutes.value, form.seconds.value, generateRandomID());
+//   displayCountdown();
+// }
+
+// var activitiesSection = document.querySelector('#new-container');
+// function displayCountdown() {
+//   activitiesSection.innerHTML = `
+//   <h2 id="new">Completed Activity</h2>
+//   <article id="card">
+//     ${currentActivity.description}
+//     ${currentActivity.minutes}:${currentActivity.seconds}
+//     // start button with id="startBTN"
+//   </article>
+//   `
 // }

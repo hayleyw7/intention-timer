@@ -205,16 +205,16 @@ input {
   text-align: center;
 }
 
-#warning {
+.warning {
   margin-top: 1rem;
   justify-content: space-between;
   width: 15rem;
   position: absolute;
 }
 
-#warning p {
+.warning p {
   top: 28%;
   left: 11%;
   position: absolute;
-  color: var(--error);
+  /* color: var(--error); */
 }
