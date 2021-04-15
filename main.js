@@ -37,7 +37,7 @@ function activateStudy() {
   studyBtn.style.borderColor = ('var(--study)')
   exerciseBtn.style.borderColor = ('var(--whiteText)')
   meditateBtn.style.borderColor = ('var(--whiteText)')
-  getCurrentActivity('Study')
+  activityStorage.push('Study')
   show(sOn)
   show(mOff)
   show(eOff)
@@ -50,7 +50,7 @@ function activateMeditate() {
   meditateBtn.style.borderColor = ('var(--meditate)')
   exerciseBtn.style.borderColor = ('var(--whiteText)')
   studyBtn.style.borderColor = ('var(--whiteText)')
-  getCurrentActivity('Meditate')
+  activityStorage.push('Meditate')
   hide(mOff)
   hide(eOn)
   hide(sOn)
@@ -64,7 +64,7 @@ function activateExcercise() {
   exerciseBtn.style.color = ('var(--exercise)')
   meditateBtn.style.borderColor = ('var(--whiteText)')
   studyBtn.style.borderColor = ('var(--whiteText)')
-  getCurrentActivity('Exercise')
+  activityStorage.push('Exercise')
 
   show(eOn)
   show(mOff)
@@ -86,8 +86,10 @@ hide(card)
 // !studyBtn || goalForm.value && minutesForm.value && secondsForm.value ? createActivity() : console.log('smoothie')
 }
 
+var activityStorage = []
 function createActivity() {
-  var currentActivity = new Activity(getCurrentActivity, goalForm.value, minutesForm.value, secondsForm.value, generateRandomID());
+  var currentActivity = new Activity(activityStorage[activityStorage.length - 1], goalForm.value, minutesForm.value, secondsForm.value, generateRandomID());
+  console.log(currentActivity)
   activities.push(currentActivity)
   // displayCountdown();
 }
@@ -115,11 +117,8 @@ function resetFade(e) {
   e.classList.toggle('fade')
 }
 
-function getCurrentActivity(activity) {
-  var activites = []
-  activities.push(activity)
-  return activites[activites.length - 1]
-}
+
+
 
 
 // function makeStudyImageChange() {
