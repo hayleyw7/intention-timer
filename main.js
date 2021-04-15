@@ -1,4 +1,7 @@
 // Variables
+// Outer Variables
+var card = document.querySelector('#card-content')
+
 // Activities
 var studyBtn = document.querySelector('#study-box');
 var meditateBtn = document.querySelector('#meditate-box');
@@ -15,13 +18,13 @@ var eOff = document.querySelector('#e-off')
 var goalForm = document.querySelector('#goal')
 var minutesForm = document.querySelector('#minutes')
 var secondsForm = document.querySelector('#seconds')
-var startBtn = document.querySelector('#button-container')
+var startBtn = document.querySelector('#start-btn')
 // Warning
 var error = document.getElementById('#warning')
 var goalWarning = document.querySelector('#warning-1')
 var minutesWarning = document.querySelector('#warning-2')
 var secondsWarning = document.querySelector('#warning-3')
-
+var activiesWarning = document.querySelector('#warning-4')
 // Event Listeners
 studyBtn.addEventListener('click', activateStudy);
 meditateBtn.addEventListener('click', activateMeditate);
@@ -32,6 +35,9 @@ startBtn.addEventListener('click', something)
 // Buttons
 function activateStudy() {
   studyBtn.style.borderColor = ('var(--study)')
+  exerciseBtn.style.borderColor = ('var(--whiteText)')
+  meditateBtn.style.borderColor = ('var(--whiteText)')
+  getCurrentActivity('Study')
   show(sOn)
   show(mOff)
   show(eOff)
@@ -42,6 +48,9 @@ function activateStudy() {
 
 function activateMeditate() {
   meditateBtn.style.borderColor = ('var(--meditate)')
+  exerciseBtn.style.borderColor = ('var(--whiteText)')
+  studyBtn.style.borderColor = ('var(--whiteText)')
+  getCurrentActivity('Meditate')
   hide(mOff)
   hide(eOn)
   hide(sOn)
@@ -52,6 +61,11 @@ function activateMeditate() {
   
 function activateExcercise() {
   exerciseBtn.style.borderColor = ('var(--exercise)')
+  exerciseBtn.style.color = ('var(--exercise)')
+  meditateBtn.style.borderColor = ('var(--whiteText)')
+  studyBtn.style.borderColor = ('var(--whiteText)')
+  getCurrentActivity('Exercise')
+
   show(eOn)
   show(mOff)
   show(sOff)
@@ -65,15 +79,18 @@ e.preventDefault()
 goalForm.value === "" ? show(goalWarning) : hide(goalWarning)
 !minutesForm.value ? show(minutesWarning) : hide(minutesWarning)
 !secondsForm.value ? show(secondsWarning) : hide(secondsWarning)
-// if(goalForm.value === "") { 
-//   show(goalWarning)
-// } else if (!minutesForm.value) {
-//   show(minutesWarning)
-// } else (
-//   show(secondsWarning)
-// )
+if(goalForm.value && minutesForm.value && secondsForm.value) {
+createActivity()
+hide(card)
+}
+// !studyBtn || goalForm.value && minutesForm.value && secondsForm.value ? createActivity() : console.log('smoothie')
 }
 
+function createActivity() {
+  var currentActivity = new Activity(getCurrentActivity, goalForm.value, minutesForm.value, secondsForm.value, generateRandomID());
+  activities.push(currentActivity)
+  // displayCountdown();
+}
 
 
 
@@ -98,6 +115,12 @@ function resetFade(e) {
   e.classList.toggle('fade')
 }
 
+function getCurrentActivity(activity) {
+  var activites = []
+  activities.push(activity)
+  return activites[activites.length - 1]
+}
+
 
 // function makeStudyImageChange() {
 //   studyBtn.innerHTML = `<input type="hidden" name="category" value="Study"><img src="assets/study-active.svg"/><h3>Study</h3></input>`
@@ -109,10 +132,6 @@ function resetFade(e) {
 //   exerciseBtn.innerHTML = `<input type="hidden" name="category" value="Exercise"><img src="assets/exercise-active.svg"/><h3>Exercise</h3></input>`
 // }
 
-// function createActivity(form) {
-//   currentActivity = new Activity(form.category.value, form.goal.value, form.minutes.value, form.seconds.value, generateRandomID());
-//   displayCountdown();
-// }
 
 // var activitiesSection = document.querySelector('#new-container');
 // function displayCountdown() {

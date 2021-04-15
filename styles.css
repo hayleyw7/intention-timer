@@ -216,5 +216,5 @@ input {
   top: 28%;
   left: 11%;
   position: absolute;
-  /* color: var(--error); */
+  color: var(--error);
 }
