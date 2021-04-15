@@ -19,6 +19,9 @@ var goalForm = document.querySelector('#goal')
 var minutesForm = document.querySelector('#minutes')
 var secondsForm = document.querySelector('#seconds')
 var startBtn = document.querySelector('#start-btn')
+var studyLabel = document.querySelector('#study-label')
+var meditateLabel = document.querySelector('#meditate-label')
+var exerciseLabel = document.querySelector('#exercise-label')
 // Warning
 var error = document.getElementById('#warning')
 var goalWarning = document.querySelector('#warning-1')
@@ -35,9 +38,13 @@ startBtn.addEventListener('click', something)
 // Buttons
 function activateStudy() {
   studyBtn.style.borderColor = ('var(--study)')
+  studyLabel.style.color = ('var(--study)')
   exerciseBtn.style.borderColor = ('var(--whiteText)')
   meditateBtn.style.borderColor = ('var(--whiteText)')
-  activityStorage.push('Study')
+  meditateLabel.style.color = ('var(--whiteText)')
+  exerciseLabel.style.color = ('var(--whiteText)')
+  categories.pop()
+  categories.push('Study')
   show(sOn)
   show(mOff)
   show(eOff)
@@ -48,9 +55,15 @@ function activateStudy() {
 
 function activateMeditate() {
   meditateBtn.style.borderColor = ('var(--meditate)')
+  meditateLabel.style.color= ('var(--meditate')
   exerciseBtn.style.borderColor = ('var(--whiteText)')
   studyBtn.style.borderColor = ('var(--whiteText)')
-  activityStorage.push('Meditate')
+  studyLabel.style.color = ('var(--whiteText)')
+  exerciseLabel.style.color = ('var(--whiteText)')
+
+
+  categories.pop()
+  categories.push('Meditate')
   hide(mOff)
   hide(eOn)
   hide(sOn)
@@ -61,11 +74,14 @@ function activateMeditate() {
   
 function activateExcercise() {
   exerciseBtn.style.borderColor = ('var(--exercise)')
+  exerciseLabel.style.color= ('var(--exercise')
   exerciseBtn.style.color = ('var(--exercise)')
   meditateBtn.style.borderColor = ('var(--whiteText)')
   studyBtn.style.borderColor = ('var(--whiteText)')
-  activityStorage.push('Exercise')
-
+  studyLabel.style.color = ('var(--whiteText)')
+  meditateLabel.style.color = ('var(--whiteText)')
+  categories.pop()
+  categories.push('Exercise')
   show(eOn)
   show(mOff)
   show(sOff)
@@ -86,9 +102,9 @@ hide(card)
 // !studyBtn || goalForm.value && minutesForm.value && secondsForm.value ? createActivity() : console.log('smoothie')
 }
 
-var activityStorage = []
+
 function createActivity() {
-  var currentActivity = new Activity(activityStorage[activityStorage.length - 1], goalForm.value, minutesForm.value, secondsForm.value, generateRandomID());
+  var currentActivity = new Activity(categories[categories.length - 1], goalForm.value, minutesForm.value, secondsForm.value, generateRandomID());
   console.log(currentActivity)
   activities.push(currentActivity)
   // displayCountdown();
