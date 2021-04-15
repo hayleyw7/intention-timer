@@ -4,22 +4,28 @@ var studyBtn = document.querySelector('#study-box');
 var meditateBtn = document.querySelector('#meditate-box');
 var exerciseBtn = document.querySelector('#exercise-box');
 var activityBtns = document.querySelectorAll('.box')
-  // on & off buttons
+// on & off buttons
 var sOn = document.querySelector('#s-on')
 var sOff = document.querySelector('#s-off')
 var mOn = document.querySelector('#m-on')
 var mOff = document.querySelector('#m-off')
 var eOn = document.querySelector('#e-on')
 var eOff = document.querySelector('#e-off')
-  //borders 
+//Forms
+var goalForm = document.querySelector('#goal')
+var minutesForm = document.querySelector('#minutes')
+var secondsForm = document.querySelector('#seconds')
+var startBtn = document.querySelector('#button-container')
+var error = document.querySelector('#warning')
 
 // Event Listeners
 studyBtn.addEventListener('click', activateStudy);
 meditateBtn.addEventListener('click', activateMeditate);
 exerciseBtn.addEventListener('click', activateExcercise);
-
+startBtn.addEventListener('click', something)
 
 // Event Handlers
+// Buttons
 function activateStudy() {
   studyBtn.style.borderColor = ('var(--study)')
   show(sOn)
@@ -50,27 +56,33 @@ function activateExcercise() {
   hide(sOn)
 }  
 
+function something(e) {
+e.preventDefault()
+  resetFade(error)
+  show(error)
+  animateFade(error)
+}
 
    
 
 
 
-function createActivity(form) {
-  currentActivity = new Activity(form.category.value, form.goal.value, form.minutes.value, form.seconds.value, generateRandomID());
-  displayCountdown();
-}
+// function createActivity(form) {
+//   currentActivity = new Activity(form.category.value, form.goal.value, form.minutes.value, form.seconds.value, generateRandomID());
+//   displayCountdown();
+// }
 
-var activitiesSection = document.querySelector('#new-container');
-function displayCountdown() {
-  activitiesSection.innerHTML = `
-  <h2 id="new">Completed Activity</h2>
-  <article id="card">
-    ${currentActivity.description}
-    ${currentActivity.minutes}:${currentActivity.seconds}
-    // start button with id="startBTN"
-  </article>
-  `
-}
+// var activitiesSection = document.querySelector('#new-container');
+// function displayCountdown() {
+//   activitiesSection.innerHTML = `
+//   <h2 id="new">Completed Activity</h2>
+//   <article id="card">
+//     ${currentActivity.description}
+//     ${currentActivity.minutes}:${currentActivity.seconds}
+//     // start button with id="startBTN"
+//   </article>
+//   `
+// }
 
 // Helper Functions
 function generateRandomID() {
@@ -83,6 +95,16 @@ function hide(e) {
 
 function show(e) {
   e.classList.remove('hidden')
+}
+
+function animateFade(e) {
+  e.classList.add('fade')
+}
+
+function resetFade(e) {
+  e.classList.remove('fade')
+  console.log('This works')
+  console.log(warning)
 }
 
 
