@@ -32,7 +32,7 @@ var activiesWarning = document.querySelector('#warning-4')
 studyBtn.addEventListener('click', activateStudy);
 meditateBtn.addEventListener('click', activateMeditate);
 exerciseBtn.addEventListener('click', activateExcercise);
-startBtn.addEventListener('click', something)
+startBtn.addEventListener('click', startActivity)
 
 // Event Handlers
 // Buttons
@@ -60,8 +60,6 @@ function activateMeditate() {
   studyBtn.style.borderColor = ('var(--whiteText)')
   studyLabel.style.color = ('var(--whiteText)')
   exerciseLabel.style.color = ('var(--whiteText)')
-
-
   currentActivity.pop()
   currentActivity.push('Meditate')
   hide(mOff)
@@ -90,22 +88,23 @@ function activateExcercise() {
   hide(sOn)
 }  
 
-function something(e) {
+
+function startActivity(e) {
 e.preventDefault()
 goalForm.value === "" ? show(goalWarning) : hide(goalWarning)
 !minutesForm.value ? show(minutesWarning) : hide(minutesWarning)
 !secondsForm.value ? show(secondsWarning) : hide(secondsWarning)
 if(goalForm.value && minutesForm.value && secondsForm.value) {
-createActivity()
 hide(card)
+createActivity()
 }
 // !studyBtn || goalForm.value && minutesForm.value && secondsForm.value ? createActivity() : console.log('smoothie')
 }
 
 
 function createActivity() {
-  var currentActivity = new Activity(currentActivity[currentActivity.length - 1], goalForm.value, minutesForm.value, secondsForm.value, generateRandomID());
-  activities.push(currentActivity)
+  var current = new Activity(currentActivity[0], goalForm.value, minutesForm.value, secondsForm.value, generateRandomID());
+  activities.push(current)
   // displayCountdown();
 }
 
