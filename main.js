@@ -43,8 +43,8 @@ function activateStudy() {
   meditateBtn.style.borderColor = ('var(--whiteText)')
   meditateLabel.style.color = ('var(--whiteText)')
   exerciseLabel.style.color = ('var(--whiteText)')
-  categories.pop()
-  categories.push('Study')
+  currentActivity.pop()
+  currentActivity.push('Study')
   show(sOn)
   show(mOff)
   show(eOff)
@@ -62,8 +62,8 @@ function activateMeditate() {
   exerciseLabel.style.color = ('var(--whiteText)')
 
 
-  categories.pop()
-  categories.push('Meditate')
+  currentActivity.pop()
+  currentActivity.push('Meditate')
   hide(mOff)
   hide(eOn)
   hide(sOn)
@@ -80,8 +80,8 @@ function activateExcercise() {
   studyBtn.style.borderColor = ('var(--whiteText)')
   studyLabel.style.color = ('var(--whiteText)')
   meditateLabel.style.color = ('var(--whiteText)')
-  categories.pop()
-  categories.push('Exercise')
+  currentActivity.pop()
+  currentActivity.push('Exercise')
   show(eOn)
   show(mOff)
   show(sOff)
@@ -104,8 +104,7 @@ hide(card)
 
 
 function createActivity() {
-  var currentActivity = new Activity(categories[categories.length - 1], goalForm.value, minutesForm.value, secondsForm.value, generateRandomID());
-  console.log(currentActivity)
+  var currentActivity = new Activity(currentActivity[currentActivity.length - 1], goalForm.value, minutesForm.value, secondsForm.value, generateRandomID());
   activities.push(currentActivity)
   // displayCountdown();
 }
