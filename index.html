@@ -5,8 +5,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="preconnect" href="https://fonts.gstatic.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap" />
-  <link rel="stylesheet" href="./styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap"/>
+  <link rel="stylesheet" href="./styles.css"/>
   <title>Intention Timer</title>
 </head>
 <body>
@@ -17,44 +17,57 @@
     <section id="new-container" class="">
       <h2 id="new">New Activity</h2>
       <article id="card">
+        <div id="card-content">
         <form>
           <h3>Select A Category:</h3>
           <div id="box-container" class="flex">
-            <div class="box flex" id="study-box">
-              <img src="assets/study.svg"/>
-              <h3>Study</h3>
+            <div id="study-box" class="box flex">
+              <img id="s-off"src="assets/study.svg"/>
+              <img id="s-on" src="assets/study-active.svg" class="hidden">
+              <h3 id="study-label">Study</h3>
             </div>
-            <div class="box flex" id="meditate-box">
-              <img src="assets/meditate.svg">
-              <h3>Meditate</h3>
+            <div id="meditate-box" class="box flex" >
+              <img id="m-off" src="assets/meditate.svg">
+              <img src="assets/meditate-active.svg" 
+              id="m-on"
+              class="hidden"/>
+              <h3 id="meditate-label">Meditate</h3>
             </div>
-            <div class="box flex" id="exercise-box">
-              <img src="assets/exercise.svg">
-              <h3>Exercise</h3>
+            <div id="exercise-box" class="box flex" >
+              <img src="assets/exercise.svg" id="e-off"> 
+              <img src="assets/exercise-active.svg" id ="e-on" class="hidden"/>
+              <h3 id="exercise-label">Exercise</h3>
             </div>
           </div>
           <h3 class="form-padding">What would you like to accomplish during this time</h3>
           <input type="text" id="goal" name="goal" value="" class="form-padding borderless">
+        <div id="warning-1" class="warning hidden flex">
+          <img src="/assets/warning.svg"><p>A description is required.</p>
+        </div>
           <div id="time-box" class="flex">
             <div id="minutes-box">
               <h3 class="form-padding">Minutes</h3>
-              <input type="text" id="minutes" name="minutes" value="" class="form-padding borderless">
+              <input type="number" min="0" id="minutes" name="minutes" value="" class="form-padding borderless">
+              <div id="warning-2" class="warning hidden flex">
+                <img src="/assets/warning.svg"><p>Minutes is required.</p>
+              </div>
             </div>
             <div id="seconds-box">
               <h3 class="form-padding">Seconds</h3>
-              <input type="text" id="seconds" name="seconds" value="" class="form-padding borderless">
+              <input type="number" min="0" id="seconds" name="seconds" value="" class="form-padding borderless">
+              <div id="warning-3" class="warning hidden flex">
+                <img src="/assets/warning.svg"><p>Seconds are required.</p>
+              </div>
             </div>
           </div>
           <div id="button-container" class="flex">
-            <input type="button" class="start-btn" id="start-btn" value="START ACTIVITY" onClick="createActivity(this.form)">
+            <input type="button" id="start-btn" value="START ACTIVITY">
+          </div>
+          <div id="warning-4" class="warning hidden flex">
+            <img src="/assets/warning.svg"><p>Seconds are required.</p>
           </div>
         </form>
-      </article>
-    </section>
-    <section id="new-container" class="hidden">
-      <h2 id="new">Completed Activity</h2>
-      <article>
-        <button class="" id="new-activity-button">CREATE A NEW ACTIVITY</button>
+      </div>
       </article>
     </section>
     <section id="past-container" class="flex ">
@@ -67,3 +80,14 @@
 <script src="main.js"></script>
 <script src="data.js"></script>
 </html>
+
+<!-- <div id="button-container" class="flex">
+  <input type="button" class="start-btn" id="start-btn" value="START ACTIVITY" onClick="createActivity(this.form)">
+</div> -->
+
+<!-- <section id="new-container" class="hidden">
+  <h2 id="new">Completed Activity</h2>
+  <article>
+    <button id="new-activity-btn">CREATE A NEW ACTIVITY</button>
+  </article>
+</section> -->

@@ -1,1 +1,2 @@
 var activities = [];
+var currentActivity = []
