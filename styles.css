@@ -207,7 +207,7 @@ h3 {
 
 /* RIGHT CONTAINER */
 #past-container {
-  flex-grow: 1;
+  flex-grow: 1.1;
   flex-direction: column;
   text-align: center;
   border-left: 1px solid var(--mainText);

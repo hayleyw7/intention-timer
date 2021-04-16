@@ -1,7 +1,8 @@
 // Variables
 // Outer Variables
 var pastContainer = document.querySelector('#past-container')
-var card = document.querySelector('#card')
+var cardContainer = document.querySelector('#card')
+var card = document.querySelector("#card-content")
 // Activities
 var studyBtn = document.querySelector('#study-box');
 var meditateBtn = document.querySelector('#meditate-box');
@@ -9,6 +10,7 @@ var exerciseBtn = document.querySelector('#exercise-box');
 var activityBtns = document.querySelectorAll('.box')
 var logBTN = document.querySelector('#log-activity-btn');
 var createNewBTN = document.querySelector('#new-activity-btn')
+var newHeader = document.querySelector("#new")
 // on & off buttons
 var sOn = document.querySelector('#s-on')
 var sOff = document.querySelector('#s-off')
@@ -33,13 +35,17 @@ var timer = document.querySelector("#timer")
 var timeLeft = document.querySelector("#time")
 var ring = document.querySelector("#ring")
 var startTimerBtn = document.querySelector('#start-timer-btn')
+var activityHeader = document.querySelector('#userActivity')
+
 
 // Event Listeners
 studyBtn.addEventListener('click', activateStudy);
 meditateBtn.addEventListener('click', activateMeditate);
 exerciseBtn.addEventListener('click', activateExcercise);
-logBTN.addEventListener('click', complete)
+// logBTN.addEventListener('click', complete)
 createNewBTN.addEventListener('click', newActivity)
+ring.addEventListener('click', triggerTimer)
+
 
 // Event Handlers
 // Buttons
@@ -76,7 +82,7 @@ function activateMeditate() {
   show(eOff)
   show(sOff)
 }
-  
+
 function activateExcercise() {
   hiddenInput.innerHTML = `<input type="hidden" name="category" value="Exercise">`
   exerciseBtn.style.borderColor = ('var(--exercise)')
@@ -93,7 +99,7 @@ function activateExcercise() {
   hide(eOff)
   hide(mOn)
   hide(sOn)
-}  
+}
 
 
 function createActivity(form) {
@@ -102,10 +108,38 @@ function createActivity(form) {
   !form.seconds.value ? show(secondsWarning) : hide(secondsWarning)
   if(form.goal.value && form.minutes.value && form.seconds.value) {
     currentActivity = new Activity(form.category.value, form.goal.value, form.minutes.value, form.seconds.value, generateRandomID());
+    activityHeader.innerText = `${currentActivity.description}`
+    timeLeft.innerText = `${currentActivity.minutes}:${currentActivity.seconds}`
     show(timerBox)
     hide(card)
-    hide(pastContainer)
+    updateHeader()
   }
+}
+
+function triggerTimer() {
+  beginTimer(currentActivity[0].minutes, currentActivity[1].seconds)
+}
+
+
+function beginTimer(minutes, seconds) {
+  var duration = minutes * 6 + seconds;
+  var timer = duration, minutes, seconds;
+  setInterval(function () {
+    minutes = parseInt(timer / 60, 10);
+    seconds = parseInt(timer % 60, 10);
+
+    minutes = minutes < 10 ? "0" + minutes : minutes;
+    seconds = seconds < 10 ? "0" + seconds : seconds;
+
+    timeLeft.textContent = minutes + ":" + seconds;
+
+    if (--timer <= 0) {
+      timer = 0;
+      // currentActivity.markComplete();
+      return alert("Congrats! You made it!");
+    }
+  }, 1000);
+  // showCongrats();
 }
 
 
@@ -166,4 +200,8 @@ function animateFade(e) {
 
 function resetFade(e) {
   e.classList.toggle('fade')
+}
+
+function updateHeader() {
+  newHeader.innerText = "Current Activity"
 }
