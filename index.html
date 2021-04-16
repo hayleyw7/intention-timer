@@ -43,7 +43,7 @@
             <h3 class="form-padding">What would you like to accomplish during this time</h3>
             <input type="text" id="goal" name="goal" value="" class="form-padding borderless">
             <div id="warning-1" class="warning hidden flex">
-              <img src="/assets/warning.svg">
+              <img src="./assets/warning.svg">
               <p>A description is required.</p>
             </div>
             <div id="time-box" class="flex">
@@ -51,7 +51,7 @@
                 <h3 class="form-padding">Minutes</h3>
                 <input type="number" min="0" id="minutes" name="minutes" value="" class="form-padding borderless">
                 <div id="warning-2" class="warning hidden flex">
-                  <img src="/assets/warning.svg">
+                  <img src="./assets/warning.svg">
                   <p>Minutes is required.</p>
                 </div>
               </div>
@@ -59,7 +59,7 @@
                 <h3 class="form-padding">Seconds</h3>
                 <input type="number" min="0" id="seconds" name="seconds" value="" class="form-padding borderless">
                 <div id="warning-3" class="warning hidden flex">
-                  <img src="/assets/warning.svg">
+                  <img src="./assets/warning.svg">
                   <p>Seconds are required.</p>
                 </div>
               </div>
@@ -68,7 +68,7 @@
               <input type="button" id="start-btn" value="START ACTIVITY" onClick="createActivity(this.form)">
             </div>
             <div id="warning-4" class="warning hidden flex">
-              <img src="/assets/warning.svg">
+              <img src="./assets/warning.svg">
               <p>Seconds are required.</p>
             </div>
           </form>
@@ -77,8 +77,11 @@
         <h2 id="userActivity">Deep Breathing</h2>
         <p id="time">00:00</p>
         <div id="ring" class="flex">
-          <h2>START</h2>
+          <h2 id="start">START</h2>
         </div>
+      </div>
+      <div id="create-box" class="hidden flex">
+        <input type="button" id="start-btn" value="CREATE">
       </div>
     </article>
     </section>
@@ -91,9 +94,9 @@
 <script src="Activity.js"></script>
 <script src="main.js"></script>
 <script src="data.js"></script>
-
+<script src="timer.js"></script>
 </html>
-
-<!-- <div id="button-container" class="flex">
-  <input type="button" class="start-btn" id="start-btn" value="START ACTIVITY" onClick="createActivity(this.form)">
+<!-- 
+<div id="button-container" class="flex">
+  <input type="button" id="start-btn" value="START ACTIVITY" onClick="createActivity(this.form)">
 </div> -->

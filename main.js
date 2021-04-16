@@ -32,6 +32,7 @@ var secondsWarning = document.querySelector('#warning-3')
 var activiesWarning = document.querySelector('#warning-4')
 //timer
 var timerBox = document.querySelector("#timer-box");
+var createBox = document.querySelector("#create-box");
 var timer = document.querySelector("#timer")
 var timeLeft = document.querySelector("#time")
 var ring = document.querySelector("#ring")
@@ -107,53 +108,56 @@ function createActivity(form) {
   !form.minutes.value ? show(minutesWarning) : hide(minutesWarning)
   !form.seconds.value ? show(secondsWarning) : hide(secondsWarning)
   if(form.goal.value && form.minutes.value && form.seconds.value) {
-    currentActivity = new Activity(form.category.value, form.goal.value, form.minutes.value, form.seconds.value, generateRandomID());
+    currentActivity = new Activity(form.category.value, form.goal.value, parseInt(form.minutes.value), parseInt(form.seconds.value), generateRandomID());
+    showTimer()
     show(timerBox)
     hide(card)
-    updateHeader()
   }
 }
+
+
+function showTimer() {
+  var minutes = currentActivity.minutes < 10 ? "0" + currentActivity.minutes : currentActivity.minutes;
+  var seconds = currentActivity.seconds < 10 ? "0" + currentActivity.seconds : currentActivity.seconds;
+  activityHeader.textContent = `${currentActivity.description}`
+  timeLeft.textContent = minutes + ":" + seconds;
+}
+
 
 function triggerTimer() {
   beginTimer(currentActivity.minutes, currentActivity.seconds)
 
 }
 
-function updateHeader() {
-  console.log(currentActivity)
-  activityHeader.textConten = `${currentActivity.description}`
-  timeLeft.textContent = `${currentActivity.minutes}:${currentActivity.seconds}`
-}
-
-
 function beginTimer(minutes, seconds) {
-  var minutesINT = parseInt(minutes);
-  var secondsINT = parseInt(seconds);
-  var duration = minutesINT * 60 + secondsINT;
-  var timer = duration, minutes, seconds;
-  setInterval(function () {
-    minutes = parseInt(timer / 60, 10);
-    seconds = parseInt(timer % 60, 10);
-    minutes = minutes < 10 ? "0" + minutes : minutes;
-    seconds = seconds < 10 ? "0" + seconds : seconds;
-    timeLeft.textContent = minutes + ":" + seconds;
-    if (--timer <= 0) {
-      timer = 0;
-      // currentActivity.markComplete();
-      // return alert("Congrats! You made it!");
+  timer = new CountDownTimer(minutes, seconds);
+  timer.onTick(format(timeLeft)).onTick(restart).start();
+  function restart() {
+    if (this.expired()) {
+      setTimeout(function () {
+        currentActivity.markComplete();
+        start.textContent = `COMPLETE!`
+        // I NEED A "log Activity" BTN that calls logActivity()
+        return alert("Congrats! You made it!");
+      }, 1000);
     }
-  }, 1000);
-  // showCongrats();
+  }
+  function format(timeLeft) {
+    return function (minutes, seconds) {
+      minutes = minutes < 10 ? "0" + minutes : minutes;
+      seconds = seconds < 10 ? "0" + seconds : seconds;
+      timeLeft.textContent = minutes + ':' + seconds;
+    };
+  }
 }
 
 
-// function complete() {
-//   currentActivity.markComplete()
+// function logActivity() {
 //   activities.unshift(currentActivity)
 //   localStorage.setItem('somethingComplicated', JSON.stringify(activities))
 //   pastActivitiesSection()
-//   hide(currentcontainer)
-//   show(completedcontainer)
+//   hide(createBox)
+//   show(card)
 // }
 
 
