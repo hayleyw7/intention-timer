@@ -112,7 +112,7 @@ function createActivity(form) {
 }
 
 function beginTimer(minutes, seconds) {
-  var duration = minutes * 60 + seconds;
+  var duration = minutes * 6 + seconds;
   var timer = duration, minutes, seconds;
   setInterval(function () {
     minutes = parseInt(timer / 60, 10);
