@@ -165,9 +165,49 @@ h3 {
   justify-content: flex-end;
 }
 
+/* Timer */
+#timer-box {
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  height: 25rem;
+  position: relative;
+}
+
+#timer-box h2 {
+  font-weight: 300;
+}
+
+#timer-box > h2:nth-child(1)  {
+  margin-bottom: 20rem;
+  font-size: 1.2rem;
+  position: absolute;
+}
+
+#timer-box p {
+  margin-bottom: 14rem;
+  font-weight: 400;
+  font-size: 4rem;
+  color: var(--whiteText);
+}
+
+
+
+#ring {
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: 4.5rem;
+  width: 11rem;
+  height: 11rem;
+  border: var(--whiteText) 3px solid;
+  border-radius: 100%;
+}
+
 /* RIGHT CONTAINER */
 #past-container {
-  flex-grow: 1;
+  flex-grow: 1.1;
   flex-direction: column;
   text-align: center;
   border-left: 1px solid var(--mainText);

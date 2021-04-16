@@ -1,8 +1,8 @@
 // Variables
 // Outer Variables
 var pastContainer = document.querySelector('#past-container')
-pastActivitiesSection()
-
+var cardContainer = document.querySelector('#card')
+var card = document.querySelector("#card-content")
 // Activities
 var studyBtn = document.querySelector('#study-box');
 var meditateBtn = document.querySelector('#meditate-box');
@@ -10,6 +10,7 @@ var exerciseBtn = document.querySelector('#exercise-box');
 var activityBtns = document.querySelectorAll('.box')
 var logBTN = document.querySelector('#log-activity-btn');
 var createNewBTN = document.querySelector('#new-activity-btn')
+var newHeader = document.querySelector("#new")
 // on & off buttons
 var sOn = document.querySelector('#s-on')
 var sOff = document.querySelector('#s-off')
@@ -28,6 +29,13 @@ var goalWarning = document.querySelector('#warning-1')
 var minutesWarning = document.querySelector('#warning-2')
 var secondsWarning = document.querySelector('#warning-3')
 var activiesWarning = document.querySelector('#warning-4')
+//timer
+var timerBox = document.querySelector("#timer-box");
+var timer = document.querySelector("#timer")
+var timeLeft = document.querySelector("#time")
+var ring = document.querySelector("#ring")
+var startTimerBtn = document.querySelector('#start-timer-btn')
+
 // Event Listeners
 studyBtn.addEventListener('click', activateStudy);
 meditateBtn.addEventListener('click', activateMeditate);
@@ -40,6 +48,7 @@ createNewBTN.addEventListener('click', newActivity)
 function activateStudy() {
   hiddenInput.innerHTML = `<input type="hidden" name="category" value="Study">`
   studyBtn.style.borderColor = ('var(--study)')
+  ring.style.borderColor = ('var(--study)')
   studyLabel.style.color = ('var(--study)')
   exerciseBtn.style.borderColor = ('var(--whiteText)')
   meditateBtn.style.borderColor = ('var(--whiteText)')
@@ -56,6 +65,7 @@ function activateStudy() {
 function activateMeditate() {
   hiddenInput.innerHTML = `<input type="hidden" name="category" value="Meditate">`
   meditateBtn.style.borderColor = ('var(--meditate)')
+  ring.style.borderColor = ('var(--meditate)')
   meditateLabel.style.color= ('var(--meditate')
   exerciseBtn.style.borderColor = ('var(--whiteText)')
   studyBtn.style.borderColor = ('var(--whiteText)')
@@ -68,10 +78,11 @@ function activateMeditate() {
   show(eOff)
   show(sOff)
 }
-  
+
 function activateExcercise() {
   hiddenInput.innerHTML = `<input type="hidden" name="category" value="Exercise">`
   exerciseBtn.style.borderColor = ('var(--exercise)')
+  ring.style.borderColor = ('var(--exercise)')
   exerciseLabel.style.color= ('var(--exercise')
   exerciseBtn.style.color = ('var(--exercise)')
   meditateBtn.style.borderColor = ('var(--whiteText)')
@@ -84,7 +95,7 @@ function activateExcercise() {
   hide(eOff)
   hide(mOn)
   hide(sOn)
-}  
+}
 
 
 function createActivity(form) {
@@ -93,42 +104,43 @@ function createActivity(form) {
   !form.seconds.value ? show(secondsWarning) : hide(secondsWarning)
   if(form.goal.value && form.minutes.value && form.seconds.value) {
     currentActivity = new Activity(form.category.value, form.goal.value, form.minutes.value, form.seconds.value, generateRandomID());
-    hide(newcontainer)
-    show(currentcontainer)
+    show(timerBox)
+    hide(card)
+    newHeader.innerText = "Current Activity"
   }
 }
 
 
-function complete() {
-  currentActivity.markComplete()
-  activities.unshift(currentActivity)
-  localStorage.setItem('somethingComplicated', JSON.stringify(activities))
-  pastActivitiesSection()
-  hide(currentcontainer)
-  show(completedcontainer)
-}
+// function complete() {
+//   currentActivity.markComplete()
+//   activities.unshift(currentActivity)
+//   localStorage.setItem('somethingComplicated', JSON.stringify(activities))
+//   pastActivitiesSection()
+//   hide(currentcontainer)
+//   show(completedcontainer)
+// }
 
 
-function pastActivitiesSection() {
-  var parsedObject = JSON.parse(localStorage.getItem('somethingComplicated'));
-  if (!parsedObject) {
-    pastContainer.innerHTML = `
-    <h2 id="past">Past Activities</h2>
-    <p>You haven't logged any activities today!</br>Complete the form to the left to get started!</p>
-    `
-  } else {
-    pastContainer.innerHTML = ``
-    for (var i = 0; i < parsedObject.length; i++) {
-      pastContainer.innerHTML += `
-      <h2 id="past">Past Activities</h2>
-      <p>
-      ${parsedObject[i].category}
-      ${parsedObject[i].minutes} MIN ${parsedObject[i].seconds} SECONDS
-      ${parsedObject[i].description}</p>
-      `
-    }
-  }
-}
+// function pastActivitiesSection() {
+//   var parsedObject = JSON.parse(localStorage.getItem('somethingComplicated'));
+//   if (!parsedObject) {
+//     pastContainer.innerHTML = `
+//     <h2 id="past">Past Activities</h2>
+//     <p>You haven't logged any activities today!</br>Complete the form to the left to get started!</p>
+//     `
+//   } else {
+//     pastContainer.innerHTML = ``
+//     for (var i = 0; i < parsedObject.length; i++) {
+//       pastContainer.innerHTML += `
+//       <h2 id="past">Past Activities</h2>
+//       <p>
+//       ${parsedObject[i].category}
+//       ${parsedObject[i].minutes} MIN ${parsedObject[i].seconds} SECONDS
+//       ${parsedObject[i].description}</p>
+//       `
+//     }
+//   }
+// }
 
 
 function newActivity() {
