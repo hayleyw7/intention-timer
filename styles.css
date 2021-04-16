@@ -96,6 +96,14 @@ h1 {
   top: 85%
 }
 
+#create-new-activity-btn {
+  align-self: center;
+  width: 18rem;
+  position: absolute;
+  top: 15%;
+  left: 40%;
+}
+
 /* BOTH CONTAINERS */
 #new,
 #past {
@@ -120,6 +128,7 @@ h1 {
   box-shadow: 3px 3px 5px 6px var(--cardShadow);
   min-width: 25rem;
   min-height: 25rem;
+  position: relative;
 }
 
 h3 {
@@ -236,6 +245,12 @@ h3 {
   margin: 5rem 5rem;
   line-height: 1.9rem;
   font-size: 1.4rem;
+}
+
+#past-card {
+  width: 2rem;
+  height: 2rem;
+  color: pink
 }
 
 /* MISC */

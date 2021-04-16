@@ -24,7 +24,8 @@ var studyLabel = document.querySelector('#study-label')
 var meditateLabel = document.querySelector('#meditate-label')
 var exerciseLabel = document.querySelector('#exercise-label')
 var startActivityBtn = document.querySelector('#start-btn')
-var logActivitybtn = document.querySelector('#log-btn')
+var logActivityBtn = document.querySelector('#log-btn')
+var createNewActivityBtn = document.querySelector('#create-new-activity-btn')
 // Warning
 var error = document.getElementById('#warning')
 var goalWarning = document.querySelector('#warning-1')
@@ -39,6 +40,7 @@ var timeLeft = document.querySelector("#time")
 var ring = document.querySelector("#ring")
 var startTimerBtn = document.querySelector('#start-timer-btn')
 var activityHeader = document.querySelector('#userActivity')
+var pastActivitiesCard = document.querySelector('#pastActivities')
 
 
 // Event Listeners
@@ -113,16 +115,17 @@ function createActivity(form) {
     showTimer()
     show(timerBox)
     hide(card)
-    hide(logActivitybtn)
+    hide(logActivityBtn)
   }
 }
 
 function logActivity() {
   hide(timerBox)
-  hide(logActivitybtn)
+  hide(logActivityBtn)
+  show(createNewActivityBtn)
   activities.unshift(currentActivity)
   localStorage.setItem('Activities', JSON.stringify(activities))
-  
+  // pastActivitiesCard.innerHTML = 
 }
 
 
@@ -145,7 +148,7 @@ function beginTimer(minutes, seconds) {
     if (this.expired()) {
       setTimeout(function () {
         currentActivity.markComplete();
-        show(logActivitybtn)
+        show(logActivityBtn)
         start.textContent = `COMPLETE!`
         return alert("Congrats! You made it!");
       }, 1000);

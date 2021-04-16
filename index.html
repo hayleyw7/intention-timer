@@ -82,6 +82,8 @@
         <input type="button" id="log-btn" class="btn" value="LOG ACTIVITY" onClick="logActivity()">
 
       </div>
+      <input type="button" id="create-new-activity-btn" class="btn hidden" value="CREATE A NEW ACTIVITY">
+
       <div id="create-box" class="hidden flex">
         <input type="button" id="start-btn" value="CREATE">
 
@@ -91,7 +93,8 @@
     </section>
     <section id="past-container" class="flex">
       <h2 id="past">Past Activities</h2>
-      <p>You haven't logged any activities today!</br>Complete the form to the left to get started!</p>
+      <!-- <p id="pastActivities">You haven't logged any activities today!</br>Complete the form to the left to get started!</p> -->
+      <div id="past-card"></div>
     </section>
   </section>
 </body>
