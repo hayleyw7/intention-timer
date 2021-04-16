@@ -40,7 +40,7 @@ var startTimerBtn = document.querySelector('#start-timer-btn')
 studyBtn.addEventListener('click', activateStudy);
 meditateBtn.addEventListener('click', activateMeditate);
 exerciseBtn.addEventListener('click', activateExcercise);
-logBTN.addEventListener('click', complete)
+// logBTN.addEventListener('click', complete)
 createNewBTN.addEventListener('click', newActivity)
 
 // Event Handlers
@@ -106,8 +106,30 @@ function createActivity(form) {
     currentActivity = new Activity(form.category.value, form.goal.value, form.minutes.value, form.seconds.value, generateRandomID());
     show(timerBox)
     hide(card)
-    newHeader.innerText = "Current Activity"
+    updateHeader()
+    beginTimer(currentActivity.minutes, currentActivity.seconds)
   }
+}
+
+function beginTimer(minutes, seconds) {
+  var duration = minutes * 60 + seconds;
+  var timer = duration, minutes, seconds;
+  setInterval(function () {
+    minutes = parseInt(timer / 60, 10);
+    seconds = parseInt(timer % 60, 10);
+
+    minutes = minutes < 10 ? "0" + minutes : minutes;
+    seconds = seconds < 10 ? "0" + seconds : seconds;
+
+    timeLeft.textContent = minutes + ":" + seconds;
+
+    if (--timer <= 0) {
+      timer = 0;
+      // currentActivity.markComplete();
+      return alert("Congrats! You made it!");
+    }
+  }, 1000);
+  // showCongrats();
 }
 
 
@@ -168,4 +190,8 @@ function animateFade(e) {
 
 function resetFade(e) {
   e.classList.toggle('fade')
+}
+
+function updateHeader() {
+  newHeader.innerText = "Current Activity"
 }
