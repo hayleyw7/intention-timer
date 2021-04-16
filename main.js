@@ -28,6 +28,12 @@ var goalWarning = document.querySelector('#warning-1')
 var minutesWarning = document.querySelector('#warning-2')
 var secondsWarning = document.querySelector('#warning-3')
 var activiesWarning = document.querySelector('#warning-4')
+//timer
+var timerBox = document.querySelector("#timer-box");
+var timer = document.querySelector("#timer")
+var timeLeft = document.querySelector("#time")
+var ring = document.querySelector("#ring")
+
 // Event Listeners
 studyBtn.addEventListener('click', activateStudy);
 meditateBtn.addEventListener('click', activateMeditate);
@@ -38,6 +44,7 @@ startBtn.addEventListener('click', startActivity)
 // Buttons
 function activateStudy() {
   studyBtn.style.borderColor = ('var(--study)')
+  ring.style.borderColor = ('var(--study)')
   studyLabel.style.color = ('var(--study)')
   exerciseBtn.style.borderColor = ('var(--whiteText)')
   meditateBtn.style.borderColor = ('var(--whiteText)')
@@ -55,6 +62,7 @@ function activateStudy() {
 
 function activateMeditate() {
   meditateBtn.style.borderColor = ('var(--meditate)')
+  ring.style.borderColor = ('var(--meditate)')
   meditateLabel.style.color= ('var(--meditate')
   exerciseBtn.style.borderColor = ('var(--whiteText)')
   studyBtn.style.borderColor = ('var(--whiteText)')
@@ -72,6 +80,7 @@ function activateMeditate() {
   
 function activateExcercise() {
   exerciseBtn.style.borderColor = ('var(--exercise)')
+  ring.style.borderColor = ('var(--exercise)')
   exerciseLabel.style.color= ('var(--exercise')
   exerciseBtn.style.color = ('var(--exercise)')
   meditateBtn.style.borderColor = ('var(--whiteText)')
@@ -96,6 +105,7 @@ goalForm.value === "" ? show(goalWarning) : hide(goalWarning)
 !secondsForm.value ? show(secondsWarning) : hide(secondsWarning)
 if(goalForm.value && minutesForm.value && secondsForm.value) {
 hide(card)
+show(timerBox)
 createActivity()
 }
 // !studyBtn || goalForm.value && minutesForm.value && secondsForm.value ? createActivity() : console.log('smoothie')
