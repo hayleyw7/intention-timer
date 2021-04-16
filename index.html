@@ -17,8 +17,8 @@
   </header>
   <section id="main" class="flex">
     <section id="newcontainer" class="container">
+      <h2 id="new">New Activity</h2>
       <article id="card">
-        <h2 id="new">New Activity</h2>
         <div id="card-content">
           <form>
             <div id="hidden-input"></div>
@@ -43,7 +43,7 @@
             <h3 class="form-padding">What would you like to accomplish during this time</h3>
             <input type="text" id="goal" name="goal" value="" class="form-padding borderless">
             <div id="warning-1" class="warning hidden flex">
-              <img src="./assets/warning.svg">
+              <img src="assets/warning.svg">
               <p>A description is required.</p>
             </div>
             <div id="time-box" class="flex">
@@ -51,7 +51,7 @@
                 <h3 class="form-padding">Minutes</h3>
                 <input type="number" min="0" id="minutes" name="minutes" value="" class="form-padding borderless">
                 <div id="warning-2" class="warning hidden flex">
-                  <img src="./assets/warning.svg">
+                  <img src="assets/warning.svg">
                   <p>Minutes is required.</p>
                 </div>
               </div>
@@ -59,16 +59,16 @@
                 <h3 class="form-padding">Seconds</h3>
                 <input type="number" min="0" id="seconds" name="seconds" value="" class="form-padding borderless">
                 <div id="warning-3" class="warning hidden flex">
-                  <img src="./assets/warning.svg">
+                  <img src="assets/warning.svg">
                   <p>Seconds are required.</p>
                 </div>
               </div>
             </div>
             <div id="button-container" class="flex">
-              <input type="button" id="start-btn" value="START ACTIVITY" onClick="createActivity(this.form)">
+              <input type="button" id="start-btn" class="btn" value="START ACTIVITY" onClick="createActivity(this.form)">
             </div>
             <div id="warning-4" class="warning hidden flex">
-              <img src="./assets/warning.svg">
+              <img src="assets/warning.svg">
               <p>Seconds are required.</p>
             </div>
           </form>
@@ -79,10 +79,14 @@
         <div id="ring" class="flex">
           <h2 id="start">START</h2>
         </div>
+        <input type="button" id="log-btn" class="btn" value="LOG ACTIVITY" onClick="logActivity()">
+
       </div>
       <div id="create-box" class="hidden flex">
         <input type="button" id="start-btn" value="CREATE">
+
       </div>
+
     </article>
     </section>
     <section id="past-container" class="flex">

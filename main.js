@@ -24,6 +24,7 @@ var studyLabel = document.querySelector('#study-label')
 var meditateLabel = document.querySelector('#meditate-label')
 var exerciseLabel = document.querySelector('#exercise-label')
 var startActivityBtn = document.querySelector('#start-btn')
+var logActivitybtn = document.querySelector('#log-btn')
 // Warning
 var error = document.getElementById('#warning')
 var goalWarning = document.querySelector('#warning-1')
@@ -112,7 +113,16 @@ function createActivity(form) {
     showTimer()
     show(timerBox)
     hide(card)
+    hide(logActivitybtn)
   }
+}
+
+function logActivity() {
+  hide(timerBox)
+  hide(logActivitybtn)
+  activities.unshift(currentActivity)
+  localStorage.setItem('Activities', JSON.stringify(activities))
+  
 }
 
 
@@ -126,7 +136,6 @@ function showTimer() {
 
 function triggerTimer() {
   beginTimer(currentActivity.minutes, currentActivity.seconds)
-
 }
 
 function beginTimer(minutes, seconds) {
@@ -136,8 +145,8 @@ function beginTimer(minutes, seconds) {
     if (this.expired()) {
       setTimeout(function () {
         currentActivity.markComplete();
+        show(logActivitybtn)
         start.textContent = `COMPLETE!`
-        // I NEED A "log Activity" BTN that calls logActivity()
         return alert("Congrats! You made it!");
       }, 1000);
     }
