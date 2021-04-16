@@ -1,2 +1,2 @@
 var activities = [];
-var currentActivity = []
+var currentActivity;
