@@ -1,12 +1,15 @@
 // Variables
 // Outer Variables
-var card = document.querySelector('#card-content')
+var pastContainer = document.querySelector('#past-container')
+pastActivitiesSection()
 
 // Activities
 var studyBtn = document.querySelector('#study-box');
 var meditateBtn = document.querySelector('#meditate-box');
 var exerciseBtn = document.querySelector('#exercise-box');
 var activityBtns = document.querySelectorAll('.box')
+var logBTN = document.querySelector('#log-activity-btn');
+var createNewBTN = document.querySelector('#new-activity-btn')
 // on & off buttons
 var sOn = document.querySelector('#s-on')
 var sOff = document.querySelector('#s-off')
@@ -15,10 +18,7 @@ var mOff = document.querySelector('#m-off')
 var eOn = document.querySelector('#e-on')
 var eOff = document.querySelector('#e-off')
 // Forms
-var goalForm = document.querySelector('#goal')
-var minutesForm = document.querySelector('#minutes')
-var secondsForm = document.querySelector('#seconds')
-var startBtn = document.querySelector('#start-btn')
+var hiddenInput = document.querySelector('#hidden-input')
 var studyLabel = document.querySelector('#study-label')
 var meditateLabel = document.querySelector('#meditate-label')
 var exerciseLabel = document.querySelector('#exercise-label')
@@ -38,11 +38,13 @@ var ring = document.querySelector("#ring")
 studyBtn.addEventListener('click', activateStudy);
 meditateBtn.addEventListener('click', activateMeditate);
 exerciseBtn.addEventListener('click', activateExcercise);
-startBtn.addEventListener('click', startActivity)
+logBTN.addEventListener('click', complete)
+createNewBTN.addEventListener('click', newActivity)
 
 // Event Handlers
 // Buttons
 function activateStudy() {
+  hiddenInput.innerHTML = `<input type="hidden" name="category" value="Study">`
   studyBtn.style.borderColor = ('var(--study)')
   ring.style.borderColor = ('var(--study)')
   studyLabel.style.color = ('var(--study)')
@@ -50,8 +52,6 @@ function activateStudy() {
   meditateBtn.style.borderColor = ('var(--whiteText)')
   meditateLabel.style.color = ('var(--whiteText)')
   exerciseLabel.style.color = ('var(--whiteText)')
-  currentActivity.pop()
-  currentActivity.push('Study')
   show(sOn)
   show(mOff)
   show(eOff)
@@ -61,6 +61,7 @@ function activateStudy() {
 }
 
 function activateMeditate() {
+  hiddenInput.innerHTML = `<input type="hidden" name="category" value="Meditate">`
   meditateBtn.style.borderColor = ('var(--meditate)')
   ring.style.borderColor = ('var(--meditate)')
   meditateLabel.style.color= ('var(--meditate')
@@ -68,8 +69,6 @@ function activateMeditate() {
   studyBtn.style.borderColor = ('var(--whiteText)')
   studyLabel.style.color = ('var(--whiteText)')
   exerciseLabel.style.color = ('var(--whiteText)')
-  currentActivity.pop()
-  currentActivity.push('Meditate')
   hide(mOff)
   hide(eOn)
   hide(sOn)
@@ -79,6 +78,7 @@ function activateMeditate() {
 }
   
 function activateExcercise() {
+  hiddenInput.innerHTML = `<input type="hidden" name="category" value="Exercise">`
   exerciseBtn.style.borderColor = ('var(--exercise)')
   ring.style.borderColor = ('var(--exercise)')
   exerciseLabel.style.color= ('var(--exercise')
@@ -87,8 +87,6 @@ function activateExcercise() {
   studyBtn.style.borderColor = ('var(--whiteText)')
   studyLabel.style.color = ('var(--whiteText)')
   meditateLabel.style.color = ('var(--whiteText)')
-  currentActivity.pop()
-  currentActivity.push('Exercise')
   show(eOn)
   show(mOff)
   show(sOff)
@@ -98,26 +96,54 @@ function activateExcercise() {
 }  
 
 
-function startActivity(e) {
-e.preventDefault()
-goalForm.value === "" ? show(goalWarning) : hide(goalWarning)
-!minutesForm.value ? show(minutesWarning) : hide(minutesWarning)
-!secondsForm.value ? show(secondsWarning) : hide(secondsWarning)
-if(goalForm.value && minutesForm.value && secondsForm.value) {
-hide(card)
-show(timerBox)
-createActivity()
-}
-// !studyBtn || goalForm.value && minutesForm.value && secondsForm.value ? createActivity() : console.log('smoothie')
+function createActivity(form) {
+  form.goal.value === "" ? show(goalWarning) : hide(goalWarning)
+  !form.minutes.value ? show(minutesWarning) : hide(minutesWarning)
+  !form.seconds.value ? show(secondsWarning) : hide(secondsWarning)
+  if(form.goal.value && form.minutes.value && form.seconds.value) {
+    currentActivity = new Activity(form.category.value, form.goal.value, form.minutes.value, form.seconds.value, generateRandomID());
+    hide(newcontainer)
+    show(currentcontainer)
+  }
 }
 
 
-function createActivity() {
-  var current = new Activity(currentActivity[0], goalForm.value, minutesForm.value, secondsForm.value, generateRandomID());
-  activities.push(current)
-  // displayCountdown();
+function complete() {
+  currentActivity.markComplete()
+  activities.unshift(currentActivity)
+  localStorage.setItem('somethingComplicated', JSON.stringify(activities))
+  pastActivitiesSection()
+  hide(currentcontainer)
+  show(completedcontainer)
 }
 
+
+function pastActivitiesSection() {
+  var parsedObject = JSON.parse(localStorage.getItem('somethingComplicated'));
+  if (!parsedObject) {
+    pastContainer.innerHTML = `
+    <h2 id="past">Past Activities</h2>
+    <p>You haven't logged any activities today!</br>Complete the form to the left to get started!</p>
+    `
+  } else {
+    pastContainer.innerHTML = ``
+    for (var i = 0; i < parsedObject.length; i++) {
+      pastContainer.innerHTML += `
+      <h2 id="past">Past Activities</h2>
+      <p>
+      ${parsedObject[i].category}
+      ${parsedObject[i].minutes} MIN ${parsedObject[i].seconds} SECONDS
+      ${parsedObject[i].description}</p>
+      `
+    }
+  }
+}
+
+
+function newActivity() {
+  hide(completedcontainer)
+  show(newcontainer)
+}
 
 
 // Helper Functions
@@ -140,30 +166,3 @@ function animateFade(e) {
 function resetFade(e) {
   e.classList.toggle('fade')
 }
-
-
-
-
-
-// function makeStudyImageChange() {
-//   studyBtn.innerHTML = `<input type="hidden" name="category" value="Study"><img src="assets/study-active.svg"/><h3>Study</h3></input>`
-// }
-// function makeMeditateBtnChange() {
-//   meditateBtn.innerHTML = `<input type="hidden" name="category" value="Meditate"><img src="assets/meditate-active.svg"/><h3>Meditate</h3></input>`
-// }
-// function makeExerciseBtnChange() {
-//   exerciseBtn.innerHTML = `<input type="hidden" name="category" value="Exercise"><img src="assets/exercise-active.svg"/><h3>Exercise</h3></input>`
-// }
-
-
-// var activitiesSection = document.querySelector('#new-container');
-// function displayCountdown() {
-//   activitiesSection.innerHTML = `
-//   <h2 id="new">Completed Activity</h2>
-//   <article id="card">
-//     ${currentActivity.description}
-//     ${currentActivity.minutes}:${currentActivity.seconds}
-//     // start button with id="startBTN"
-//   </article>
-//   `
-// }
