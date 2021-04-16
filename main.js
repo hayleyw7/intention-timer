@@ -11,7 +11,7 @@ var activityBtns = document.querySelectorAll('.box')
 var logBTN = document.querySelector('#log-activity-btn');
 var createNewBTN = document.querySelector('#new-activity-btn')
 var newHeader = document.querySelector("#new")
-// on & off buttons
+// on & off buttons 
 var sOn = document.querySelector('#s-on')
 var sOff = document.querySelector('#s-off')
 var mOn = document.querySelector('#m-on')
@@ -23,6 +23,7 @@ var hiddenInput = document.querySelector('#hidden-input')
 var studyLabel = document.querySelector('#study-label')
 var meditateLabel = document.querySelector('#meditate-label')
 var exerciseLabel = document.querySelector('#exercise-label')
+var startActivityBtn = document.querySelector('#start-btn')
 // Warning
 var error = document.getElementById('#warning')
 var goalWarning = document.querySelector('#warning-1')
@@ -43,9 +44,8 @@ studyBtn.addEventListener('click', activateStudy);
 meditateBtn.addEventListener('click', activateMeditate);
 exerciseBtn.addEventListener('click', activateExcercise);
 // logBTN.addEventListener('click', complete)
-createNewBTN.addEventListener('click', newActivity)
+// startActivityBtn.addEventListener('click', createActivity)
 ring.addEventListener('click', triggerTimer)
-
 
 // Event Handlers
 // Buttons
@@ -108,8 +108,6 @@ function createActivity(form) {
   !form.seconds.value ? show(secondsWarning) : hide(secondsWarning)
   if(form.goal.value && form.minutes.value && form.seconds.value) {
     currentActivity = new Activity(form.category.value, form.goal.value, form.minutes.value, form.seconds.value, generateRandomID());
-    activityHeader.innerText = `${currentActivity.description}`
-    timeLeft.innerText = `${currentActivity.minutes}:${currentActivity.seconds}`
     show(timerBox)
     hide(card)
     updateHeader()
@@ -117,26 +115,32 @@ function createActivity(form) {
 }
 
 function triggerTimer() {
-  beginTimer(currentActivity[0].minutes, currentActivity[1].seconds)
+  beginTimer(currentActivity.minutes, currentActivity.seconds)
+
+}
+
+function updateHeader() {
+  console.log(currentActivity)
+  activityHeader.textConten = `${currentActivity.description}`
+  timeLeft.textContent = `${currentActivity.minutes}:${currentActivity.seconds}`
 }
 
 
 function beginTimer(minutes, seconds) {
-  var duration = minutes * 6 + seconds;
+  var minutesINT = parseInt(minutes);
+  var secondsINT = parseInt(seconds);
+  var duration = minutesINT * 60 + secondsINT;
   var timer = duration, minutes, seconds;
   setInterval(function () {
     minutes = parseInt(timer / 60, 10);
     seconds = parseInt(timer % 60, 10);
-
     minutes = minutes < 10 ? "0" + minutes : minutes;
     seconds = seconds < 10 ? "0" + seconds : seconds;
-
     timeLeft.textContent = minutes + ":" + seconds;
-
     if (--timer <= 0) {
       timer = 0;
       // currentActivity.markComplete();
-      return alert("Congrats! You made it!");
+      // return alert("Congrats! You made it!");
     }
   }, 1000);
   // showCongrats();
@@ -175,10 +179,10 @@ function beginTimer(minutes, seconds) {
 // }
 
 
-function newActivity() {
-  hide(completedcontainer)
-  show(newcontainer)
-}
+// function newActivity() {
+//   hide(completedcontainer)
+//   show(newcontainer)
+// }
 
 
 // Helper Functions
