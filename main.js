@@ -1,8 +1,7 @@
 // Variables
 // Outer Variables
 var pastContainer = document.querySelector('#past-container')
-pastActivitiesSection()
-
+var card = document.querySelector('#card')
 // Activities
 var studyBtn = document.querySelector('#study-box');
 var meditateBtn = document.querySelector('#meditate-box');
@@ -102,42 +101,43 @@ function createActivity(form) {
   !form.seconds.value ? show(secondsWarning) : hide(secondsWarning)
   if(form.goal.value && form.minutes.value && form.seconds.value) {
     currentActivity = new Activity(form.category.value, form.goal.value, form.minutes.value, form.seconds.value, generateRandomID());
-    hide(newcontainer)
-    show(currentcontainer)
+    show(timerBox)
+    hide(card)
+    hide(pastContainer)
   }
 }
 
 
-function complete() {
-  currentActivity.markComplete()
-  activities.unshift(currentActivity)
-  localStorage.setItem('somethingComplicated', JSON.stringify(activities))
-  pastActivitiesSection()
-  hide(currentcontainer)
-  show(completedcontainer)
-}
+// function complete() {
+//   currentActivity.markComplete()
+//   activities.unshift(currentActivity)
+//   localStorage.setItem('somethingComplicated', JSON.stringify(activities))
+//   pastActivitiesSection()
+//   hide(currentcontainer)
+//   show(completedcontainer)
+// }
 
 
-function pastActivitiesSection() {
-  var parsedObject = JSON.parse(localStorage.getItem('somethingComplicated'));
-  if (!parsedObject) {
-    pastContainer.innerHTML = `
-    <h2 id="past">Past Activities</h2>
-    <p>You haven't logged any activities today!</br>Complete the form to the left to get started!</p>
-    `
-  } else {
-    pastContainer.innerHTML = ``
-    for (var i = 0; i < parsedObject.length; i++) {
-      pastContainer.innerHTML += `
-      <h2 id="past">Past Activities</h2>
-      <p>
-      ${parsedObject[i].category}
-      ${parsedObject[i].minutes} MIN ${parsedObject[i].seconds} SECONDS
-      ${parsedObject[i].description}</p>
-      `
-    }
-  }
-}
+// function pastActivitiesSection() {
+//   var parsedObject = JSON.parse(localStorage.getItem('somethingComplicated'));
+//   if (!parsedObject) {
+//     pastContainer.innerHTML = `
+//     <h2 id="past">Past Activities</h2>
+//     <p>You haven't logged any activities today!</br>Complete the form to the left to get started!</p>
+//     `
+//   } else {
+//     pastContainer.innerHTML = ``
+//     for (var i = 0; i < parsedObject.length; i++) {
+//       pastContainer.innerHTML += `
+//       <h2 id="past">Past Activities</h2>
+//       <p>
+//       ${parsedObject[i].category}
+//       ${parsedObject[i].minutes} MIN ${parsedObject[i].seconds} SECONDS
+//       ${parsedObject[i].description}</p>
+//       `
+//     }
+//   }
+// }
 
 
 function newActivity() {
