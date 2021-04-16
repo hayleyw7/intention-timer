@@ -32,6 +32,7 @@ var timerBox = document.querySelector("#timer-box");
 var timer = document.querySelector("#timer")
 var timeLeft = document.querySelector("#time")
 var ring = document.querySelector("#ring")
+var startTimerBtn = document.querySelector('#start-timer-btn')
 
 // Event Listeners
 studyBtn.addEventListener('click', activateStudy);
