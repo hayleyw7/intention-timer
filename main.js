@@ -1,4 +1,3 @@
-// Variables
 // Outer Variables
 var pastContainer = document.querySelector('#past-container')
 var cardContainer = document.querySelector('#card')
@@ -42,21 +41,16 @@ var startTimerBtn = document.querySelector('#start-timer-btn')
 var activityHeader = document.querySelector('#userActivity')
 var pastActivitiesCard = document.querySelector('#past-activities-card')
 var pastActivitiesDefault = document.querySelector('#past-activities-default')
-
-
 // Event Listeners
 studyBtn.addEventListener('click', activateStudy);
 meditateBtn.addEventListener('click', activateMeditate);
 exerciseBtn.addEventListener('click', activateExcercise);
-// logBTN.addEventListener('click', complete)
-// startActivityBtn.addEventListener('click', createActivity)
 ring.addEventListener('click', triggerTimer)
+
 
 newFunction()
 
 
-// Event Handlers
-// Buttons
 function activateStudy() {
   hiddenInput.innerHTML = `<input type="hidden" name="category" value="Study">`
   studyBtn.style.borderColor = ('var(--study)')
@@ -130,29 +124,31 @@ function logActivity() {
   hide(pastActivitiesDefault)
   show(pastActivitiesCard)
   start.textContent = "START!"
-  activities.unshift(currentActivity)
-  localStorage.setItem('Activities', JSON.stringify(activities))
-  saveToStorage()
+  currentActivity.saveToStorage()
 }
 
+
 function newFunction() {
-  var parsedObject = JSON.parse(localStorage.getItem('Activities'));
-  console.log(parsedObject)
-  if (!parsedObject) {
+  activities = JSON.parse(localStorage.getItem('Activities'));
+  if (!activities) {
+    hide(pastActivitiesCard)
+    show(pastActivitiesDefault)
   } else {
     hide(pastActivitiesDefault)
     show(pastActivitiesCard)
-    for (var i = 0; i < parsedObject.length; i++) {
+    pastActivitiesCard.innerHTML = ``
+    for (var i = 0; i < activities.length; i++) {
       pastActivitiesCard.innerHTML += `<div id="past-card" class="card-features flex">
       <div id="card-category"></div>
       <div id="activityTimeContainer" class="flex">
-        <h3 id="past-card-activity">${parsedObject[i].category}</h3>
-        <h4 id="past-card-time">${parsedObject[i].minutes} MIN ${parsedObject[i].seconds} SECONDS</h4>
+        <h3 id="past-card-activity">${activities[i].category}</h3>
+        <h4 id="past-card-time">${activities[i].minutes} MIN ${activities[i].seconds} SECONDS</h4>
       </div>
-      <h5 id="past-card-goal">${parsedObject[i].description}</h5>
+      <h5 id="past-card-goal">${activities[i].description}</h5>
       </div>`
     }
   }
+  return activities
 }
 
 function makeNewActivity() {
