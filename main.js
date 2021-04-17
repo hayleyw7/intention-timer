@@ -129,11 +129,12 @@ function logActivity() {
 
 
 function newFunction() {
-  activities = JSON.parse(localStorage.getItem('Activities'));
-  if (!activities) {
+  var parsed = JSON.parse(localStorage.getItem('Activities'));
+  if (!parsed) {
     hide(pastActivitiesCard)
     show(pastActivitiesDefault)
   } else {
+    activities = parsed;
     hide(pastActivitiesDefault)
     show(pastActivitiesCard)
     pastActivitiesCard.innerHTML = ``
