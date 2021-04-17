@@ -1,8 +1,7 @@
-// Variables
 // Outer Variables
 var pastContainer = document.querySelector('#past-container')
-pastActivitiesSection()
-
+var cardContainer = document.querySelector('#card')
+var card = document.querySelector("#card-content")
 // Activities
 var studyBtn = document.querySelector('#study-box');
 var meditateBtn = document.querySelector('#meditate-box');
@@ -10,7 +9,8 @@ var exerciseBtn = document.querySelector('#exercise-box');
 var activityBtns = document.querySelectorAll('.box')
 var logBTN = document.querySelector('#log-activity-btn');
 var createNewBTN = document.querySelector('#new-activity-btn')
-// on & off buttons
+var newHeader = document.querySelector("#new")
+// on & off buttons 
 var sOn = document.querySelector('#s-on')
 var sOff = document.querySelector('#s-off')
 var mOn = document.querySelector('#m-on')
@@ -22,24 +22,39 @@ var hiddenInput = document.querySelector('#hidden-input')
 var studyLabel = document.querySelector('#study-label')
 var meditateLabel = document.querySelector('#meditate-label')
 var exerciseLabel = document.querySelector('#exercise-label')
+var startActivityBtn = document.querySelector('#start-btn')
+var logActivityBtn = document.querySelector('#log-btn')
+var createNewActivityBtn = document.querySelector('#create-new-activity-btn')
 // Warning
 var error = document.getElementById('#warning')
 var goalWarning = document.querySelector('#warning-1')
 var minutesWarning = document.querySelector('#warning-2')
 var secondsWarning = document.querySelector('#warning-3')
 var activiesWarning = document.querySelector('#warning-4')
+//timer
+var timerBox = document.querySelector("#timer-box");
+var createBox = document.querySelector("#create-box");
+var timer = document.querySelector("#timer")
+var timeLeft = document.querySelector("#time")
+var ring = document.querySelector("#ring")
+var startTimerBtn = document.querySelector('#start-timer-btn')
+var activityHeader = document.querySelector('#userActivity')
+var pastActivitiesCard = document.querySelector('#past-activities-card')
+var pastActivitiesDefault = document.querySelector('#past-activities-default')
 // Event Listeners
 studyBtn.addEventListener('click', activateStudy);
 meditateBtn.addEventListener('click', activateMeditate);
 exerciseBtn.addEventListener('click', activateExcercise);
-logBTN.addEventListener('click', complete)
-createNewBTN.addEventListener('click', newActivity)
+ring.addEventListener('click', triggerTimer)
 
-// Event Handlers
-// Buttons
+
+newFunction()
+
+
 function activateStudy() {
   hiddenInput.innerHTML = `<input type="hidden" name="category" value="Study">`
   studyBtn.style.borderColor = ('var(--study)')
+  ring.style.borderColor = ('var(--study)')
   studyLabel.style.color = ('var(--study)')
   exerciseBtn.style.borderColor = ('var(--whiteText)')
   meditateBtn.style.borderColor = ('var(--whiteText)')
@@ -56,6 +71,7 @@ function activateStudy() {
 function activateMeditate() {
   hiddenInput.innerHTML = `<input type="hidden" name="category" value="Meditate">`
   meditateBtn.style.borderColor = ('var(--meditate)')
+  ring.style.borderColor = ('var(--meditate)')
   meditateLabel.style.color= ('var(--meditate')
   exerciseBtn.style.borderColor = ('var(--whiteText)')
   studyBtn.style.borderColor = ('var(--whiteText)')
@@ -68,10 +84,11 @@ function activateMeditate() {
   show(eOff)
   show(sOff)
 }
-  
+
 function activateExcercise() {
   hiddenInput.innerHTML = `<input type="hidden" name="category" value="Exercise">`
   exerciseBtn.style.borderColor = ('var(--exercise)')
+  ring.style.borderColor = ('var(--exercise)')
   exerciseLabel.style.color= ('var(--exercise')
   exerciseBtn.style.color = ('var(--exercise)')
   meditateBtn.style.borderColor = ('var(--whiteText)')
@@ -84,7 +101,7 @@ function activateExcercise() {
   hide(eOff)
   hide(mOn)
   hide(sOn)
-}  
+}
 
 
 function createActivity(form) {
@@ -92,48 +109,86 @@ function createActivity(form) {
   !form.minutes.value ? show(minutesWarning) : hide(minutesWarning)
   !form.seconds.value ? show(secondsWarning) : hide(secondsWarning)
   if(form.goal.value && form.minutes.value && form.seconds.value) {
-    currentActivity = new Activity(form.category.value, form.goal.value, form.minutes.value, form.seconds.value, generateRandomID());
-    hide(newcontainer)
-    show(currentcontainer)
+    currentActivity = new Activity(form.category.value, form.goal.value, parseInt(form.minutes.value), parseInt(form.seconds.value), generateRandomID());
+    showTimer()
+    show(timerBox)
+    hide(card)
+    hide(logActivityBtn)
   }
 }
 
-
-function complete() {
-  currentActivity.markComplete()
-  activities.unshift(currentActivity)
-  localStorage.setItem('somethingComplicated', JSON.stringify(activities))
-  pastActivitiesSection()
-  hide(currentcontainer)
-  show(completedcontainer)
+function logActivity() {
+  hide(timerBox)
+  hide(logActivityBtn)
+  show(createNewActivityBtn)
+  hide(pastActivitiesDefault)
+  show(pastActivitiesCard)
+  start.textContent = "START!"
+  currentActivity.saveToStorage()
 }
 
 
-function pastActivitiesSection() {
-  var parsedObject = JSON.parse(localStorage.getItem('somethingComplicated'));
-  if (!parsedObject) {
-    pastContainer.innerHTML = `
-    <h2 id="past">Past Activities</h2>
-    <p>You haven't logged any activities today!</br>Complete the form to the left to get started!</p>
-    `
+function newFunction() {
+  activities = JSON.parse(localStorage.getItem('Activities'));
+  if (!activities) {
+    hide(pastActivitiesCard)
+    show(pastActivitiesDefault)
   } else {
-    pastContainer.innerHTML = ``
-    for (var i = 0; i < parsedObject.length; i++) {
-      pastContainer.innerHTML += `
-      <h2 id="past">Past Activities</h2>
-      <p>
-      ${parsedObject[i].category}
-      ${parsedObject[i].minutes} MIN ${parsedObject[i].seconds} SECONDS
-      ${parsedObject[i].description}</p>
-      `
+    hide(pastActivitiesDefault)
+    show(pastActivitiesCard)
+    pastActivitiesCard.innerHTML = ``
+    for (var i = 0; i < activities.length; i++) {
+      pastActivitiesCard.innerHTML += `<div id="past-card" class="card-features flex">
+      <div id="card-category"></div>
+      <div id="activityTimeContainer" class="flex">
+        <h3 id="past-card-activity">${activities[i].category}</h3>
+        <h4 id="past-card-time">${activities[i].minutes} MIN ${activities[i].seconds} SECONDS</h4>
+      </div>
+      <h5 id="past-card-goal">${activities[i].description}</h5>
+      </div>`
     }
   }
+  return activities
+}
+
+function makeNewActivity() {
+  hide(createNewActivityBtn)
+  show(card)
 }
 
 
-function newActivity() {
-  hide(completedcontainer)
-  show(newcontainer)
+function showTimer() {
+  var minutes = currentActivity.minutes < 10 ? "0" + currentActivity.minutes : currentActivity.minutes;
+  var seconds = currentActivity.seconds < 10 ? "0" + currentActivity.seconds : currentActivity.seconds;
+  activityHeader.textContent = `${currentActivity.description}`
+  timeLeft.textContent = minutes + ":" + seconds;
+}
+
+
+function triggerTimer() {
+  beginTimer(currentActivity.minutes, currentActivity.seconds)
+}
+
+function beginTimer(minutes, seconds) {
+  timer = new CountDownTimer(minutes, seconds);
+  timer.onTick(format(timeLeft)).onTick(restart).start();
+  function restart() {
+    if (this.expired()) {
+      setTimeout(function () {
+        currentActivity.markComplete();
+        show(logActivityBtn)
+        start.textContent = `COMPLETE!`
+        return alert("Congrats! You made it!");
+      }, 1000);
+    }
+  }
+  function format(timeLeft) {
+    return function (minutes, seconds) {
+      minutes = minutes < 10 ? "0" + minutes : minutes;
+      seconds = seconds < 10 ? "0" + seconds : seconds;
+      timeLeft.textContent = minutes + ':' + seconds;
+    };
+  }
 }
 
 
@@ -156,4 +211,8 @@ function animateFade(e) {
 
 function resetFade(e) {
   e.classList.toggle('fade')
+}
+
+function updateHeader() {
+  newHeader.innerText = "Current Activity"
 }

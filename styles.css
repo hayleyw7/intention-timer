@@ -67,6 +67,12 @@ h1 {
   width: 12rem;
 }
 
+.card-features {
+  background-color: var(--lightBG);
+  border-radius: 4px;
+  box-shadow: 3px 3px 5px 6px var(--cardShadow);
+}
+
 .fade {
   transition: 700ms;
   opacity: 0;
@@ -79,7 +85,7 @@ h1 {
 }
 
 /* BUTTON */
-#start-btn {
+.btn {
   background: var(--whiteText);
   font-size: 15px;
   font-weight: 400;
@@ -87,6 +93,21 @@ h1 {
   border-radius: 4px;
   padding: 0.5rem 1.2rem;
   margin-top: 1.6rem;
+}
+
+#log-btn {
+  align-self: center;
+  width: 11rem;
+  position: absolute;
+  top: 85%
+}
+
+#create-new-activity-btn {
+  align-self: center;
+  width: 18rem;
+  position: absolute;
+  top: 15%;
+  left: 40%;
 }
 
 /* BOTH CONTAINERS */
@@ -108,11 +129,9 @@ h1 {
   justify-content: center;
   margin-top: .8rem;
   padding: 1.8rem 4rem;
-  background-color: var(--lightBG);
-  border-radius: 4px;
-  box-shadow: 3px 3px 5px 6px var(--cardShadow);
   min-width: 25rem;
   min-height: 25rem;
+  position: relative;
 }
 
 h3 {
@@ -134,7 +153,7 @@ h3 {
   width: 7rem;
   height: 3rem;
   flex-direction: column;
-  align-content: center;
+  align-items: center;
   justify-content: center;
   padding: 0;
   margin: 1rem 1.5rem;
@@ -165,9 +184,54 @@ h3 {
   justify-content: flex-end;
 }
 
+/* Timer */
+#timer-box {
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  height: 25rem;
+  position: relative;
+}
+
+#timer-box h2 {
+  font-weight: 300;
+  transition: 300ms;
+}
+
+#timer-box h2:hover {
+  transition: 500ms ease-in;
+  font-size: 1.55rem;
+  color: var(--whiteText)
+}
+
+#timer-box > h2:nth-child(1)  {
+  margin-bottom: 20rem;
+  font-size: 1.2rem;
+  position: absolute;
+}
+
+#timer-box p {
+  margin-bottom: 14rem;
+  font-weight: 400;
+  font-size: 4rem;
+  color: var(--whiteText);
+}
+
+#ring {
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: 4.5rem;
+  width: 11rem;
+  height: 11rem;
+  border: var(--whiteText) 3px solid;
+  border-radius: 100%;
+}
+
 /* RIGHT CONTAINER */
 #past-container {
-  flex-grow: 1;
+  flex-grow: 1.1;
   flex-direction: column;
   text-align: center;
   border-left: 1px solid var(--mainText);
@@ -181,10 +245,65 @@ h3 {
 
 #past-container p {
   position: absolute;
-  margin: 5rem 5rem;
+  width: 35rem;
+  height: 3rem;
+  margin: 3rem 5rem 0 0 ;
   line-height: 1.9rem;
   font-size: 1.4rem;
 }
+
+
+
+#past-card h3 {
+  margin: 0;
+}
+
+#past-card {
+  width: 100%;
+  /* height: 6rem; */
+  color: var(--whiteText);
+  flex-direction: column;
+  padding-left: .5rem;
+  padding-top: .2rem;
+  background: var(--lightBG);
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+#activityTimeContainer {
+  flex-direction: column;
+}
+
+
+#past-card h3,
+#past-card h4,
+#past-card h5{
+  align-self: flex-start;
+  text-align: left;
+}
+
+:is(#past-card,h4, h5) {
+  font-weight: 300;
+}
+
+#past-card h3  {
+  font-size: .8rem;
+}
+
+#past-card h5 {
+  margin-bottom: .2rem;
+}
+
+#card-category{
+  align-self: flex-end;
+  margin-right: .5rem;
+  height: 2rem;
+  width: .3rem;
+  position: absolute;
+  bottom: 50%;
+  background: var(--meditate)
+}
+
 
 /* MISC */
 img {

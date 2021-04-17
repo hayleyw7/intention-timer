@@ -15,12 +15,7 @@ class Activity {
   }
   saveToStorage() {
     activities.push(currentActivity)
-    // updates DOM
-    // updates right side with our newly saved activity (for loop)
-    updatePastActivitiesSection()
-    // adds and removes a hidden class in the HTML
-    showCompletedActivitiesSection()
+    localStorage.setItem('Activities', JSON.stringify(activities))
+    newFunction()
   }
 }
-
-var currentActivity;
