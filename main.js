@@ -52,6 +52,9 @@ exerciseBtn.addEventListener('click', activateExcercise);
 // startActivityBtn.addEventListener('click', createActivity)
 ring.addEventListener('click', triggerTimer)
 
+newFunction()
+
+
 // Event Handlers
 // Buttons
 function activateStudy() {
@@ -129,14 +132,27 @@ function logActivity() {
   start.textContent = "START!"
   activities.unshift(currentActivity)
   localStorage.setItem('Activities', JSON.stringify(activities))
-  pastActivitiesCard.innerHTML += `<div id="past-card" class="card-features flex">
-  <div id="card-category"></div>
-  <div id="activityTimeContainer" class="flex">
-    <h3 id="past-card-activity">${currentActivity.category}</h3>
-    <h4 id="past-card-time">${currentActivity.minutes} MIN ${currentActivity.seconds} SECONDS</h4>
-  </div>
-  <h5 id="past-card-goal">${currentActivity.description}</h5>
-</div>`
+  newFunction()
+}
+
+function newFunction() {
+  var parsedObject = JSON.parse(localStorage.getItem('Activities'));
+  console.log(parsedObject)
+  if (!parsedObject) {
+  } else {
+    hide(pastActivitiesDefault)
+    show(pastActivitiesCard)
+    for (var i = 0; i < parsedObject.length; i++) {
+      pastActivitiesCard.innerHTML += `<div id="past-card" class="card-features flex">
+      <div id="card-category"></div>
+      <div id="activityTimeContainer" class="flex">
+        <h3 id="past-card-activity">${parsedObject[i].category}</h3>
+        <h4 id="past-card-time">${parsedObject[i].minutes} MIN ${parsedObject[i].seconds} SECONDS</h4>
+      </div>
+      <h5 id="past-card-goal">${parsedObject[i].description}</h5>
+      </div>`
+    }
+  }
 }
 
 function makeNewActivity() {
@@ -178,43 +194,6 @@ function beginTimer(minutes, seconds) {
     };
   }
 }
-
-
-// function logActivity() {
-//   activities.unshift(currentActivity)
-//   localStorage.setItem('somethingComplicated', JSON.stringify(activities))
-//   pastActivitiesSection()
-//   hide(createBox)
-//   show(card)
-// }
-
-
-// function pastActivitiesSection() {
-//   var parsedObject = JSON.parse(localStorage.getItem('somethingComplicated'));
-//   if (!parsedObject) {
-//     pastContainer.innerHTML = `
-//     <h2 id="past">Past Activities</h2>
-//     <p>You haven't logged any activities today!</br>Complete the form to the left to get started!</p>
-//     `
-//   } else {
-//     pastContainer.innerHTML = ``
-//     for (var i = 0; i < parsedObject.length; i++) {
-//       pastContainer.innerHTML += `
-//       <h2 id="past">Past Activities</h2>
-//       <p>
-//       ${parsedObject[i].category}
-//       ${parsedObject[i].minutes} MIN ${parsedObject[i].seconds} SECONDS
-//       ${parsedObject[i].description}</p>
-//       `
-//     }
-//   }
-// }
-
-
-// function newActivity() {
-//   hide(completedcontainer)
-//   show(newcontainer)
-// }
 
 
 // Helper Functions
