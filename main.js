@@ -40,7 +40,8 @@ var timeLeft = document.querySelector("#time")
 var ring = document.querySelector("#ring")
 var startTimerBtn = document.querySelector('#start-timer-btn')
 var activityHeader = document.querySelector('#userActivity')
-var pastActivitiesCard = document.querySelector('#pastActivities')
+var pastActivitiesCard = document.querySelector('#past-activities-card')
+var pastActivitiesDefault = document.querySelector('#past-activities-default')
 
 
 // Event Listeners
@@ -123,9 +124,24 @@ function logActivity() {
   hide(timerBox)
   hide(logActivityBtn)
   show(createNewActivityBtn)
+  hide(pastActivitiesDefault)
+  show(pastActivitiesCard)
+  start.textContent = "START!"
   activities.unshift(currentActivity)
   localStorage.setItem('Activities', JSON.stringify(activities))
-  // pastActivitiesCard.innerHTML = 
+  pastActivitiesCard.innerHTML += `<div id="past-card" class="card-features flex">
+  <div id="card-category"></div>
+  <div id="activityTimeContainer" class="flex">
+    <h3 id="past-card-activity">${currentActivity.category}</h3>
+    <h4 id="past-card-time">${currentActivity.minutes} MIN ${currentActivity.seconds} SECONDS</h4>
+  </div>
+  <h5 id="past-card-goal">${currentActivity.description}</h5>
+</div>`
+}
+
+function makeNewActivity() {
+  hide(createNewActivityBtn)
+  show(card)
 }
 
 
