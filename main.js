@@ -132,7 +132,7 @@ function logActivity() {
   start.textContent = "START!"
   activities.unshift(currentActivity)
   localStorage.setItem('Activities', JSON.stringify(activities))
-  newFunction()
+  saveToStorage()
 }
 
 function newFunction() {
