@@ -89,20 +89,23 @@ h1 {
   color: var(--dark);
   border-radius: 4px;
   padding: 0.5rem 1.2rem;
+}
+
+#start-btn {
   margin-top: 1.6rem;
 }
 
 #log-btn {
-  align-self: center;
+  /* align-self: center; */
   width: 11rem;
   position: absolute;
-  top: 85%
+  bottom: 0%;
 }
 
 #create-new-activity-btn {
   align-self: center;
   width: 18rem;
-  margin-bottom: 5rem ;
+  /* margin-bottom: 5rem ; */
 }
 
 /* BOTH CONTAINERS */
@@ -122,9 +125,9 @@ h1 {
 #card {
   justify-content: center ;
   margin-top: .8rem;
-  padding: 1.8rem 4rem;
-  min-width: 25rem;
-  min-height: 25rem;
+  padding: 1.8rem 2rem;
+  /* min-width: 25rem; */
+  min-height: 27rem;
   position: relative;
 }
 
@@ -155,10 +158,10 @@ h3 {
   width: 7rem;
   height: 3rem;
   flex-direction: column;
-  align-items: center;
+  /* align-items: center; */
   justify-content: center;
-  padding: 0;
-  margin: 1rem 1.5rem;
+  padding: .2rem;
+  /* margin: 1rem 1.5rem; */
   border-radius: 4px;
 }
 
@@ -168,9 +171,9 @@ h3 {
 }
 
 #time-box {
-  flex-direction: row;
+  /* flex-direction: row; */
   justify-content: space-between;
-  position: relative;
+  /* position: relative; */
   margin-top: 3rem;
 }
 
@@ -181,7 +184,7 @@ h3 {
 }
 
 #button-container {
-  align-content: flex-end;
+  /* align-content: flex-end; */
   justify-content: flex-end;
 }
 
@@ -213,7 +216,7 @@ h3 {
 
 #timer-card p {
   margin-bottom: 14rem;
-  font-weight: 400;
+  /* font-weight: 400; */
   font-size: 4rem;
   color: var(--white);
 }
@@ -233,7 +236,7 @@ h3 {
 /* RIGHT CONTAINER */
 #past-container {
   /* flex-grow: 1.1; */
-  flex: 3;
+  flex: 2;
   flex-direction: column;
   text-align: center;
   border-left: 1px solid var(--gray);
@@ -246,7 +249,7 @@ h3 {
 }
 
 #past-container p {
-  position: absolute;
+  /* position: absolute; */
   width: 100%;
   height: 3rem;
   margin: 3rem 5rem 0 0;
@@ -256,15 +259,17 @@ h3 {
 
 
 #past-card {
-  /* width: 100%; */
+  width: 100%;
   color: var(--white);
   flex-direction: column;
   padding-left: .5rem;
-  padding-top: .2rem;
-  background: var(--light);
+  /* padding-top: .2rem; */
+  /* background: var(--light); */
   position: relative;
   margin-bottom: 1rem;
 }
+
+
 
 #past-card h3 {
   margin: 0;
@@ -278,7 +283,7 @@ h3 {
 #past-card h4,
 #past-card h5 {
   align-self: flex-start;
-  text-align: left;
+  /* text-align: left; */
 }
 
 :is(#past-card, h4, h5) {
@@ -299,7 +304,7 @@ h3 {
   height: 2rem;
   width: .3rem;
   position: absolute;
-  bottom: 50%;
+  bottom: 55%;
   background: var(--meditate)
 }
 
@@ -316,10 +321,6 @@ input {
 
 #goal {
   width: 100%;
-}
-
-#time-box input {
-  text-align: center;
 }
 
 #warning-0 {
