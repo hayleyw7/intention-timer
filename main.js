@@ -1,13 +1,9 @@
-// Outer Variables
-var card = document.querySelector("#card-content")
-var activityHeader = document.querySelector("#new")
-
 // Activities
 var studyBtn = document.querySelector('#study-box');
 var meditateBtn = document.querySelector('#meditate-box');
 var exerciseBtn = document.querySelector('#exercise-box');
 
-// on & off buttons 
+// On & off buttons 
 var sOn = document.querySelector('#s-on')
 var sOff = document.querySelector('#s-off')
 var mOn = document.querySelector('#m-on')
@@ -24,27 +20,37 @@ var startActivityBtn = document.querySelector('#start-btn')
 var logActivityBtn = document.querySelector('#log-btn')
 var createNewActivityBtn = document.querySelector('#create-new-activity-btn')
 
-// Warnings
-var goalWarning = document.querySelector('#warning-1')
-var minutesWarning = document.querySelector('#warning-2')
-var secondsWarning = document.querySelector('#warning-3')
+// Outer Card
+var card = document.querySelector("#card-content")
+var activityHeader = document.querySelector("#new")
 
-//timer
+// Timer Card 
 var timerBox = document.querySelector("#timer-box");
 var timer = document.querySelector("#timer")
 var timeLeft = document.querySelector("#time")
 var ring = document.querySelector("#ring")
 var activityHeader = document.querySelector('#userActivity')
+
+// Activity Log
 var pastActivitiesCard = document.querySelector('#past-activities-card')
 var pastActivitiesDefault = document.querySelector('#past-activities-default')
 
-// Event Listeners
+// Warnings
+var goalWarning = document.querySelector('#warning-1')
+var minutesWarning = document.querySelector('#warning-2')
+var secondsWarning = document.querySelector('#warning-3')
+
+
+
+// Event Listeners 
 window.addEventListener('load', createActivityCard)
 studyBtn.addEventListener('click', activateStudy);
 meditateBtn.addEventListener('click', activateMeditate);
 exerciseBtn.addEventListener('click', activateExcercise);
 ring.addEventListener('click', triggerTimer)
 
+
+// Event Handlers
 function activateStudy() {
   hiddenInput.innerHTML = `<input type="hidden" name="category" value="Study">`
   studyBtn.style.borderColor = ('var(--study)')
@@ -97,7 +103,6 @@ function activateExcercise() {
   hide(sOn)
 }
 
-
 function createActivity(form) {
   form.goal.value === "" ? show(goalWarning) : hide(goalWarning)
   !form.minutes.value ? show(minutesWarning) : hide(minutesWarning)
@@ -111,18 +116,44 @@ function createActivity(form) {
   }
 }
 
+function showTimer() {
+  var minutes = currentActivity.minutes < 10 ? "0" + currentActivity.minutes : currentActivity.minutes;
+  var seconds = currentActivity.seconds < 10 ? "0" + currentActivity.seconds : currentActivity.seconds;
+  activityHeader.textContent = `${currentActivity.description}`
+  timeLeft.textContent = minutes + ":" + seconds;
+}
+
+function beginTimer(minutes, seconds) {
+  timer = new CountDownTimer(minutes, seconds);
+  timer.onTick(format(timeLeft)).onTick(restart).start();
+  function restart() {
+    if (this.expired()) {
+      setTimeout(function () {
+        currentActivity.markComplete();
+        show(logActivityBtn)
+        start.textContent = `COMPLETE!`
+        return alert("Congrats! You made it!");
+      }, 1000);
+    }
+  }
+  function format(timeLeft) {
+    return function (minutes, seconds) {
+      minutes = minutes < 10 ? "0" + minutes : minutes;
+      seconds = seconds < 10 ? "0" + seconds : seconds;
+      timeLeft.textContent = minutes + ':' + seconds;
+    };
+  }
+}
+
 function logActivity() {
   hide(timerBox)
   hide(logActivityBtn)
   show(createNewActivityBtn)
   hide(pastActivitiesDefault)
   show(pastActivitiesCard)
-  createActivityCard()
   start.textContent = "START!"
   currentActivity.saveToStorage()
-
 }
-
 
 function createActivityCard() {
   var parsed = JSON.parse(localStorage.getItem('Activities'));
@@ -154,41 +185,6 @@ function makeNewActivity() {
 }
 
 
-function showTimer() {
-  var minutes = currentActivity.minutes < 10 ? "0" + currentActivity.minutes : currentActivity.minutes;
-  var seconds = currentActivity.seconds < 10 ? "0" + currentActivity.seconds : currentActivity.seconds;
-  activityHeader.textContent = `${currentActivity.description}`
-  timeLeft.textContent = minutes + ":" + seconds;
-}
-
-
-function triggerTimer() {
-  beginTimer(currentActivity.minutes, currentActivity.seconds)
-}
-
-function beginTimer(minutes, seconds) {
-  timer = new CountDownTimer(minutes, seconds);
-  timer.onTick(format(timeLeft)).onTick(restart).start();
-  function restart() {
-    if (this.expired()) {
-      setTimeout(function () {
-        currentActivity.markComplete();
-        show(logActivityBtn)
-        start.textContent = `COMPLETE!`
-        return alert("Congrats! You made it!");
-      }, 1000);
-    }
-  }
-  function format(timeLeft) {
-    return function (minutes, seconds) {
-      minutes = minutes < 10 ? "0" + minutes : minutes;
-      seconds = seconds < 10 ? "0" + seconds : seconds;
-      timeLeft.textContent = minutes + ':' + seconds;
-    };
-  }
-}
-
-
 // Helper Functions
 function generateRandomID() {
   return Math.floor((1 + Math.random()) * 0x100000)
@@ -212,4 +208,8 @@ function resetFade(e) {
 
 function updateHeader() {
   activityHeader.innerText = "Current Activity"
+}
+
+function triggerTimer() {
+  beginTimer(currentActivity.minutes, currentActivity.seconds)
 }
