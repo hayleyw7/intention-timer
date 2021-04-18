@@ -25,7 +25,7 @@ var card = document.querySelector("#card-content")
 var activityHeader = document.querySelector("#new")
 
 // Timer Card 
-var timerBox = document.querySelector("#timer-box");
+var timerCard = document.querySelector("#timer-card");
 var timer = document.querySelector("#timer")
 var timeLeft = document.querySelector("#time")
 var ring = document.querySelector("#ring")
