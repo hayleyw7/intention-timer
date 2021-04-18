@@ -235,13 +235,3 @@ console.log(color)
 return color
 }
 
-// Helper Function 
-// activitiies.category 
-//var color
-  // if else statements
-  // if category === 'Meditate', then set
-
-    /* ICONS */
-    // --study: #B3FD78;
-    // --meditate: #C278FD;
-    // --exercise: #FD8078; 
