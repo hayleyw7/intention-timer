@@ -102,9 +102,7 @@ h1 {
 #create-new-activity-btn {
   align-self: center;
   width: 18rem;
-  position: absolute;
-  top: 15%;
-  left: 40%;
+  margin-bottom: 5rem ;
 }
 
 /* BOTH CONTAINERS */
@@ -122,19 +120,16 @@ h1 {
 }
 
 #card {
-  justify-content: space-around;
-  align-items: center;
+  justify-content: center ;
   margin-top: .8rem;
   padding: 1.8rem 4rem;
   min-width: 25rem;
   min-height: 25rem;
   position: relative;
-  border: pink 1px solid;
 }
 
 #card-content {
   width: 100%;
-
 }
 
 h3 {
@@ -191,7 +186,7 @@ h3 {
 }
 
 /* Timer */
-#timer-box {
+#timer-card {
   align-items: center;
   flex-direction: column;
   justify-content: center;
@@ -199,24 +194,24 @@ h3 {
   position: relative;
 }
 
-#timer-box h2 {
+#timer-card h2 {
   font-weight: 300;
   transition: 300ms;
 }
 
-#timer-box h2:hover {
+#timer-card h2:hover {
   transition: 500ms ease-in;
   font-size: 1.55rem;
   color: var(--white)
 }
 
-#timer-box>h2:nth-child(1) {
+#timer-card>h2:nth-child(1) {
   margin-bottom: 20rem;
   font-size: 1.2rem;
   position: absolute;
 }
 
-#timer-box p {
+#timer-card p {
   margin-bottom: 14rem;
   font-weight: 400;
   font-size: 4rem;
