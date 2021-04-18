@@ -36,6 +36,7 @@ var pastActivitiesCard = document.querySelector('#past-activities-card')
 var pastActivitiesDefault = document.querySelector('#past-activities-default')
 
 // Warnings
+var catagoryWarning = document.querySelector('#warning-0')
 var goalWarning = document.querySelector('#warning-1')
 var minutesWarning = document.querySelector('#warning-2')
 var secondsWarning = document.querySelector('#warning-3')
@@ -104,6 +105,7 @@ function activateExcercise() {
 }
 
 function createActivity(form) {
+  !hiddenInput.innerHTML ? displayWarning(catagoryWarning) : hide(catagoryWarning)
   form.goal.value === "" ? displayWarning(goalWarning) : hide(goalWarning)
   !form.minutes.value ? displayWarning(minutesWarning) : hide(minutesWarning)
   !form.seconds.value ? displayWarning(secondsWarning) : hide(secondsWarning)

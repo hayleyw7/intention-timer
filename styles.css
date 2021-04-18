@@ -137,6 +137,10 @@ h3 {
   font-size: 13px;
 }
 
+#category {
+  flex-direction: row;
+}
+
 #box-container {
   flex-direction: row;
   justify-content: space-between;
@@ -318,11 +322,22 @@ input {
   text-align: center;
 }
 
+#warning-0 {
+margin-left: .5rem;
+position: relative;
+}
+
 .warning {
   margin-top: 1rem;
   justify-content: space-between;
   width: 15rem;
   position: absolute;
+}
+
+#warning-0 p {
+  margin-top: .5rem;
+  margin-left: .3rem;
+  /* position: absolute; */
 }
 
 .warning p {
@@ -331,3 +346,4 @@ input {
   position: absolute;
   color: var(--error);
 }
+
