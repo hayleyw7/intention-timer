@@ -11,34 +11,45 @@
   <title>Intention Timer</title>
 </head>
 <body>
+  <!-- Header -->
   <header class="flex">
     <h1>INTENTION TIMER</h1>
   </header>
-  <section id="main" class="flex">
+  <!-- Main -->
+  <main class="flex">
+    <!-- New Activity (Left) Container -->
     <section class="container">
       <h2 id="new">New Activity</h2>
-      <article id="card" class="card-features">
+      <article id="card" class="card-features flex">
         <div id="card-content">
           <form>
+            <!-- Activity Categories -->
             <div id="hidden-input"></div>
+            <div id="category" class="flex">
             <h3>Select A Category:</h3>
+            <div id="warning-0" class="hidden flex">
+              <img src="assets/warning.svg" alt="notice icon">
+              <p>A selection is required.</p>
+            </div>
+          </div>
             <div id="box-container" class="flex">
               <div id="study-box" class="box flex">
-                <img id="s-off" src="assets/study.svg" alt="white lightbulb study icon"/>
-                <img id="s-on" src="assets/study-active.svg" alt="green lightculb study icon" class="hidden">
+                <img id="s-off" src="assets/study.svg" alt="white lightbulb study icon" />
+                <img id="s-on" src="assets/study-active.svg" alt="green lightbulb study icon" class="hidden">
                 <h3 id="study-label">Study</h3>
               </div>
               <div id="meditate-box" class="box flex">
                 <img id="m-off" src="assets/meditate.svg" alt="white lotus study icon">
-                <img src="assets/meditate-active.svg" id="m-on" class="hidden" alt="purple lotus study icon"/>
+                <img src="assets/meditate-active.svg" id="m-on" class="hidden" alt="purple lotus study icon" />
                 <h3 id="meditate-label">Meditate</h3>
               </div>
               <div id="exercise-box" class="box flex">
                 <img src="assets/exercise.svg" alt="white shoe running exercise icon" id="e-off">
-                <img src="assets/exercise-active.svg" id="e-on" class="hidden" alt="red shoe running exercise icon"/>
+                <img src="assets/exercise-active.svg" id="e-on" class="hidden" alt="red shoe running exercise icon" />
                 <h3 id="exercise-label">Exercise</h3>
               </div>
             </div>
+             <!-- Goal Form -->
             <h3 class="form-padding">What would you like to accomplish during this time</h3>
             <input type="text" id="goal" name="goal" value="" class="form-padding borderless">
             <label class="hidden" for="goal">What would you like to accomplish during this time</label>
@@ -46,7 +57,9 @@
               <img src="assets/warning.svg" alt="notice icon">
               <p>A description is required.</p>
             </div>
+            <!-- Minutes/Seconds Container -->
             <div id="time-box" class="flex">
+              <!-- Minutes -->
               <div id="minutes-box">
                 <h3 class="form-padding">Minutes</h3>
                 <input type="number" min="0" id="minutes" name="minutes" value="" class="form-padding borderless">
@@ -56,6 +69,7 @@
                   <p>Minutes is required.</p>
                 </div>
               </div>
+              <!-- Seconds -->
               <div id="seconds-box">
                 <h3 class="form-padding">Seconds</h3>
                 <input type="number" min="0" id="seconds" name="seconds" value="" class="form-padding borderless">
@@ -66,35 +80,37 @@
                 </div>
               </div>
             </div>
+            <!--  Start Activity Button -->
             <div id="button-container" class="flex">
-              <input type="button" id="start-btn" class="btn" value="START ACTIVITY" onClick="createActivity(this.form)">
-            </div>
-            <div id="warning-4" class="warning hidden flex">
-              <img src="assets/warning.svg" alt="notice icon">
-              <p>Seconds are required.</p>
+              <input type="button" id="start-btn" class="btn" value="START ACTIVITY"
+                onClick="createActivity(this.form)">
             </div>
           </form>
         </div>
-      <div id="timer-box" class="hidden flex">
-        <h2 id="userActivity">Deep Breathing</h2>
-        <p id="time">00:00</p>
-        <div id="ring" class="flex">
-          <h2 id="start">START</h2>
+        <!-- Timer Card -->
+        <div id="timer-card" class="hidden flex">
+          <h2 id="userActivity">Deep Breathing</h2>
+          <p id="time">00:00</p>
+          <div id="ring" class="flex">
+            <h2 id="start">START</h2>
+          </div>
+          <!-- Log & New Activity Button -->
+          <input type="button" id="log-btn" class="btn" value="LOG ACTIVITY" onClick="logActivity()">
         </div>
-        <input type="button" id="log-btn" class="btn" value="LOG ACTIVITY" onClick="logActivity()">
-      </div>
-      <input type="button" id="create-new-activity-btn" class="btn hidden" value="CREATE A NEW ACTIVITY"  onClick="makeNewActivity()">
-      <div id="create-box" class="hidden flex">
-        <input type="button" id="start-btn" value="CREATE">
-      </div>
-    </article>
+        <input type="button" id="create-new-activity-btn" class="btn hidden" value="CREATE A NEW ACTIVITY"
+          onClick="makeNewActivity()">
+        <div id="create-box" class="hidden flex">
+          <input type="button" id="start-btn" value="CREATE">
+        </div>
+      </article>
     </section>
+    <!-- Past (Right) Container -->
     <section id="past-container" class="flex">
       <h2 id="past">Past Activities</h2>
       <p id="past-activities-default">You haven't logged any activities today!</br>Complete the form to the left to get started!</p>
       <p id="past-activities-card" class="hidden"></p>
     </section>
-  </section>
+  </main>
 </body>
 <script src="Activity.js"></script>
 <script src="data.js"></script>

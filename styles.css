@@ -1,9 +1,9 @@
 :root {
   /* THEME */
-  --darkBG: #2B2733;
-  --mainText: #CBC9CF;
-  --lightBG: #46424D;
-  --whiteText: #FFF;
+  --dark: #2B2733;
+  --light: #46424D;
+  --gray: #CBC9CF;
+  --white: #FFF;
   /* ICONS */
   --study: #B3FD78;
   --meditate: #C278FD;
@@ -22,30 +22,23 @@
 body {
   font-family: "Montserrat", sans-serif;
   box-sizing: border-box;
-  background-color: var(--darkBG);
-  height: 100%;
-  width: 100%;
-  /* border: var(--lightBG) solid 1px; */
+  background-color: var(--dark);
+
 }
+
 
 /* HEADER */
 header {
-  min-height: 10vh;
-  background-color: var(--lightBG);
-  text-align: center;
+  min-height: 8vh;
+  background-color: var(--light);
   justify-content: center;
   align-items: center;
 }
 
 h1 {
-  color: var(--whiteText);
+  color: var(--white);
   font-weight: 300;
   font-size: 1.6rem;
-}
-
-/* MAIN */
-#main {
-  flex-direction: row;
 }
 
 /* UTILITY */
@@ -53,28 +46,25 @@ h1 {
   display: flex;
 }
 
-.form-padding {
-  padding: 1rem 0 0 0;
-}
+
 
 .borderless {
-  border-top: 0;
-  border-left: 0;
-  border-right: 0;
-  border-bottom: 1px solid var(--mainText);
-  background-color: var(--lightBG);
+  border-width: 0;
+  border-bottom: 1px solid var(--gray);
+  background-color: var(--light);
   padding-bottom: .1rem;
   width: 12rem;
 }
 
 .card-features {
-  background-color: var(--lightBG);
+  background-color: var(--light);
   border-radius: 4px;
   box-shadow: 3px 3px 5px 6px var(--cardShadow);
 }
 
 .fade {
-  transition: 700ms;
+  transition: 1s 1s ease-in-out;
+  transform: translateY(20px);
   opacity: 0;
 }
 
@@ -86,28 +76,27 @@ h1 {
 
 /* BUTTON */
 .btn {
-  background: var(--whiteText);
+  border: none;
   font-size: 15px;
   font-weight: 400;
-  color: var(--darkBG);
+  color: var(--dark);
   border-radius: 4px;
   padding: 0.5rem 1.2rem;
+}
+
+#start-btn {
   margin-top: 1.6rem;
 }
 
 #log-btn {
-  align-self: center;
   width: 11rem;
   position: absolute;
-  top: 85%
+  bottom: 0%;
 }
 
 #create-new-activity-btn {
   align-self: center;
   width: 18rem;
-  position: absolute;
-  top: 15%;
-  left: 40%;
 }
 
 /* BOTH CONTAINERS */
@@ -121,23 +110,30 @@ h1 {
 /* LEFT CONTAINER  */
 .container {
   flex-grow: 2;
-  padding: 1.6rem 2rem;
+  padding: 1.6rem 1.7rem;
 }
 
 #card {
-  align-self: center;
-  justify-content: center;
+  justify-content: center ;
   margin-top: .8rem;
-  padding: 1.8rem 4rem;
+  padding: 1.8rem 2rem;
   min-width: 25rem;
-  min-height: 25rem;
+  min-height: 27rem;
   position: relative;
 }
 
+#card-content {
+  width: 100%;
+}
+
 h3 {
-  color: var(--whiteText);
+  color: var(--white);
   font-weight: 400;
   font-size: 13px;
+}
+
+#category {
+  flex-direction: row;
 }
 
 #box-container {
@@ -149,15 +145,21 @@ h3 {
 }
 
 .box {
-  border: var(--whiteText) solid 1px;
+  border: var(--white) solid 1px;
   width: 7rem;
   height: 3rem;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  padding: 0;
-  margin: 1rem 1.5rem;
+  padding: .2rem;
   border-radius: 4px;
+}
+
+#goal {
+  width: 100%;
+}
+
+.form-padding {
+  padding: 1.8rem 0 0 0;
 }
 
 :is(.box, h3, img) {
@@ -166,10 +168,7 @@ h3 {
 }
 
 #time-box {
-  flex-direction: row;
-  display: flex;
   justify-content: space-between;
-  position: relative;
   margin-top: 3rem;
 }
 
@@ -180,12 +179,11 @@ h3 {
 }
 
 #button-container {
-  align-content: flex-end;
   justify-content: flex-end;
 }
 
 /* Timer */
-#timer-box {
+#timer-card {
   align-items: center;
   flex-direction: column;
   justify-content: center;
@@ -193,28 +191,27 @@ h3 {
   position: relative;
 }
 
-#timer-box h2 {
+#timer-card h2 {
   font-weight: 300;
   transition: 300ms;
 }
 
-#timer-box h2:hover {
+#timer-card h2:hover {
   transition: 500ms ease-in;
   font-size: 1.55rem;
-  color: var(--whiteText)
+  color: var(--white)
 }
 
-#timer-box > h2:nth-child(1)  {
+#timer-card>h2:nth-child(1) {
   margin-bottom: 20rem;
   font-size: 1.2rem;
   position: absolute;
 }
 
-#timer-box p {
+#timer-card p {
   margin-bottom: 14rem;
-  font-weight: 400;
   font-size: 4rem;
-  color: var(--whiteText);
+  color: var(--white);
 }
 
 #ring {
@@ -225,31 +222,41 @@ h3 {
   margin-top: 4.5rem;
   width: 11rem;
   height: 11rem;
-  border: var(--whiteText) 3px solid;
+  border: var(--white) 3px solid;
   border-radius: 100%;
 }
 
 /* RIGHT CONTAINER */
 #past-container {
-  flex-grow: 1.1;
+  flex: 2;
   flex-direction: column;
   text-align: center;
-  border-left: 1px solid var(--mainText);
+  border-left: 1px solid var(--gray);
   padding: 2rem 2rem;
   height: 100vh;
+  min-width: 20rem;
 }
 
 :is(#past-container, h2, p) {
-  color: var(--mainText);
+  color: var(--gray);
 }
 
 #past-container p {
-  position: absolute;
-  width: 35rem;
+  width: 100%;
   height: 3rem;
-  margin: 3rem 5rem 0 0 ;
+  margin: .34rem 5rem 0 0;
   line-height: 1.9rem;
   font-size: 1.4rem;
+}
+
+
+#past-card {
+  width: 100%;
+  color: var(--white);
+  flex-direction: column;
+  padding-left: .5rem;
+  position: relative;
+  margin-bottom: 1rem;
 }
 
 
@@ -258,35 +265,21 @@ h3 {
   margin: 0;
 }
 
-#past-card {
-  width: 100%;
-  /* height: 6rem; */
-  color: var(--whiteText);
-  flex-direction: column;
-  padding-left: .5rem;
-  padding-top: .2rem;
-  background: var(--lightBG);
-  position: relative;
-  margin-bottom: 1rem;
-}
-
 #activityTimeContainer {
   flex-direction: column;
 }
 
-
 #past-card h3,
 #past-card h4,
-#past-card h5{
+#past-card h5 {
   align-self: flex-start;
-  text-align: left;
 }
 
-:is(#past-card,h4, h5) {
+:is(#past-card, h4, h5) {
   font-weight: 300;
 }
 
-#past-card h3  {
+#past-card h3 {
   font-size: .8rem;
 }
 
@@ -294,16 +287,28 @@ h3 {
   margin-bottom: .2rem;
 }
 
-#card-category{
+
+
+#card-category {
   align-self: flex-end;
   margin-right: .5rem;
   height: 2rem;
   width: .3rem;
   position: absolute;
-  bottom: 50%;
-  background: var(--meditate)
+  bottom: 55%;
 }
 
+
+
+.green {
+  background: var(--study)
+}
+.purple {
+  background: var(--meditate)
+}
+.red {
+  background: var(--exercise)
+}
 
 /* MISC */
 img {
@@ -313,15 +318,14 @@ img {
 
 input {
   outline: none;
-  color: var(--whiteText);
+  color: var(--white);
 }
 
-#goal {
-  width: 100%;
-}
 
-#time-box input {
-  text-align: center;
+
+#warning-0 {
+margin-left: .5rem;
+position: relative;
 }
 
 .warning {
@@ -331,9 +335,15 @@ input {
   position: absolute;
 }
 
+#warning-0 p {
+  margin-top: .5rem;
+  margin-left: .3rem;
+}
+
 .warning p {
   top: 28%;
   left: 11%;
   position: absolute;
   color: var(--error);
 }
+

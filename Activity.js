@@ -16,6 +16,6 @@ class Activity {
   saveToStorage() {
     activities.push(currentActivity)
     localStorage.setItem('Activities', JSON.stringify(activities))
-    newFunction()
+    createActivityCard()
   }
 }
