@@ -56,10 +56,10 @@ function activateStudy() {
   studyBtn.style.borderColor = ('var(--study)')
   ring.style.borderColor = ('var(--study)')
   studyLabel.style.color = ('var(--study)')
-  exerciseBtn.style.borderColor = ('var(--whiteText)')
-  meditateBtn.style.borderColor = ('var(--whiteText)')
-  meditateLabel.style.color = ('var(--whiteText)')
-  exerciseLabel.style.color = ('var(--whiteText)')
+  exerciseBtn.style.borderColor = ('var(--white)')
+  meditateBtn.style.borderColor = ('var(--white)')
+  meditateLabel.style.color = ('var(--white)')
+  exerciseLabel.style.color = ('var(--white)')
   show(sOn)
   show(mOff)
   show(eOff)
@@ -73,10 +73,10 @@ function activateMeditate() {
   meditateBtn.style.borderColor = ('var(--meditate)')
   ring.style.borderColor = ('var(--meditate)')
   meditateLabel.style.color= ('var(--meditate')
-  exerciseBtn.style.borderColor = ('var(--whiteText)')
-  studyBtn.style.borderColor = ('var(--whiteText)')
-  studyLabel.style.color = ('var(--whiteText)')
-  exerciseLabel.style.color = ('var(--whiteText)')
+  exerciseBtn.style.borderColor = ('var(--white)')
+  studyBtn.style.borderColor = ('var(--white)')
+  studyLabel.style.color = ('var(--white)')
+  exerciseLabel.style.color = ('var(--white)')
   hide(mOff)
   hide(eOn)
   hide(sOn)
@@ -91,10 +91,10 @@ function activateExcercise() {
   ring.style.borderColor = ('var(--exercise)')
   exerciseLabel.style.color= ('var(--exercise')
   exerciseBtn.style.color = ('var(--exercise)')
-  meditateBtn.style.borderColor = ('var(--whiteText)')
-  studyBtn.style.borderColor = ('var(--whiteText)')
-  studyLabel.style.color = ('var(--whiteText)')
-  meditateLabel.style.color = ('var(--whiteText)')
+  meditateBtn.style.borderColor = ('var(--white)')
+  studyBtn.style.borderColor = ('var(--white)')
+  studyLabel.style.color = ('var(--white)')
+  meditateLabel.style.color = ('var(--white)')
   show(eOn)
   show(mOff)
   show(sOff)
@@ -104,9 +104,9 @@ function activateExcercise() {
 }
 
 function createActivity(form) {
-  form.goal.value === "" ? show(goalWarning) : hide(goalWarning)
-  !form.minutes.value ? show(minutesWarning) : hide(minutesWarning)
-  !form.seconds.value ? show(secondsWarning) : hide(secondsWarning)
+  form.goal.value === "" ? displayWarning(goalWarning) : hide(goalWarning)
+  !form.minutes.value ? displayWarning(minutesWarning) : hide(minutesWarning)
+  !form.seconds.value ? displayWarning(secondsWarning) : hide(secondsWarning)
   if(form.goal.value && form.minutes.value && form.seconds.value) {
     currentActivity = new Activity(form.category.value, form.goal.value, parseInt(form.minutes.value), parseInt(form.seconds.value), generateRandomID());
     showTimer()
@@ -114,6 +114,12 @@ function createActivity(form) {
     hide(card)
     hide(logActivityBtn)
   }
+}
+
+function displayWarning(warning) {
+  resetFade(warning)
+  show(warning)
+  animateFade(warning)
 }
 
 function showTimer() {
@@ -203,7 +209,8 @@ function animateFade(e) {
 }
 
 function resetFade(e) {
-  e.classList.toggle('fade')
+  e.classList.remove('fade')
+  void e.offsetWidth;
 }
 
 function updateHeader() {
