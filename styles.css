@@ -1,9 +1,8 @@
 :root {
   /* THEME */
   --darkBG: #2B2733;
-  --mainText: #CBC9CF;
   --lightBG: #46424D;
-  --whiteText: #FFF;
+  --mainText: #CBC9CF;
   /* ICONS */
   --study: #B3FD78;
   --meditate: #C278FD;
@@ -11,6 +10,7 @@
   /* UTILITY */
   --error: #EFB7EC;
   --cardShadow: #26222D;
+  --white: #FFF;
 }
 
 * {
@@ -27,6 +27,10 @@ body {
   width: 100%;
 }
 
+#main {
+  flex-direction: row;
+}
+
 /* HEADER */
 header {
   min-height: 10vh;
@@ -37,14 +41,9 @@ header {
 }
 
 h1 {
-  color: var(--whiteText);
+  color: var(--white);
   font-weight: 300;
   font-size: 1.6rem;
-}
-
-/* MAIN */
-#main {
-  flex-direction: row;
 }
 
 /* UTILITY */
@@ -85,7 +84,7 @@ h1 {
 
 /* BUTTON */
 .btn {
-  background: var(--whiteText);
+  background: var(--white);
   font-size: 15px;
   font-weight: 400;
   color: var(--darkBG);
@@ -134,7 +133,7 @@ h1 {
 }
 
 h3 {
-  color: var(--whiteText);
+  color: var(--white);
   font-weight: 400;
   font-size: 13px;
 }
@@ -148,7 +147,7 @@ h3 {
 }
 
 .box {
-  border: var(--whiteText) solid 1px;
+  border: var(--white) solid 1px;
   width: 7rem;
   height: 3rem;
   flex-direction: column;
@@ -200,7 +199,7 @@ h3 {
 #timer-box h2:hover {
   transition: 500ms ease-in;
   font-size: 1.55rem;
-  color: var(--whiteText)
+  color: var(--white)
 }
 
 #timer-box > h2:nth-child(1)  {
@@ -213,7 +212,7 @@ h3 {
   margin-bottom: 14rem;
   font-weight: 400;
   font-size: 4rem;
-  color: var(--whiteText);
+  color: var(--white);
 }
 
 #ring {
@@ -224,7 +223,7 @@ h3 {
   margin-top: 4.5rem;
   width: 11rem;
   height: 11rem;
-  border: var(--whiteText) 3px solid;
+  border: var(--white) 3px solid;
   border-radius: 100%;
 }
 
@@ -251,20 +250,20 @@ h3 {
   font-size: 1.4rem;
 }
 
-#past-card h3 {
-  margin: 0;
-}
 
 #past-card {
   width: 100%;
-  /* height: 6rem; */
-  color: var(--whiteText);
+  color: var(--white);
   flex-direction: column;
   padding-left: .5rem;
   padding-top: .2rem;
   background: var(--lightBG);
   position: relative;
   margin-bottom: 1rem;
+}
+
+#past-card h3 {
+  margin: 0;
 }
 
 #activityTimeContainer {
@@ -308,7 +307,7 @@ img {
 
 input {
   outline: none;
-  color: var(--whiteText);
+  color: var(--white);
 }
 
 #goal {
