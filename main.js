@@ -224,7 +224,6 @@ function triggerTimer() {
   beginTimer(currentActivity.minutes, currentActivity.seconds)
 }
 
-
 function changeCategoryColor(category) {
 var color = ""
 category === 'Study' ? color = "green" 
