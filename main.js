@@ -1,14 +1,14 @@
 // Outer Variables
-var pastContainer = document.querySelector('#past-container')
-var cardContainer = document.querySelector('#card')
+// var pastContainer = document.querySelector('#past-container')
+// var cardContainer = document.querySelector('#card')
 var card = document.querySelector("#card-content")
 // Activities
 var studyBtn = document.querySelector('#study-box');
 var meditateBtn = document.querySelector('#meditate-box');
 var exerciseBtn = document.querySelector('#exercise-box');
-var activityBtns = document.querySelectorAll('.box')
-var logBTN = document.querySelector('#log-activity-btn');
-var createNewBTN = document.querySelector('#new-activity-btn')
+// var activityBtns = document.querySelectorAll('.box')
+// var logBTN = document.querySelector('#log-activity-btn');
+// var createNewBTN = document.querySelector('#new-activity-btn')
 var newHeader = document.querySelector("#new")
 // on & off buttons 
 var sOn = document.querySelector('#s-on')
@@ -26,29 +26,30 @@ var startActivityBtn = document.querySelector('#start-btn')
 var logActivityBtn = document.querySelector('#log-btn')
 var createNewActivityBtn = document.querySelector('#create-new-activity-btn')
 // Warning
-var error = document.getElementById('#warning')
+// var error = document.getElementById('#warning')
 var goalWarning = document.querySelector('#warning-1')
 var minutesWarning = document.querySelector('#warning-2')
 var secondsWarning = document.querySelector('#warning-3')
-var activiesWarning = document.querySelector('#warning-4')
+// var activiesWarning = document.querySelector('#warning-4')
 //timer
 var timerBox = document.querySelector("#timer-box");
-var createBox = document.querySelector("#create-box");
+// var createBox = document.querySelector("#create-box");
 var timer = document.querySelector("#timer")
 var timeLeft = document.querySelector("#time")
 var ring = document.querySelector("#ring")
-var startTimerBtn = document.querySelector('#start-timer-btn')
+// var startTimerBtn = document.querySelector('#start-timer-btn')
 var activityHeader = document.querySelector('#userActivity')
 var pastActivitiesCard = document.querySelector('#past-activities-card')
 var pastActivitiesDefault = document.querySelector('#past-activities-default')
+
 // Event Listeners
+window.addEventListener('load', createActivityCard)
 studyBtn.addEventListener('click', activateStudy);
 meditateBtn.addEventListener('click', activateMeditate);
 exerciseBtn.addEventListener('click', activateExcercise);
 ring.addEventListener('click', triggerTimer)
 
 
-newFunction()
 
 
 function activateStudy() {
@@ -123,12 +124,14 @@ function logActivity() {
   show(createNewActivityBtn)
   hide(pastActivitiesDefault)
   show(pastActivitiesCard)
+  createActivityCard()
   start.textContent = "START!"
   currentActivity.saveToStorage()
+
 }
 
 
-function newFunction() {
+function createActivityCard() {
   var parsed = JSON.parse(localStorage.getItem('Activities'));
   if (!parsed) {
     hide(pastActivitiesCard)
