@@ -1,15 +1,12 @@
 // Outer Variables
-// var pastContainer = document.querySelector('#past-container')
-// var cardContainer = document.querySelector('#card')
 var card = document.querySelector("#card-content")
+var activityHeader = document.querySelector("#new")
+
 // Activities
 var studyBtn = document.querySelector('#study-box');
 var meditateBtn = document.querySelector('#meditate-box');
 var exerciseBtn = document.querySelector('#exercise-box');
-// var activityBtns = document.querySelectorAll('.box')
-// var logBTN = document.querySelector('#log-activity-btn');
-// var createNewBTN = document.querySelector('#new-activity-btn')
-var newHeader = document.querySelector("#new")
+
 // on & off buttons 
 var sOn = document.querySelector('#s-on')
 var sOff = document.querySelector('#s-off')
@@ -17,6 +14,7 @@ var mOn = document.querySelector('#m-on')
 var mOff = document.querySelector('#m-off')
 var eOn = document.querySelector('#e-on')
 var eOff = document.querySelector('#e-off')
+
 // Forms
 var hiddenInput = document.querySelector('#hidden-input')
 var studyLabel = document.querySelector('#study-label')
@@ -25,19 +23,17 @@ var exerciseLabel = document.querySelector('#exercise-label')
 var startActivityBtn = document.querySelector('#start-btn')
 var logActivityBtn = document.querySelector('#log-btn')
 var createNewActivityBtn = document.querySelector('#create-new-activity-btn')
-// Warning
-// var error = document.getElementById('#warning')
+
+// Warnings
 var goalWarning = document.querySelector('#warning-1')
 var minutesWarning = document.querySelector('#warning-2')
 var secondsWarning = document.querySelector('#warning-3')
-// var activiesWarning = document.querySelector('#warning-4')
+
 //timer
 var timerBox = document.querySelector("#timer-box");
-// var createBox = document.querySelector("#create-box");
 var timer = document.querySelector("#timer")
 var timeLeft = document.querySelector("#time")
 var ring = document.querySelector("#ring")
-// var startTimerBtn = document.querySelector('#start-timer-btn')
 var activityHeader = document.querySelector('#userActivity')
 var pastActivitiesCard = document.querySelector('#past-activities-card')
 var pastActivitiesDefault = document.querySelector('#past-activities-default')
@@ -218,5 +214,5 @@ function resetFade(e) {
 }
 
 function updateHeader() {
-  newHeader.innerText = "Current Activity"
+  activityHeader.innerText = "Current Activity"
 }
