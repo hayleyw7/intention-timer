@@ -45,9 +45,6 @@ meditateBtn.addEventListener('click', activateMeditate);
 exerciseBtn.addEventListener('click', activateExcercise);
 ring.addEventListener('click', triggerTimer)
 
-
-
-
 function activateStudy() {
   hiddenInput.innerHTML = `<input type="hidden" name="category" value="Study">`
   studyBtn.style.borderColor = ('var(--study)')
