@@ -175,13 +175,14 @@ function createActivityCard() {
     pastActivitiesCard.innerHTML = ``
     for (var i = 0; i < activities.length; i++) {
       pastActivitiesCard.innerHTML += `<div id="past-card" class="card-features flex">
-      <div id="card-category"></div>
+      <div id="card-category" class="${changeCategoryColor(activities[i].category)}"></div>
       <div id="activityTimeContainer" class="flex">
         <h3 id="past-card-activity">${activities[i].category}</h3>
         <h4 id="past-card-time">${activities[i].minutes} MIN ${activities[i].seconds} SECONDS</h4>
       </div>
       <h5 id="past-card-goal">${activities[i].description}</h5>
       </div>`
+      console.log(pastActivitiesCard)
     }
   }
   return activities
@@ -222,3 +223,25 @@ function updateHeader() {
 function triggerTimer() {
   beginTimer(currentActivity.minutes, currentActivity.seconds)
 }
+
+
+function changeCategoryColor(category) {
+var color = ""
+category === 'Study' ? color = "green" 
+: category === 'Meditate' ? color = "purple" 
+: category === 'Exercise' ? color = "red" 
+: color="var(--white)"
+console.log(color)
+return color
+}
+
+// Helper Function 
+// activitiies.category 
+//var color
+  // if else statements
+  // if category === 'Meditate', then set
+
+    /* ICONS */
+    // --study: #B3FD78;
+    // --meditate: #C278FD;
+    // --exercise: #FD8078; 
