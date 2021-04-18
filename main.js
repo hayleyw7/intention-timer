@@ -112,7 +112,7 @@ function createActivity(form) {
   if(form.goal.value && form.minutes.value && form.seconds.value) {
     currentActivity = new Activity(form.category.value, form.goal.value, parseInt(form.minutes.value), parseInt(form.seconds.value), generateRandomID());
     showTimer()
-    show(timerBox)
+    show(timerCard)
     hide(card)
     hide(logActivityBtn)
   }
@@ -154,7 +154,7 @@ function beginTimer(minutes, seconds) {
 }
 
 function logActivity() {
-  hide(timerBox)
+  hide(timerCard)
   hide(logActivityBtn)
   show(createNewActivityBtn)
   hide(pastActivitiesDefault)

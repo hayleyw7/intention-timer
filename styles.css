@@ -1,8 +1,9 @@
 :root {
   /* THEME */
-  --darkBG: #2B2733;
-  --lightBG: #46424D;
-  --mainText: #CBC9CF;
+  --dark: #2B2733;
+  --light: #46424D;
+  --gray: #CBC9CF;
+  --white: #FFF;
   /* ICONS */
   --study: #B3FD78;
   --meditate: #C278FD;
@@ -10,7 +11,6 @@
   /* UTILITY */
   --error: #EFB7EC;
   --cardShadow: #26222D;
-  --white: #FFF;
 }
 
 * {
@@ -22,7 +22,7 @@
 body {
   font-family: "Montserrat", sans-serif;
   box-sizing: border-box;
-  background-color: var(--darkBG);
+  background-color: var(--dark);
   /* height: 100vh; */
   /* width: 100vw; */
 }
@@ -34,7 +34,7 @@ body {
 /* HEADER */
 header {
   min-height: 8vh;
-  background-color: var(--lightBG);
+  background-color: var(--light);
   /* text-align: center; */
   justify-content: center;
   align-items: center;
@@ -56,15 +56,15 @@ h1 {
 }
 
 .borderless {
-  border-width: 0 0 1px 0;
-  border-bottom: 1px solid var(--mainText);
-  background-color: var(--lightBG);
+  border-width: 0;
+  border-bottom: 1px solid var(--gray);
+  background-color: var(--light);
   padding-bottom: .1rem;
   width: 12rem;
 }
 
 .card-features {
-  background-color: var(--lightBG);
+  background-color: var(--light);
   border-radius: 4px;
   box-shadow: 3px 3px 5px 6px var(--cardShadow);
 }
@@ -83,10 +83,10 @@ h1 {
 
 /* BUTTON */
 .btn {
-  background: var(--white);
+  /* background: var(--white); */
   font-size: 15px;
   font-weight: 400;
-  color: var(--darkBG);
+  color: var(--dark);
   border-radius: 4px;
   padding: 0.5rem 1.2rem;
   margin-top: 1.6rem;
@@ -122,13 +122,19 @@ h1 {
 }
 
 #card {
-  align-self: center;
-  justify-content: center;
+  justify-content: space-around;
+  align-items: center;
   margin-top: .8rem;
   padding: 1.8rem 4rem;
   min-width: 25rem;
   min-height: 25rem;
   position: relative;
+  border: pink 1px solid;
+}
+
+#card-content {
+  width: 100%;
+
 }
 
 h3 {
@@ -168,7 +174,6 @@ h3 {
 
 #time-box {
   flex-direction: row;
-  display: flex;
   justify-content: space-between;
   position: relative;
   margin-top: 3rem;
@@ -236,13 +241,13 @@ h3 {
   flex: 3;
   flex-direction: column;
   text-align: center;
-  border-left: 1px solid var(--mainText);
+  border-left: 1px solid var(--gray);
   padding: 2rem 2rem;
   height: 100vh;
 }
 
 :is(#past-container, h2, p) {
-  color: var(--mainText);
+  color: var(--gray);
 }
 
 #past-container p {
@@ -261,7 +266,7 @@ h3 {
   flex-direction: column;
   padding-left: .5rem;
   padding-top: .2rem;
-  background: var(--lightBG);
+  background: var(--light);
   position: relative;
   margin-bottom: 1rem;
 }
