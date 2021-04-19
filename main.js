@@ -1,47 +1,45 @@
 // Activities
-var studyBtn = document.querySelector('#study-box');
-var meditateBtn = document.querySelector('#meditate-box');
-var exerciseBtn = document.querySelector('#exercise-box');
+var studyBtn = document.querySelector('#studyBox');
+var meditateBtn = document.querySelector('#meditateBox');
+var exerciseBtn = document.querySelector('#exerciseBox');
 
 // On & off buttons 
-var sOn = document.querySelector('#s-on')
-var sOff = document.querySelector('#s-off')
-var mOn = document.querySelector('#m-on')
-var mOff = document.querySelector('#m-off')
-var eOn = document.querySelector('#e-on')
-var eOff = document.querySelector('#e-off')
+var sOn = document.querySelector('#sOn')
+var sOff = document.querySelector('#sOff')
+var mOn = document.querySelector('#mOn')
+var mOff = document.querySelector('#mOff')
+var eOn = document.querySelector('#eOn')
+var eOff = document.querySelector('#eOff')
 
 // Forms
-var hiddenInput = document.querySelector('#hidden-input')
-var studyLabel = document.querySelector('#study-label')
-var meditateLabel = document.querySelector('#meditate-label')
-var exerciseLabel = document.querySelector('#exercise-label')
-var startActivityBtn = document.querySelector('#start-btn')
-var logActivityBtn = document.querySelector('#log-btn')
-var createNewActivityBtn = document.querySelector('#create-new-activity-btn')
+var hiddenInput = document.querySelector('#hiddenInput')
+var studyLabel = document.querySelector('studyLabel')
+var meditateLabel = document.querySelector('#meditateLabel')
+var exerciseLabel = document.querySelector('#exerciseLabel')
+var startActivityBtn = document.querySelector('#startBtn')
+var logActivityBtn = document.querySelector('#logBtn')
+var createNewActivityBtn = document.querySelector('createNewActivityBtn')
 
 // Outer Card
-var card = document.querySelector("#card-content")
-var activityHeader = document.querySelector("#new")
+var card = document.querySelector('#cardContent')
+var activityHeader = document.querySelector('#new')
 
 // Timer Card 
-var timerCard = document.querySelector("#timer-card");
-var timer = document.querySelector("#timer")
-var timeLeft = document.querySelector("#time")
-var ring = document.querySelector("#ring")
+var timerCard = document.querySelector('#timerCard');
+var timer = document.querySelector('#timer')
+var timeLeft = document.querySelector('#time')
+var ring = document.querySelector('#ring')
 var activityHeader = document.querySelector('#userActivity')
 
 // Activity Log
-var pastActivitiesCard = document.querySelector('#past-activities-card')
-var pastActivitiesDefault = document.querySelector('#past-activities-default')
+var pastActivitiesCard = document.querySelector('#pastActivitiesCard')
+var pastActivitiesDefault = document.querySelector('#pastActivitiesDefault')
 
 // Warnings
-var catagoryWarning = document.querySelector('#warning-0')
-var goalWarning = document.querySelector('#warning-1')
-var minutesWarning = document.querySelector('#warning-2')
-var secondsWarning = document.querySelector('#warning-3')
-
-
+var catagoryWarning = document.querySelector('#warning0')
+var goalWarning = document.querySelector('#warning1')
+var minutesWarning = document.querySelector('#warning2')
+var secondsWarning = document.querySelector('#warning3')
 
 // Event Listeners 
 window.addEventListener('load', createActivityCard)
@@ -53,7 +51,7 @@ ring.addEventListener('click', triggerTimer)
 
 // Event Handlers
 function activateStudy() {
-  hiddenInput.innerHTML = `<input type="hidden" name="category" value="Study">`
+  hiddenInput.innerHTML = `<input type='hidden' name='category' value='Study'>`
   studyBtn.style.borderColor = ('var(--study)')
   ring.style.borderColor = ('var(--study)')
   studyLabel.style.color = ('var(--study)')
@@ -70,7 +68,7 @@ function activateStudy() {
 }
 
 function activateMeditate() {
-  hiddenInput.innerHTML = `<input type="hidden" name="category" value="Meditate">`
+  hiddenInput.innerHTML = `<input type='hidden' name='category' value='Meditate'>`
   meditateBtn.style.borderColor = ('var(--meditate)')
   ring.style.borderColor = ('var(--meditate)')
   meditateLabel.style.color= ('var(--meditate')
@@ -87,7 +85,7 @@ function activateMeditate() {
 }
 
 function activateExcercise() {
-  hiddenInput.innerHTML = `<input type="hidden" name="category" value="Exercise">`
+  hiddenInput.innerHTML = `<input type='hidden' name='category' value='Exercise'>`
   exerciseBtn.style.borderColor = ('var(--exercise)')
   ring.style.borderColor = ('var(--exercise)')
   exerciseLabel.style.color= ('var(--exercise')
@@ -106,7 +104,7 @@ function activateExcercise() {
 
 function createActivity(form) {
   !hiddenInput.innerHTML ? displayWarning(catagoryWarning) : hide(catagoryWarning)
-  form.goal.value === "" ? displayWarning(goalWarning) : hide(goalWarning)
+  form.goal.value === '' ? displayWarning(goalWarning) : hide(goalWarning)
   !form.minutes.value ? displayWarning(minutesWarning) : hide(minutesWarning)
   !form.seconds.value ? displayWarning(secondsWarning) : hide(secondsWarning)
   if(form.goal.value && form.minutes.value && form.seconds.value) {
@@ -125,10 +123,10 @@ function displayWarning(warning) {
 }
 
 function showTimer() {
-  var minutes = currentActivity.minutes < 10 ? "0" + currentActivity.minutes : currentActivity.minutes;
-  var seconds = currentActivity.seconds < 10 ? "0" + currentActivity.seconds : currentActivity.seconds;
+  var minutes = currentActivity.minutes < 10 ? '0' + currentActivity.minutes : currentActivity.minutes;
+  var seconds = currentActivity.seconds < 10 ? '0' + currentActivity.seconds : currentActivity.seconds;
   activityHeader.textContent = `${currentActivity.description}`
-  timeLeft.textContent = minutes + ":" + seconds;
+  timeLeft.textContent = minutes + ':' + seconds;
 }
 
 function beginTimer(minutes, seconds) {
@@ -140,14 +138,14 @@ function beginTimer(minutes, seconds) {
         currentActivity.markComplete();
         show(logActivityBtn)
         start.textContent = `COMPLETE!`
-        return alert("Congrats! You made it!");
+        return alert('Congrats! You made it!');
       }, 1000);
     }
   }
   function format(timeLeft) {
     return function (minutes, seconds) {
-      minutes = minutes < 10 ? "0" + minutes : minutes;
-      seconds = seconds < 10 ? "0" + seconds : seconds;
+      minutes = minutes < 10 ? '0' + minutes : minutes;
+      seconds = seconds < 10 ? '0' + seconds : seconds;
       timeLeft.textContent = minutes + ':' + seconds;
     };
   }
@@ -159,7 +157,7 @@ function logActivity() {
   show(createNewActivityBtn)
   hide(pastActivitiesDefault)
   show(pastActivitiesCard)
-  start.textContent = "START!"
+  start.textContent = 'START!'
   currentActivity.saveToStorage()
 }
 
@@ -174,13 +172,13 @@ function createActivityCard() {
     show(pastActivitiesCard)
     pastActivitiesCard.innerHTML = ``
     for (var i = 0; i < activities.length; i++) {
-      pastActivitiesCard.innerHTML += `<div id="past-card" class="card-features flex">
-      <div id="card-category" class="card-category ${changeCategoryColor(activities[i].category)}"></div>
-      <div id="activityTimeContainer" class="activity-time-container flex">
-        <h3 id="past-card-activity">${activities[i].category}</h3>
-        <h4 id="past-card-time">${activities[i].minutes} MIN ${activities[i].seconds} SECONDS</h4>
+      pastActivitiesCard.innerHTML += `<div id='past-card' class='card-features flex'>
+      <div id='card-category' class='card-category ${changeCategoryColor(activities[i].category)}'></div>
+      <div id='activityTimeContainer' class='activity-time-container flex'>
+        <h3 id='past-card-activity'>${activities[i].category}</h3>
+        <h4 id='past-card-time'>${activities[i].minutes} MIN ${activities[i].seconds} SECONDS</h4>
       </div>
-      <h5 id="past-card-goal">${activities[i].description}</h5>
+      <h5 id='past-card-goal'>${activities[i].description}</h5>
       </div>`
     }
   }
@@ -216,7 +214,7 @@ function resetFade(e) {
 }
 
 function updateHeader() {
-  activityHeader.innerText = "Current Activity"
+  activityHeader.innerText = 'Current Activity'
 }
 
 function triggerTimer() {
@@ -224,10 +222,10 @@ function triggerTimer() {
 }
 
 function changeCategoryColor(category) {
-var color = ""
-category === 'Study' ? color = "green" 
-: category === 'Meditate' ? color = "purple" 
-: category === 'Exercise' ? color = "red" 
-: color="var(--white)"
+var color = ''
+category === 'Study' ? color = 'green' 
+: category === 'Meditate' ? color = 'purple' 
+: category === 'Exercise' ? color = 'red' 
+: color='var(--white)'
 return color
 }
