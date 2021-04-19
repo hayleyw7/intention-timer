@@ -19,6 +19,7 @@ var exerciseBtn = document.querySelector('#exerciseBtn')
 var startActivityBtn = document.querySelector('#startBtn')
 var logActivityBtn = document.querySelector('#logBtn')
 var createNewActivityBtn = document.querySelector('#createNewActivityBtn')
+// var startNewBtn = document.querySelector('#startNewBtn')
 var categoryValue = document.querySelector('#category')
 var goalValue = document.querySelector('#goal')
 var minutesValue = document.querySelector('#minutes')
@@ -50,10 +51,10 @@ window.addEventListener('load', createActivityCard)
 studyBtn.addEventListener('click', activateStudy);
 meditateBtn.addEventListener('click', activateMeditate);
 exerciseBtn.addEventListener('click', activateExcercise);
-ring.addEventListener('click', callTimerMethod);
 startActivityBtn.addEventListener('click', createActivity);
 logActivityBtn.addEventListener('click', logActivity);
 ring.addEventListener('click', makeNewActivity)
+createNewActivityBtn.addEventListener('click', resetScene)
 
 
 // Event Handlers
@@ -180,7 +181,7 @@ function logActivity() {
   currentActivity.saveToStorage()
 }
 
-function createActivityCard() {
+function createActivityCard () {
   var parsed = JSON.parse(localStorage.getItem('Activities'));
   if (!parsed) {
     hide(pastActivitiesCard)
@@ -205,8 +206,14 @@ function createActivityCard() {
 }
 
 function makeNewActivity() {
-  hide(createNewActivityBtn)
-  show(card)
+  callTimerMethod()
+  // hide(createNewActivityBtn)
+}
+
+function resetScene() {
+    hide(createNewActivityBtn)
+    resetInputs()
+    show(card)
 }
 
 
@@ -243,4 +250,30 @@ category === 'Study' ? color = 'green'
 : category === 'Exercise' ? color = 'red' 
 : color='var(--white)'
 return color
+}
+
+function resetInputs() {
+  resetBtns()
+  goalValue.value = ""
+  minutesValue.value = ""
+  secondsValue.value = ""
+}
+
+function resetBtns() {
+show(sOff)
+  show(mOff)
+  show(eOff)
+  hide(sOn)
+  hide(mOn)
+  hide(eOn)
+  exerciseBtn.style.borderColor = ('var(--white')
+  exerciseBtn.style.color = ('var(--white')
+  studyBtn.style.borderColor = ('var(--white)')
+  studyBtn.style.color = ('var(--white)')
+  meditateBtn.style.borderColor = ('var(--white)')
+  meditateBtn.style.color = ('var(--white)')
+  studyLabel.style.color = ('var(--white)')
+  exerciseLabel.style.color= ('var(--white)')
+  meditateLabel.style.color = ('var(--white)')
+  ring.style.borderColor = ('var(--white')
 }
