@@ -249,6 +249,10 @@ h3 {
   min-width: 20rem;
 }
 
+.past {
+  margin-left: 1rem;
+}
+
 :is(.past-container, h2, p) {
   color: var(--gray);
 }
