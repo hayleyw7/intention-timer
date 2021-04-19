@@ -1,116 +1,116 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang='en'>
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap" />
-  <link rel="icon" type="image/x-icon" href="topaz-ruby-sapphire-lotus-flower-silhouette-64-246064.png">
-  <link rel="stylesheet" href="./styles.css" />
+  <meta charset='UTF-8' />
+  <meta http-equiv='X-UA-Compatible' content='IE=edge' />
+  <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+  <link rel='preconnect' href='https://fonts.gstatic.com' />
+  <link href='https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap' />
+  <link rel='icon' type='image/x-icon' href='topaz-ruby-sapphire-lotus-flower-silhouette-64-246064.png'>
+  <link rel='stylesheet' href='./styles.css' />
   <title>Intention Timer</title>
 </head>
 <body>
   <!-- Header -->
-  <header class="flex">
+  <header class='flex'>
     <h1>INTENTION TIMER</h1>
   </header>
   <!-- Main -->
-  <main class="flex">
+  <main class='flex'>
     <!-- New Activity (Left) Container -->
-    <section class="container">
-      <h2 id="new">New Activity</h2>
-      <article id="card" class="card-features flex">
-        <div id="card-content">
+    <section class='container'>
+      <h2 id='new'>New Activity</h2>
+      <article id='card' class='card card-features flex'>
+        <div id='cardContent' class='card-content'>
           <form>
             <!-- Activity Categories -->
-            <div id="category" class="flex">
+            <div id='category' class='category flex'>
             <h3>Select A Category:</h3>
-            <div id="warning-0" class="hidden flex">
-              <img src="assets/warning.svg" alt="notice icon">
+            <div id='warning0' class='watning-0 hidden flex'>
+              <img src='assets/warning.svg' alt='notice icon'>
               <p>A selection is required.</p>
             </div>
           </div>
-            <div id="box-container" class="flex">
-              <div id="study-box" class="box flex">
-                <img id="s-off" src="assets/study.svg" alt="white lightbulb study icon" />
-                <img id="s-on" src="assets/study-active.svg" alt="green lightbulb study icon" class="hidden">
-                <h3 id="study-label">Study</h3>
+            <div id='boxContainer' class='box-container flex'>
+              <div id='studyBox' class='box flex'>
+                <img id='sOff' src='assets/study.svg' alt='white lightbulb study icon' />
+                <img id='sOn' src='assets/study-active.svg' alt='green lightbulb study icon' class='hidden'>
+                <h3 id='studyLabel'>Study</h3>
               </div>
-              <div id="meditate-box" class="box flex">
-                <img id="m-off" src="assets/meditate.svg" alt="white lotus study icon">
-                <img src="assets/meditate-active.svg" id="m-on" class="hidden" alt="purple lotus study icon" />
-                <h3 id="meditate-label">Meditate</h3>
+              <div id='meditateBox' class='box flex'>
+                <img id='mOff' src='assets/meditate.svg' alt='white lotus study icon'>
+                <img src='assets/meditate-active.svg' id='mOn' class='hidden' alt='purple lotus study icon' />
+                <h3 id='meditateLabel'>Meditate</h3>
               </div>
-              <div id="exercise-box" class="box flex">
-                <img src="assets/exercise.svg" alt="white shoe running exercise icon" id="e-off">
-                <img src="assets/exercise-active.svg" id="e-on" class="hidden" alt="red shoe running exercise icon" />
-                <h3 id="exercise-label">Exercise</h3>
+              <div id='exerciseBox' class='box flex'>
+                <img src='assets/exercise.svg' alt='white shoe running exercise icon' id='eOff'>
+                <img src='assets/exercise-active.svg' id='eOn' class='hidden' alt='red shoe running exercise icon'/>
+                <h3 id='exerciseLabel'>Exercise</h3>
               </div>
             </div>
              <!-- Goal Form -->
-            <h3 class="form-padding">What would you like to accomplish during this time</h3>
-            <input type="text" id="goal" name="goal" value="" class="form-padding borderless">
-            <label class="hidden" for="goal">What would you like to accomplish during this time</label>
-            <div id="warning-1" class="warning hidden flex">
-              <img src="assets/warning.svg" alt="notice icon">
+            <h3 class='form-padding'>What would you like to accomplish during this time</h3>
+            <input type='text' id='goal' name='goal' value='' class='goal form-padding borderless'>
+            <label class='hidden' for='goal'>What would you like to accomplish during this time</label>
+            <div id='warning1' class='warning hidden flex'>
+              <img src='assets/warning.svg' alt='notice icon'>
               <p>A description is required.</p>
             </div>
             <!-- Minutes/Seconds Container -->
-            <div id="time-box" class="flex">
+            <div id='timeBox' class='time-box flex'>
               <!-- Minutes -->
-              <div id="minutes-box">
-                <h3 class="form-padding">Minutes</h3>
-                <input type="number" min="0" id="minutes" name="minutes" value="" class="form-padding borderless">
-                <label class="hidden" for="minutes">minutes</label>
-                <div id="warning-2" class="warning hidden flex">
-                  <img src="assets/warning.svg" alt="notice icon">
+              <div id='minutesBox' class='minutes-box'>
+                <h3 class='form-padding'>Minutes</h3>
+                <input type='number' min='0' id='minutes' name='minutes' value='' class='form-padding borderless'>
+                <label class='hidden' for='minutes'>minutes</label>
+                <div id='warning2' class='warning hidden flex'>
+                  <img src='assets/warning.svg' alt='notice icon'>
                   <p>Minutes is required.</p>
                 </div>
               </div>
               <!-- Seconds -->
-              <div id="seconds-box">
-                <h3 class="form-padding">Seconds</h3>
-                <input type="number" min="0" id="seconds" name="seconds" value="" class="form-padding borderless">
-                <label class="hidden" for="seconds">seconds</label>
-                <div id="warning-3" class="warning hidden flex">
-                  <img src="assets/warning.svg" alt="notice icon">
+              <div id='secondsBox' class='seconds-box'>
+                <h3 class='form-padding'>Seconds</h3>
+                <input type='number' min='0' id='seconds' name='seconds' value='' class='form-padding borderless'>
+                <label class='hidden' for='seconds'>seconds</label>
+                <div id='warning3' class='warning hidden flex'>
+                  <img src='assets/warning.svg' alt='notice icon'>
                   <p>Seconds are required.</p>
                 </div>
               </div>
             </div>
             <!--  Start Activity Button -->
-            <div id="button-container" class="flex">
+            <div id='buttonContainer' class='button-container flex'>
               <input type="button" id="start-btn" class="btn" value="START ACTIVITY">
             </div>
           </form>
         </div>
         <!-- Timer Card -->
-        <div id="timer-card" class="hidden flex">
-          <h2 id="userActivity">Deep Breathing</h2>
-          <p id="time">00:00</p>
-          <div id="ring" class="flex">
-            <h2 id="start">START</h2>
+        <div id='timerCard' class='timer-card hidden flex'>
+          <h2 id='userActivity'>Deep Breathing</h2>
+          <p id='time'>00:00</p>
+          <div id='ring' class='ring flex'>
+            <h2 id='start'>START</h2>
           </div>
           <!-- Log & New Activity Button -->
-          <input type="button" id="log-btn" class="btn" value="LOG ACTIVITY">
+          <input type='button' id='logBtn' class='log-btn btn' value='LOG ACTIVITY' onClick='logActivity()'>
         </div>
-        <input type="button" id="create-new-activity-btn" class="btn hidden" value="CREATE A NEW ACTIVITY">
-        <div id="create-box" class="hidden flex">
-          <input type="button" id="start-btn" value="CREATE">
+        <input type='button' id='createNewActivityBtn' class=' create-new-activity-btn btn hidden' value='CREATE A NEW ACTIVITY'>
+        <div id='createBox' class='hidden flex'>
+          <input type='button' id='startBtn' value='CREATE'>
         </div>
       </article>
     </section>
     <!-- Past (Right) Container -->
-    <section id="past-container" class="flex">
-      <h2 id="past">Past Activities</h2>
-      <p id="past-activities-default">You haven't logged any activities today!</br>Complete the form to the left to get started!</p>
-      <p id="past-activities-card" class="hidden"></p>
+    <section id='pastContainer' class='past-card past-container flex'>
+      <h2 id='past' class='past'>Past Activities</h2>
+      <p id='pastActivitiesDefault'>You haven't logged any activities today!</br>Complete the form to the left to get started!</p>
+      <p id='pastActivitiesCard' class='hidden'></p>
     </section>
   </main>
 </body>
-<script src="Activity.js"></script>
-<script src="data.js"></script>
-<script src="timer.js"></script>
-<script src="main.js"></script>
+<script src='Activity.js'></script>
+<script src='data.js'></script>
+<script src='timer.js'></script>
+<script src='main.js'></script>
 </html>
