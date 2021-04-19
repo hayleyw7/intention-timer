@@ -175,14 +175,13 @@ function createActivityCard() {
     pastActivitiesCard.innerHTML = ``
     for (var i = 0; i < activities.length; i++) {
       pastActivitiesCard.innerHTML += `<div id="past-card" class="card-features flex">
-      <div id="card-category" class="${changeCategoryColor(activities[i].category)}"></div>
-      <div id="activityTimeContainer" class="flex">
+      <div id="card-category" class="card-category ${changeCategoryColor(activities[i].category)}"></div>
+      <div id="activityTimeContainer" class="activity-time-container flex">
         <h3 id="past-card-activity">${activities[i].category}</h3>
         <h4 id="past-card-time">${activities[i].minutes} MIN ${activities[i].seconds} SECONDS</h4>
       </div>
       <h5 id="past-card-goal">${activities[i].description}</h5>
       </div>`
-      console.log(pastActivitiesCard)
     }
   }
   return activities
@@ -230,7 +229,5 @@ category === 'Study' ? color = "green"
 : category === 'Meditate' ? color = "purple" 
 : category === 'Exercise' ? color = "red" 
 : color="var(--white)"
-console.log(color)
 return color
 }
-

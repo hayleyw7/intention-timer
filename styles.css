@@ -84,24 +84,24 @@ h1 {
   padding: 0.5rem 1.2rem;
 }
 
-#start-btn {
+.start-btn {
   margin-top: 1.6rem;
 }
 
-#log-btn {
+.log-btn {
   width: 11rem;
   position: absolute;
   bottom: 0%;
 }
 
-#create-new-activity-btn {
+.create-new-activity-btn {
   align-self: center;
   width: 18rem;
 }
 
 /* BOTH CONTAINERS */
-#new,
-#past {
+.new,
+.past {
   align-self: flex-start;
   font-weight: 300;
   font-size: 2rem;
@@ -113,7 +113,7 @@ h1 {
   padding: 1.6rem 1.7rem;
 }
 
-#card {
+.card {
   justify-content: center ;
   margin-top: .8rem;
   padding: 1.8rem 2rem;
@@ -122,7 +122,7 @@ h1 {
   position: relative;
 }
 
-#card-content {
+.card-content {
   width: 100%;
 }
 
@@ -132,11 +132,11 @@ h3 {
   font-size: 13px;
 }
 
-#category {
+.category {
   flex-direction: row;
 }
 
-#box-container {
+.box-container {
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
@@ -154,7 +154,7 @@ h3 {
   border-radius: 4px;
 }
 
-#goal {
+.goal {
   width: 100%;
 }
 
@@ -167,23 +167,23 @@ h3 {
   align-self: center;
 }
 
-#time-box {
+.time-box {
   justify-content: space-between;
   margin-top: 3rem;
 }
 
-#minutes-box,
-#seconds-box {
+.minutes-box,
+.seconds-box {
   flex-direction: column;
   margin: 1rem 0 2rem 0
 }
 
-#button-container {
+.button-container {
   justify-content: flex-end;
 }
 
 /* Timer */
-#timer-card {
+.timer-card {
   align-items: center;
   flex-direction: column;
   justify-content: center;
@@ -191,30 +191,30 @@ h3 {
   position: relative;
 }
 
-#timer-card h2 {
+.timer-card h2 {
   font-weight: 300;
   transition: 300ms;
 }
 
-#timer-card h2:hover {
+.timer-card h2:hover {
   transition: 500ms ease-in;
   font-size: 1.55rem;
   color: var(--white)
 }
 
-#timer-card>h2:nth-child(1) {
+.timer-card>h2:nth-child(1) {
   margin-bottom: 20rem;
   font-size: 1.2rem;
   position: absolute;
 }
 
-#timer-card p {
+.timer-card p {
   margin-bottom: 14rem;
   font-size: 4rem;
   color: var(--white);
 }
 
-#ring {
+.ring {
   position: absolute;
   justify-content: center;
   align-items: center;
@@ -227,7 +227,7 @@ h3 {
 }
 
 /* RIGHT CONTAINER */
-#past-container {
+.past-container {
   flex: 2;
   flex-direction: column;
   text-align: center;
@@ -237,11 +237,11 @@ h3 {
   min-width: 20rem;
 }
 
-:is(#past-container, h2, p) {
+:is(.past-container, h2, p) {
   color: var(--gray);
 }
 
-#past-container p {
+.past-container p {
   width: 100%;
   height: 3rem;
   margin: .34rem 5rem 0 0;
@@ -249,8 +249,7 @@ h3 {
   font-size: 1.4rem;
 }
 
-
-#past-card {
+.past-card {
   width: 100%;
   color: var(--white);
   flex-direction: column;
@@ -259,37 +258,33 @@ h3 {
   margin-bottom: 1rem;
 }
 
-
-
-#past-card h3 {
+.past-card h3 {
   margin: 0;
 }
 
-#activityTimeContainer {
+.activity-time-container {
   flex-direction: column;
 }
 
-#past-card h3,
-#past-card h4,
-#past-card h5 {
+.past-card h3,
+.past-card h4,
+.past-card h5 {
   align-self: flex-start;
 }
 
-:is(#past-card, h4, h5) {
+:is(.past-card, h4, h5) {
   font-weight: 300;
 }
 
-#past-card h3 {
+.past-card h3 {
   font-size: .8rem;
 }
 
-#past-card h5 {
+.past-card h5 {
   margin-bottom: .2rem;
 }
 
-
-
-#card-category {
+.card-category {
   align-self: flex-end;
   margin-right: .5rem;
   height: 2rem;
@@ -297,8 +292,6 @@ h3 {
   position: absolute;
   bottom: 55%;
 }
-
-
 
 .green {
   background: var(--study)
@@ -321,9 +314,7 @@ input {
   color: var(--white);
 }
 
-
-
-#warning-0 {
+.warning-0 {
 margin-left: .5rem;
 position: relative;
 }
@@ -335,7 +326,7 @@ position: relative;
   position: absolute;
 }
 
-#warning-0 p {
+.warning-0 p {
   margin-top: .5rem;
   margin-left: .3rem;
 }
@@ -346,4 +337,3 @@ position: relative;
   position: absolute;
   color: var(--error);
 }
-
