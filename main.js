@@ -13,12 +13,12 @@ var eOff = document.querySelector('#eOff')
 
 // Forms
 var hiddenInput = document.querySelector('#hiddenInput')
-var studyLabel = document.querySelector('studyLabel')
-var meditateLabel = document.querySelector('#meditateLabel')
-var exerciseLabel = document.querySelector('#exerciseLabel')
+var studyBtn = document.querySelector('#studyBtn')
+var meditateBtn = document.querySelector('#meditateBtn')
+var exerciseBtn = document.querySelector('#exerciseBtn')
 var startActivityBtn = document.querySelector('#startBtn')
 var logActivityBtn = document.querySelector('#logBtn')
-var createNewActivityBtn = document.querySelector('createNewActivityBtn')
+var createNewActivityBtn = document.querySelector('#createNewActivityBtn')
 
 // Outer Card
 var card = document.querySelector('#cardContent')
@@ -172,7 +172,7 @@ function createActivityCard() {
     show(pastActivitiesCard)
     pastActivitiesCard.innerHTML = ``
     for (var i = 0; i < activities.length; i++) {
-      pastActivitiesCard.innerHTML += `<div id='pastCard' class='card-features flex'>
+      pastActivitiesCard.innerHTML += `<div id='pastCard' class='card-features past-card flex'>
       <div id='cardCategory' class='card-category ${changeCategoryColor(activities[i].category)}'></div>
       <div id='activityTimeContainer' class='activity-time-container flex'>
         <h3 id='pastCard-activity'>${activities[i].category}</h3>

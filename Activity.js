@@ -8,7 +8,7 @@ class Activity {
     this.id = id;
   }
   startTimer() {
-    beginCountdown(this.minutes, this.seconds);
+    beginTimer(this.minutes, this.seconds);
   }
   markComplete() {
     this.completed = true;
