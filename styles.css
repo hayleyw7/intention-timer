@@ -266,7 +266,8 @@ h3 {
 }
 
 .past-card {
-  width: 100%;
+  max-width: 20rem;
+  margin-right: .3rem;
   color: var(--white);
   flex-direction: column;
   padding-left: .5rem;
