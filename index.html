@@ -24,7 +24,6 @@
         <div id="card-content">
           <form>
             <!-- Activity Categories -->
-            <div id="hidden-input"></div>
             <div id="category" class="flex">
             <h3>Select A Category:</h3>
             <div id="warning-0" class="hidden flex">
@@ -82,8 +81,7 @@
             </div>
             <!--  Start Activity Button -->
             <div id="button-container" class="flex">
-              <input type="button" id="start-btn" class="btn" value="START ACTIVITY"
-                onClick="createActivity(this.form)">
+              <input type="button" id="start-btn" class="btn" value="START ACTIVITY">
             </div>
           </form>
         </div>
@@ -95,10 +93,9 @@
             <h2 id="start">START</h2>
           </div>
           <!-- Log & New Activity Button -->
-          <input type="button" id="log-btn" class="btn" value="LOG ACTIVITY" onClick="logActivity()">
+          <input type="button" id="log-btn" class="btn" value="LOG ACTIVITY">
         </div>
-        <input type="button" id="create-new-activity-btn" class="btn hidden" value="CREATE A NEW ACTIVITY"
-          onClick="makeNewActivity()">
+        <input type="button" id="create-new-activity-btn" class="btn hidden" value="CREATE A NEW ACTIVITY">
         <div id="create-box" class="hidden flex">
           <input type="button" id="start-btn" value="CREATE">
         </div>
