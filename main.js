@@ -19,6 +19,10 @@ var exerciseBtn = document.querySelector('#exerciseBtn')
 var startActivityBtn = document.querySelector('#startBtn')
 var logActivityBtn = document.querySelector('#logBtn')
 var createNewActivityBtn = document.querySelector('#createNewActivityBtn')
+var categoryValue = document.querySelector('#category')
+var goalValue = document.querySelector('#goal')
+var minutesValue = document.querySelector('#minutes')
+var secondsValue = document.querySelector('#seconds')
 
 // Outer Card
 var card = document.querySelector('#cardContent')
@@ -46,12 +50,15 @@ window.addEventListener('load', createActivityCard)
 studyBtn.addEventListener('click', activateStudy);
 meditateBtn.addEventListener('click', activateMeditate);
 exerciseBtn.addEventListener('click', activateExcercise);
-ring.addEventListener('click', triggerTimer)
+ring.addEventListener('click', callTimerMethod);
+startActivityBtn.addEventListener('click', createActivity);
+logActivityBtn.addEventListener('click', logActivity);
+ring.addEventListener('click', makeNewActivity)
 
 
 // Event Handlers
 function activateStudy() {
-  hiddenInput.innerHTML = `<input type='hidden' name='category' value='Study'>`
+  categoryValue.id = "category study"
   studyBtn.style.borderColor = ('var(--study)')
   ring.style.borderColor = ('var(--study)')
   studyLabel.style.color = ('var(--study)')
@@ -68,7 +75,7 @@ function activateStudy() {
 }
 
 function activateMeditate() {
-  hiddenInput.innerHTML = `<input type='hidden' name='category' value='Meditate'>`
+  categoryValue.id = "category meditate"
   meditateBtn.style.borderColor = ('var(--meditate)')
   ring.style.borderColor = ('var(--meditate)')
   meditateLabel.style.color= ('var(--meditate')
@@ -85,7 +92,7 @@ function activateMeditate() {
 }
 
 function activateExcercise() {
-  hiddenInput.innerHTML = `<input type='hidden' name='category' value='Exercise'>`
+  categoryValue.id = "category exercise"
   exerciseBtn.style.borderColor = ('var(--exercise)')
   ring.style.borderColor = ('var(--exercise)')
   exerciseLabel.style.color= ('var(--exercise')
@@ -102,13 +109,21 @@ function activateExcercise() {
   hide(sOn)
 }
 
-function createActivity(form) {
-  !hiddenInput.innerHTML ? displayWarning(catagoryWarning) : hide(catagoryWarning)
-  form.goal.value === '' ? displayWarning(goalWarning) : hide(goalWarning)
-  !form.minutes.value ? displayWarning(minutesWarning) : hide(minutesWarning)
-  !form.seconds.value ? displayWarning(secondsWarning) : hide(secondsWarning)
-  if(form.goal.value && form.minutes.value && form.seconds.value) {
-    currentActivity = new Activity(form.category.value, form.goal.value, parseInt(form.minutes.value), parseInt(form.seconds.value), generateRandomID());
+function createActivity() {
+  var selectedCategory;
+  if (categoryValue.id === "category study") {
+    selectedCategory = "Study"
+  } else if (categoryValue.id === "category meditate") {
+    selectedCategory = "Meditate"
+  } else if (categoryValue.id === "category exercise") {
+    selectedCategory = "Exercise"
+  }
+  categoryValue.id === "category" ? displayWarning(catagoryWarning) : hide(catagoryWarning)
+  goalValue.value === "" ? displayWarning(goalWarning) : hide(goalWarning)
+  !minutesValue.value ? displayWarning(minutesWarning) : hide(minutesWarning)
+  !secondsValue.value ? displayWarning(secondsWarning) : hide(secondsWarning)
+  if(selectedCategory && goalValue.value && minutesValue.value && secondsValue.value) {
+    currentActivity = new Activity(selectedCategory, goalValue.value, parseInt(minutesValue.value), parseInt(secondsValue.value), generateRandomID());
     showTimer()
     show(timerCard)
     hide(card)
@@ -127,6 +142,10 @@ function showTimer() {
   var seconds = currentActivity.seconds < 10 ? '0' + currentActivity.seconds : currentActivity.seconds;
   activityHeader.textContent = `${currentActivity.description}`
   timeLeft.textContent = minutes + ':' + seconds;
+}
+
+function callTimerMethod() {
+  currentActivity.startTimer();
 }
 
 function beginTimer(minutes, seconds) {
@@ -215,10 +234,6 @@ function resetFade(e) {
 
 function updateHeader() {
   activityHeader.innerText = 'Current Activity'
-}
-
-function triggerTimer() {
-  beginTimer(currentActivity.minutes, currentActivity.seconds)
 }
 
 function changeCategoryColor(category) {
