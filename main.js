@@ -172,13 +172,13 @@ function createActivityCard() {
     show(pastActivitiesCard)
     pastActivitiesCard.innerHTML = ``
     for (var i = 0; i < activities.length; i++) {
-      pastActivitiesCard.innerHTML += `<div id='past-card' class='card-features flex'>
-      <div id='card-category' class='card-category ${changeCategoryColor(activities[i].category)}'></div>
+      pastActivitiesCard.innerHTML += `<div id='pastCard' class='card-features flex'>
+      <div id='cardCategory' class='card-category ${changeCategoryColor(activities[i].category)}'></div>
       <div id='activityTimeContainer' class='activity-time-container flex'>
-        <h3 id='past-card-activity'>${activities[i].category}</h3>
-        <h4 id='past-card-time'>${activities[i].minutes} MIN ${activities[i].seconds} SECONDS</h4>
+        <h3 id='pastCard-activity'>${activities[i].category}</h3>
+        <h4 id='pastCard-time'>${activities[i].minutes} MIN ${activities[i].seconds} SECONDS</h4>
       </div>
-      <h5 id='past-card-goal'>${activities[i].description}</h5>
+      <h5 id='pastCard-goal'>${activities[i].description}</h5>
       </div>`
     }
   }
