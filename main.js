@@ -17,7 +17,7 @@ var meditateLabel = document.querySelector('#meditateLabel')
 var exerciseLabel = document.querySelector('#exerciseLabel')
 var startActivityBtn = document.querySelector('#startBtn')
 var logActivityBtn = document.querySelector('#logBtn')
-var createNewActivityBtn = document.querySelector('createNewActivityBtn')
+var createNewActivityBtn = document.querySelector('#createNewActivityBtn')
 var categoryValue = document.querySelector('#category')
 var goalValue = document.querySelector('#goal')
 var minutesValue = document.querySelector('#minutes')
@@ -52,7 +52,7 @@ exerciseBtn.addEventListener('click', activateExcercise);
 ring.addEventListener('click', callTimerMethod);
 startActivityBtn.addEventListener('click', createActivity);
 logActivityBtn.addEventListener('click', logActivity);
-ring.addEventListener('click', makeNewActivity)
+// ring.addEventListener('click', makeNewActivity)
 
 
 // Event Handlers
@@ -80,7 +80,7 @@ function activateMeditate() {
   meditateLabel.style.color= ('var(--meditate')
   exerciseBtn.style.borderColor = ('var(--white)')
   studyBtn.style.borderColor = ('var(--white)')
-  studyLabel.style.color = ('var(--white)')
+  studyBtn.style.color = ('var(--white)')
   exerciseLabel.style.color = ('var(--white)')
   hide(mOff)
   hide(eOn)
@@ -98,7 +98,7 @@ function activateExcercise() {
   exerciseBtn.style.color = ('var(--exercise)')
   meditateBtn.style.borderColor = ('var(--white)')
   studyBtn.style.borderColor = ('var(--white)')
-  studyLabel.style.color = ('var(--white)')
+  studyBtn.style.color = ('var(--white)')
   meditateLabel.style.color = ('var(--white)')
   show(eOn)
   show(mOff)
@@ -144,6 +144,8 @@ function showTimer() {
 }
 
 function callTimerMethod() {
+  hide(createNewActivityBtn)
+  show(card)
   currentActivity.startTimer();
 }
 
@@ -202,12 +204,6 @@ function createActivityCard() {
   }
   return activities
 }
-
-function makeNewActivity() {
-  hide(createNewActivityBtn)
-  show(card)
-}
-
 
 // Helper Functions
 function generateRandomID() {

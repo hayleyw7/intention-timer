@@ -14,7 +14,9 @@ class Activity {
     this.completed = true;
   }
   saveToStorage() {
+console.log(currentActivity)
     activities.push(currentActivity)
+console.log(activities)
     localStorage.setItem('Activities', JSON.stringify(activities))
     createActivityCard()
   }
