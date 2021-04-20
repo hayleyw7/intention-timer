@@ -52,7 +52,7 @@ h1 {
   padding-bottom: .1rem;
 }
 
-.minsec-forn {
+.minsec-form {
   width: 12rem;
 }
 
@@ -101,9 +101,9 @@ h1 {
   padding: 0.5rem 1.2rem;
 }
 
-/* .start-btn {
+.start-btn {
   margin-top: 1.6rem;
-} */
+}
 
 .log-btn {
   width: 11rem;
@@ -348,10 +348,14 @@ position: relative;
 }
 
 .warning {
-  margin-top: 1rem;
+  top: 77%;
   justify-content: space-between;
   width: 15rem;
   position: absolute;
+}
+
+.warning-1 {
+ top: 52%;
 }
 
 .warning-0 p {
@@ -365,6 +369,7 @@ position: relative;
   position: absolute;
   color: var(--error);
 }
+
 
 .green {
   background: var(--study)
@@ -448,4 +453,3 @@ position: relative;
     margin-bottom: 1rem;
     align-self:center;
   }
-
