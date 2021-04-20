@@ -290,9 +290,7 @@ h3 {
   flex-direction: column;
 }
 
-.past-card h3,
-.past-card h4,
-.past-card h5 {
+.past-card h3 {
   align-self: flex-start;
 }
 
