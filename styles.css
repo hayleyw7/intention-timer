@@ -25,7 +25,6 @@ body {
   background-color: var(--dark);
 }
 
-
 /* HEADER */
 header {
   min-height: 8vh;
@@ -50,6 +49,9 @@ h1 {
   border-bottom: 1px solid var(--gray);
   background-color: var(--light);
   padding-bottom: .1rem;
+}
+
+.minsec-forn {
   width: 12rem;
 }
 
@@ -122,10 +124,11 @@ h1 {
 }
 
 /* LEFT CONTAINER  */
-.container {
+.new-container {
   /* flex-grow: 2; */
   flex: 4;
   padding: 2.3rem 1.7rem;
+  min-width: 25rem;
 }
 
 .card {
@@ -379,11 +382,88 @@ position: relative;
 
 @media (max-width: 768px) {
   main {
-    /* flex-wrap: wrap; */
+    flex-wrap: wrap;
     flex-direction: row;
+    justify-content: center;
+  }
+
+  .category {
+    justify-content: center;
+  }
+
+  .new {
+    text-align: center;
+  }
+
+  .accomplish-prompt {
+    padding: 2.5rem 0 0 0;
+  }
+
+  .box-container {
+    margin-top: 1.5rem;
+  }
+
+  .box {
+    width: 5rem;
+  }
+
+  .minsec-form {
+    width: 10rem;
+  }
+
+  .start-btn {
+    margin-right: 7rem;
+  }
+
+  .past {
+    text-align: center;
+    align-self: center;
+    margin-top: 0;
 
   }
-  body {
+  .past-container {
+    border: none;
+    justify-content: center;
   }
-}
 
+  .scroll {
+    padding: 2rem;
+    /* height: 30.5rem; */
+    width: auto;
+    justify-content: center;
+    /* overflow-y: auto; */
+  }
+
+  .past-card {
+    width: 100%;
+    align-self: center;
+    margin: 0;
+    margin-bottom: 1rem;
+  }
+
+
+/* 
+  .minutes-box,
+  .seconds-box {
+    flex-direction: column;
+    margin: 1rem 0 2rem 0;
+  }
+   */
+/* 
+   .past-container {
+    flex: 1;
+    flex-direction: column;
+    text-align: center;
+    border-left: 1px solid var(--gray);
+    padding: 2rem 2rem;
+    height: 100vh;
+    min-width: 20rem;
+  } */
+
+  /* .scroll {
+    padding: 1.1rem;
+    height: 30.5rem;
+    width: 23rem;
+    overflow-y: auto;
+  }
+   */
