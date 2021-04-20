@@ -256,13 +256,13 @@ h3 {
 /* RIGHT CONTAINER */
 .past-container {
   /* flex: 1; */
-  flex-shrink: 2;
+  /* flex-shrink: 2; */
   flex-direction: column;
   text-align: center;
   border-left: 1px solid var(--gray);
   padding: 2rem 2rem;
   height: 100vh;
-  min-width: 20rem;
+  /* min-width: 20rem; */
 }
 
 .past {
@@ -282,12 +282,12 @@ h3 {
 }
 
 .past-card {
-  /* min-width: 15rem; */
-  width: 20rem;
-  margin-right: 1rem;
+  /* width: 20rem; */
+  /* margin-right: 1rem; */
   color: var(--white);
   flex-direction: column;
   padding-left: .5rem;
+  margin-right: .5rem;
   position: relative;
   margin-bottom: 1rem;
 }
@@ -380,7 +380,6 @@ position: relative;
   color: var(--gray);
   /* opacity: 0; */
 }
-
 
 @media (max-width: 768px) {
   main {
