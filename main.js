@@ -39,6 +39,7 @@ var activityHeader = document.querySelector('#userActivity')
 // Activity Log
 var pastActivitiesCard = document.querySelector('#pastActivitiesCard')
 var pastActivitiesDefault = document.querySelector('#pastActivitiesDefault')
+var scrollMsg = document.querySelector('#scrollMsg')
 
 // Warnings
 var catagoryWarning = document.querySelector('#warning0')
@@ -133,9 +134,9 @@ function createActivity() {
 }
 
 function displayWarning(warning) {
-  resetFade(warning)
+  resetFadeOut(warning)
   show(warning)
-  animateFade(warning)
+  animateFadeOut(warning)
 }
 
 function showTimer() {
@@ -182,6 +183,7 @@ function logActivity() {
 }
 
 function createActivityCard () {
+  checkForScrollMsg()
   var parsed = JSON.parse(localStorage.getItem('Activities'));
   if (!parsed) {
     hide(pastActivitiesCard)
@@ -230,14 +232,19 @@ function show(e) {
   e.classList.remove('hidden')
 }
 
-function animateFade(e) {
-  e.classList.add('fade')
+function animateFadeOut(e) {
+  e.classList.add('fade-out')
 }
 
-function resetFade(e) {
-  e.classList.remove('fade')
+function resetFadeOut(e) {
+  e.classList.remove('fade-out')
   void e.offsetWidth;
 }
+
+function animateFadeIn(e) {
+  e.classList.add('fade-in')
+}
+
 
 function updateHeader() {
   activityHeader.innerText = 'Current Activity'
@@ -276,4 +283,15 @@ show(sOff)
   exerciseLabel.style.color= ('var(--white)')
   meditateLabel.style.color = ('var(--white)')
   ring.style.borderColor = ('var(--white')
+}
+
+function checkForScrollMsg() {
+  var parsedActivities = JSON.parse(localStorage.getItem('Activities'))
+  if(!parsedActivities) {
+    return
+  }
+  if (parsedActivities.length > 4) {
+    show(scrollMsg) 
+    animateFadeIn(scrollMsg)
+  } 
 }

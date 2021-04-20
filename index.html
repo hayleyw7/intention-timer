@@ -19,7 +19,7 @@
   <main class='flex'>
     <!-- New Activity (Left) Container -->
     <section class='container'>
-      <h2 id='new' class="new">New Activity</h2>
+      <h2 id='new' class='new'>New Activity</h2>
       <article id='card' class='card card-features flex'>
         <div id='cardContent' class='card-content'>
           <form>
@@ -81,7 +81,7 @@
             </div>
             <!--  Start Activity Button -->
             <div id='buttonContainer' class='button-container flex'>
-              <input type="button" id="startBtn" class="start-btn btn" value="START ACTIVITY">
+              <input type='button' id='startBtn' class='start-btn btn' value='START ACTIVITY'>
             </div>
           </form>
         </div>
@@ -99,10 +99,13 @@
       </article>
     </section>
     <!-- Past (Right) Container -->
-    <section id='pastContainer' class='past-card past-container flex'>
+    <section id='pastContainer' class='past-card past-container  flex'>
       <h2 id='past' class='past'>Past Activities</h2>
       <p id='pastActivitiesDefault'>You haven't logged any activities today!</br>Complete the form to the left to get started!</p>
+      <div class='scroll'>
       <p id='pastActivitiesCard' class='hidden'></p>
+      </div>
+      <p id='scrollMsg' class='scroll-msg hidden'>SCROLL DOWN!</p>
     </section>
   </main>
 </body>

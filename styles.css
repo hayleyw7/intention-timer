@@ -23,7 +23,6 @@ body {
   font-family: "Montserrat", sans-serif;
   box-sizing: border-box;
   background-color: var(--dark);
-
 }
 
 
@@ -46,8 +45,6 @@ h1 {
   display: flex;
 }
 
-
-
 .borderless {
   border-width: 0;
   border-bottom: 1px solid var(--gray);
@@ -62,11 +59,17 @@ h1 {
   box-shadow: 3px 3px 5px 6px var(--cardShadow);
 }
 
-.fade {
+.fade-out {
   transition: 1s 1s ease-in-out;
   transform: translateY(20px);
   opacity: 0;
 }
+
+.fade-in {
+  transition: 1s opacity ease-in;
+  opacity: 1;
+}
+
 
 .hidden {
   position: absolute !important;
@@ -76,6 +79,13 @@ h1 {
 
 .form-padding {
   padding: .5rem 0;
+}
+
+.scroll {
+  padding: 1.1rem;
+  height: 30.5rem;
+  width: 23rem;
+  overflow-y: auto;
 }
 
 /* BUTTON */
@@ -113,7 +123,8 @@ h1 {
 
 /* LEFT CONTAINER  */
 .container {
-  flex-grow: 2;
+  /* flex-grow: 2; */
+  flex: 4;
   padding: 2.3rem 1.7rem;
 }
 
@@ -121,9 +132,8 @@ h1 {
   justify-content: center ;
   margin-top: .4rem;
   padding: 1.8rem 2rem;
-  min-width: 25rem;
-  min-height: 27rem;
   position: relative;
+  min-height: 25rem;
 }
 
 .card-content {
@@ -206,6 +216,7 @@ h3 {
   font-weight: 300;
   transition: 300ms;
   align-self: center;
+  text-align: center;
 }
 
 .timer-card h2:hover {
@@ -240,7 +251,7 @@ h3 {
 
 /* RIGHT CONTAINER */
 .past-container {
-  flex: 2;
+  flex: 1;
   flex-direction: column;
   text-align: center;
   border-left: 1px solid var(--gray);
@@ -266,16 +277,15 @@ h3 {
 }
 
 .past-card {
-  max-width: 20rem;
-  margin-right: .3rem;
+  min-width: 15rem;
+  width: 20rem;
+  margin-right: 1rem;
   color: var(--white);
   flex-direction: column;
   padding-left: .5rem;
   position: relative;
   margin-bottom: 1rem;
 }
-
-
 
 .activity-time-container {
   flex-direction: column;
@@ -360,3 +370,20 @@ position: relative;
 .red {
   background: var(--exercise)
 }
+
+.scroll-msg {
+  color: var(--gray);
+  /* opacity: 0; */
+}
+
+
+@media (max-width: 768px) {
+  main {
+    /* flex-wrap: wrap; */
+    flex-direction: row;
+
+  }
+  body {
+  }
+}
+
