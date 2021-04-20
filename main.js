@@ -54,7 +54,7 @@ meditateBtn.addEventListener('click', activateMeditate);
 exerciseBtn.addEventListener('click', activateExcercise);
 startActivityBtn.addEventListener('click', createActivity);
 logActivityBtn.addEventListener('click', logActivity);
-ring.addEventListener('click', makeNewActivity)
+ring.addEventListener('click', callTimerMethod)
 createNewActivityBtn.addEventListener('click', resetScene)
 
 
@@ -127,9 +127,6 @@ function createActivity() {
   if(selectedCategory && goalValue.value && minutesValue.value && secondsValue.value) {
     currentActivity = new Activity(selectedCategory, goalValue.value, parseInt(minutesValue.value), parseInt(secondsValue.value), generateRandomID());
     showTimer()
-    show(timerCard)
-    hide(card)
-    hide(logActivityBtn)
   }
 }
 
@@ -140,6 +137,9 @@ function displayWarning(warning) {
 }
 
 function showTimer() {
+  show(timerCard)
+  hide(card)
+  hide(logActivityBtn)
   var minutes = currentActivity.minutes < 10 ? '0' + currentActivity.minutes : currentActivity.minutes;
   var seconds = currentActivity.seconds < 10 ? '0' + currentActivity.seconds : currentActivity.seconds;
   activityHeader.textContent = `${currentActivity.description}`
@@ -150,28 +150,6 @@ function callTimerMethod() {
   hide(createNewActivityBtn)
   hide(card)
   currentActivity.startTimer();
-}
-
-function beginTimer(minutes, seconds) {
-  timer = new CountDownTimer(minutes, seconds);
-  timer.onTick(format(timeLeft)).onTick(restart).start();
-  function restart() {
-    if (this.expired()) {
-      setTimeout(function () {
-        currentActivity.markComplete();
-        show(logActivityBtn)
-        start.textContent = `COMPLETE!`
-        return alert('Congrats! You made it!');
-      }, 1000);
-    }
-  }
-  function format(timeLeft) {
-    return function (minutes, seconds) {
-      minutes = minutes < 10 ? '0' + minutes : minutes;
-      seconds = seconds < 10 ? '0' + seconds : seconds;
-      timeLeft.textContent = minutes + ':' + seconds;
-    };
-  }
 }
 
 function logActivity() {
@@ -185,7 +163,6 @@ function logActivity() {
 }
 
 function createActivityCard () {
-  checkForScrollMsg()
   var parsed = JSON.parse(localStorage.getItem('Activities'));
   if (!parsed) {
     hide(pastActivitiesCard)
@@ -206,12 +183,11 @@ function createActivityCard () {
       </div>`
     }
   }
+  if (parsed.length > 4) {
+    show(scrollMsg) 
+    animateFadeIn(scrollMsg)
+  } 
   return activities
-}
-
-function makeNewActivity() {
-  callTimerMethod()
-  // hide(createNewActivityBtn)
 }
 
 function resetScene() {
@@ -219,7 +195,6 @@ function resetScene() {
     resetInputs()
     show(card)
 }
-
 
 // Helper Functions
 function generateRandomID() {
@@ -246,7 +221,6 @@ function resetFadeOut(e) {
 function animateFadeIn(e) {
   e.classList.add('fade-in')
 }
-
 
 function updateHeader() {
   activityHeader.innerText = 'Current Activity'
@@ -285,15 +259,4 @@ show(sOff)
   exerciseLabel.style.color= ('var(--white)')
   meditateLabel.style.color = ('var(--white)')
   ring.style.borderColor = ('var(--white')
-}
-
-function checkForScrollMsg() {
-  var parsedActivities = JSON.parse(localStorage.getItem('Activities'))
-  if(!parsedActivities) {
-    return
-  }
-  if (parsedActivities.length > 4) {
-    show(scrollMsg) 
-    animateFadeIn(scrollMsg)
-  } 
 }
