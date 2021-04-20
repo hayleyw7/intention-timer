@@ -12,12 +12,14 @@ var eOn = document.querySelector('#eOn')
 var eOff = document.querySelector('#eOff')
 
 // Forms
-var studyLabel = document.querySelector('studyLabel')
-var meditateLabel = document.querySelector('#meditateLabel')
-var exerciseLabel = document.querySelector('#exerciseLabel')
+var hiddenInput = document.querySelector('#hiddenInput')
+var studyBtn = document.querySelector('#studyBtn')
+var meditateBtn = document.querySelector('#meditateBtn')
+var exerciseBtn = document.querySelector('#exerciseBtn')
 var startActivityBtn = document.querySelector('#startBtn')
 var logActivityBtn = document.querySelector('#logBtn')
 var createNewActivityBtn = document.querySelector('#createNewActivityBtn')
+// var startNewBtn = document.querySelector('#startNewBtn')
 var categoryValue = document.querySelector('#category')
 var goalValue = document.querySelector('#goal')
 var minutesValue = document.querySelector('#minutes')
@@ -37,6 +39,7 @@ var activityHeader = document.querySelector('#userActivity')
 // Activity Log
 var pastActivitiesCard = document.querySelector('#pastActivitiesCard')
 var pastActivitiesDefault = document.querySelector('#pastActivitiesDefault')
+var scrollMsg = document.querySelector('#scrollMsg')
 
 // Warnings
 var catagoryWarning = document.querySelector('#warning0')
@@ -49,10 +52,10 @@ window.addEventListener('load', createActivityCard)
 studyBtn.addEventListener('click', activateStudy);
 meditateBtn.addEventListener('click', activateMeditate);
 exerciseBtn.addEventListener('click', activateExcercise);
-ring.addEventListener('click', callTimerMethod);
 startActivityBtn.addEventListener('click', createActivity);
 logActivityBtn.addEventListener('click', logActivity);
-// ring.addEventListener('click', makeNewActivity)
+ring.addEventListener('click', makeNewActivity)
+createNewActivityBtn.addEventListener('click', resetScene)
 
 
 // Event Handlers
@@ -131,9 +134,9 @@ function createActivity() {
 }
 
 function displayWarning(warning) {
-  resetFade(warning)
+  resetFadeOut(warning)
   show(warning)
-  animateFade(warning)
+  animateFadeOut(warning)
 }
 
 function showTimer() {
@@ -145,7 +148,7 @@ function showTimer() {
 
 function callTimerMethod() {
   hide(createNewActivityBtn)
-  show(card)
+  hide(card)
   currentActivity.startTimer();
 }
 
@@ -181,7 +184,8 @@ function logActivity() {
   currentActivity.saveToStorage()
 }
 
-function createActivityCard() {
+function createActivityCard () {
+  checkForScrollMsg()
   var parsed = JSON.parse(localStorage.getItem('Activities'));
   if (!parsed) {
     hide(pastActivitiesCard)
@@ -192,7 +196,7 @@ function createActivityCard() {
     show(pastActivitiesCard)
     pastActivitiesCard.innerHTML = ``
     for (var i = 0; i < activities.length; i++) {
-      pastActivitiesCard.innerHTML += `<div id='pastCard' class='card-features flex'>
+      pastActivitiesCard.innerHTML += `<div id='pastCard' class='card-features past-card flex'>
       <div id='cardCategory' class='card-category ${changeCategoryColor(activities[i].category)}'></div>
       <div id='activityTimeContainer' class='activity-time-container flex'>
         <h3 id='pastCard-activity'>${activities[i].category}</h3>
@@ -204,6 +208,18 @@ function createActivityCard() {
   }
   return activities
 }
+
+function makeNewActivity() {
+  callTimerMethod()
+  // hide(createNewActivityBtn)
+}
+
+function resetScene() {
+    hide(createNewActivityBtn)
+    resetInputs()
+    show(card)
+}
+
 
 // Helper Functions
 function generateRandomID() {
@@ -218,14 +234,19 @@ function show(e) {
   e.classList.remove('hidden')
 }
 
-function animateFade(e) {
-  e.classList.add('fade')
+function animateFadeOut(e) {
+  e.classList.add('fade-out')
 }
 
-function resetFade(e) {
-  e.classList.remove('fade')
+function resetFadeOut(e) {
+  e.classList.remove('fade-out')
   void e.offsetWidth;
 }
+
+function animateFadeIn(e) {
+  e.classList.add('fade-in')
+}
+
 
 function updateHeader() {
   activityHeader.innerText = 'Current Activity'
@@ -238,4 +259,41 @@ category === 'Study' ? color = 'green'
 : category === 'Exercise' ? color = 'red' 
 : color='var(--white)'
 return color
+}
+
+function resetInputs() {
+  resetBtns()
+  goalValue.value = ""
+  minutesValue.value = ""
+  secondsValue.value = ""
+}
+
+function resetBtns() {
+show(sOff)
+  show(mOff)
+  show(eOff)
+  hide(sOn)
+  hide(mOn)
+  hide(eOn)
+  exerciseBtn.style.borderColor = ('var(--white')
+  exerciseBtn.style.color = ('var(--white')
+  studyBtn.style.borderColor = ('var(--white)')
+  studyBtn.style.color = ('var(--white)')
+  meditateBtn.style.borderColor = ('var(--white)')
+  meditateBtn.style.color = ('var(--white)')
+  studyLabel.style.color = ('var(--white)')
+  exerciseLabel.style.color= ('var(--white)')
+  meditateLabel.style.color = ('var(--white)')
+  ring.style.borderColor = ('var(--white')
+}
+
+function checkForScrollMsg() {
+  var parsedActivities = JSON.parse(localStorage.getItem('Activities'))
+  if(!parsedActivities) {
+    return
+  }
+  if (parsedActivities.length > 4) {
+    show(scrollMsg) 
+    animateFadeIn(scrollMsg)
+  } 
 }
