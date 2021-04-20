@@ -83,7 +83,7 @@ function activateMeditate() {
   meditateLabel.style.color= ('var(--meditate')
   exerciseBtn.style.borderColor = ('var(--white)')
   studyBtn.style.borderColor = ('var(--white)')
-  studyLabel.style.color = ('var(--white)')
+  studyBtn.style.color = ('var(--white)')
   exerciseLabel.style.color = ('var(--white)')
   hide(mOff)
   hide(eOn)
@@ -101,7 +101,7 @@ function activateExcercise() {
   exerciseBtn.style.color = ('var(--exercise)')
   meditateBtn.style.borderColor = ('var(--white)')
   studyBtn.style.borderColor = ('var(--white)')
-  studyLabel.style.color = ('var(--white)')
+  studyBtn.style.color = ('var(--white)')
   meditateLabel.style.color = ('var(--white)')
   show(eOn)
   show(mOff)
@@ -147,6 +147,8 @@ function showTimer() {
 }
 
 function callTimerMethod() {
+  hide(createNewActivityBtn)
+  hide(card)
   currentActivity.startTimer();
 }
 
