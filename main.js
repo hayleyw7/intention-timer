@@ -200,7 +200,7 @@ function generateRandomID() {
   return Math.floor((1 + Math.random()) * 0x100000)
 }
 
-function animateFadein(e) {
+function animateFadeIn(e) {
   e.classList.add('fade-in')
 }
 
