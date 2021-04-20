@@ -126,7 +126,8 @@ h1 {
 
 /* LEFT CONTAINER  */
 .new-container {
-  flex: 4;
+  /* flex: 4; */
+  flex-basis: 66.6%;
   padding: 2.3rem 1.7rem;
   min-width: 25rem;
 }
@@ -254,7 +255,8 @@ h3 {
 
 /* RIGHT CONTAINER */
 .past-container {
-  flex: 1;
+  /* flex: 1; */
+  flex-shrink: 2;
   flex-direction: column;
   text-align: center;
   border-left: 1px solid var(--gray);
@@ -280,7 +282,7 @@ h3 {
 }
 
 .past-card {
-  min-width: 15rem;
+  /* min-width: 15rem; */
   width: 20rem;
   margin-right: 1rem;
   color: var(--white);
