@@ -1,39 +1,39 @@
 // Activities
-var studyBtn = document.querySelector('#studyBox');
-var meditateBtn = document.querySelector('#meditateBox');
 var exerciseBtn = document.querySelector('#exerciseBox');
+var meditateBtn = document.querySelector('#meditateBox');
+var studyBtn = document.querySelector('#studyBox');
 
 // On & off buttons 
-var sOn = document.querySelector('#sOn')
-var sOff = document.querySelector('#sOff')
-var mOn = document.querySelector('#mOn')
-var mOff = document.querySelector('#mOff')
 var eOn = document.querySelector('#eOn')
 var eOff = document.querySelector('#eOff')
+var mOn = document.querySelector('#mOn')
+var mOff = document.querySelector('#mOff')
+var sOn = document.querySelector('#sOn')
+var sOff = document.querySelector('#sOff')
 
 // Forms
-var hiddenInput = document.querySelector('#hiddenInput')
-var studyBtn = document.querySelector('#studyBtn')
-var meditateBtn = document.querySelector('#meditateBtn')
-var exerciseBtn = document.querySelector('#exerciseBtn')
-var startActivityBtn = document.querySelector('#startBtn')
-var logActivityBtn = document.querySelector('#logBtn')
-var createNewActivityBtn = document.querySelector('#createNewActivityBtn')
 var categoryValue = document.querySelector('#category')
+var createNewActivityBtn = document.querySelector('#createNewActivityBtn')
+var exerciseBtn = document.querySelector('#exerciseBtn')
 var goalValue = document.querySelector('#goal')
+var hiddenInput = document.querySelector('#hiddenInput')
+var logActivityBtn = document.querySelector('#logBtn')
+var meditateBtn = document.querySelector('#meditateBtn')
 var minutesValue = document.querySelector('#minutes')
 var secondsValue = document.querySelector('#seconds')
+var startActivityBtn = document.querySelector('#startBtn')
+var studyBtn = document.querySelector('#studyBtn')
 
 // Outer Card
-var card = document.querySelector('#cardContent')
 var activityHeader = document.querySelector('#new')
+var card = document.querySelector('#cardContent')
 
 // Timer Card 
-var timerCard = document.querySelector('#timerCard');
-var timer = document.querySelector('#timer')
-var timeLeft = document.querySelector('#time')
-var ring = document.querySelector('#ring')
 var activityHeader = document.querySelector('#userActivity')
+var ring = document.querySelector('#ring')
+var timer = document.querySelector('#timer')
+var timerCard = document.querySelector('#timerCard');
+var timeLeft = document.querySelector('#time')
 
 // Activity Log
 var pastActivitiesCard = document.querySelector('#pastActivitiesCard')
@@ -41,67 +41,67 @@ var pastActivitiesDefault = document.querySelector('#pastActivitiesDefault')
 var scrollMsg = document.querySelector('#scrollMsg')
 
 // Warnings
-var catagoryWarning = document.querySelector('#warning0')
+var categoryWarning = document.querySelector('#warning0')
 var goalWarning = document.querySelector('#warning1')
 var minutesWarning = document.querySelector('#warning2')
 var secondsWarning = document.querySelector('#warning3')
 
 // Event Listeners 
 window.addEventListener('load', createActivityCard)
-studyBtn.addEventListener('click', activateStudy);
-meditateBtn.addEventListener('click', activateMeditate);
-exerciseBtn.addEventListener('click', activateExcercise);
-startActivityBtn.addEventListener('click', createActivity);
-logActivityBtn.addEventListener('click', logActivity);
-ring.addEventListener('click', callTimerMethod)
 createNewActivityBtn.addEventListener('click', resetScene)
+exerciseBtn.addEventListener('click', activateExcercise);
+logActivityBtn.addEventListener('click', logActivity);
+meditateBtn.addEventListener('click', activateMeditate);
+ring.addEventListener('click', callTimerMethod)
+startActivityBtn.addEventListener('click', createActivity);
+studyBtn.addEventListener('click', activateStudy);
 
 
 // Event Handlers
 function activateStudy() {
   categoryValue.id = "category study"
-  studyBtn.style.borderColor = ('var(--study)')
-  ring.style.borderColor = ('var(--study)')
-  studyLabel.style.color = ('var(--study)')
   exerciseBtn.style.borderColor = ('var(--white)')
+  exerciseLabel.style.color = ('var(--white)')
   meditateBtn.style.borderColor = ('var(--white)')
   meditateLabel.style.color = ('var(--white)')
-  exerciseLabel.style.color = ('var(--white)')
-  show(sOn)
-  show(mOff)
-  show(eOff)
-  hide(sOff)
-  hide(mOn)
+  ring.style.borderColor = ('var(--study)')
+  studyBtn.style.borderColor = ('var(--study)')
+  studyLabel.style.color = ('var(--study)')
   hide(eOn)
+  hide(mOn)
+  hide(sOff)
+  show(eOff)
+  show(mOff)
+  show(sOn)
 }
 
 function activateMeditate() {
   categoryValue.id = "category meditate"
-  meditateBtn.style.borderColor = ('var(--meditate)')
-  ring.style.borderColor = ('var(--meditate)')
-  meditateLabel.style.color= ('var(--meditate')
   exerciseBtn.style.borderColor = ('var(--white)')
+  exerciseLabel.style.color = ('var(--white)')
+  meditateBtn.style.borderColor = ('var(--meditate)')
+  meditateLabel.style.color= ('var(--meditate')
+  ring.style.borderColor = ('var(--meditate)')
   studyBtn.style.borderColor = ('var(--white)')
   studyBtn.style.color = ('var(--white)')
-  exerciseLabel.style.color = ('var(--white)')
-  hide(mOff)
   hide(eOn)
+  hide(mOff)
   hide(sOn)
-  show(mOn)
   show(eOff)
+  show(mOn)
   show(sOff)
 }
 
 function activateExcercise() {
   categoryValue.id = "category exercise"
   exerciseBtn.style.borderColor = ('var(--exercise)')
-  ring.style.borderColor = ('var(--exercise)')
-  exerciseLabel.style.color= ('var(--exercise')
   exerciseBtn.style.color = ('var(--exercise)')
+  exerciseLabel.style.color= ('var(--exercise')
   meditateBtn.style.borderColor = ('var(--white)')
+  meditateLabel.style.color = ('var(--white)')
+  ring.style.borderColor = ('var(--exercise)')
   studyBtn.style.borderColor = ('var(--white)')
   studyBtn.style.color = ('var(--white)')
-  meditateLabel.style.color = ('var(--white)')
   show(eOn)
   show(mOff)
   show(sOff)
@@ -119,7 +119,7 @@ function createActivity() {
   } else if (categoryValue.id === "category exercise") {
     selectedCategory = "Exercise"
   }
-  categoryValue.id === "category" ? displayWarning(catagoryWarning) : hide(catagoryWarning)
+  categoryValue.id === "category" ? displayWarning(categoryWarning) : hide(categoryWarning)
   goalValue.value === "" ? displayWarning(goalWarning) : hide(goalWarning)
   !minutesValue.value ? displayWarning(minutesWarning) : hide(minutesWarning)
   !secondsValue.value ? displayWarning(secondsWarning) : hide(secondsWarning)
@@ -136,9 +136,9 @@ function displayWarning(warning) {
 }
 
 function showTimer() {
-  show(timerCard)
   hide(card)
   hide(logActivityBtn)
+  show(timerCard)
   var minutes = currentActivity.minutes < 10 ? '0' + currentActivity.minutes : currentActivity.minutes;
   var seconds = currentActivity.seconds < 10 ? '0' + currentActivity.seconds : currentActivity.seconds;
   activityHeader.textContent = `${currentActivity.description}`
@@ -200,29 +200,8 @@ function generateRandomID() {
   return Math.floor((1 + Math.random()) * 0x100000)
 }
 
-function hide(e) {
-  e.classList.add('hidden')
-}
-
-function show(e) {
-  e.classList.remove('hidden')
-}
-
 function animateFadeOut(e) {
   e.classList.add('fade-out')
-}
-
-function resetFadeOut(e) {
-  e.classList.remove('fade-out')
-  void e.offsetWidth;
-}
-
-function animateFadeIn(e) {
-  e.classList.add('fade-in')
-}
-
-function updateHeader() {
-  activityHeader.innerText = 'Current Activity'
 }
 
 function changeCategoryColor(category) {
@@ -234,6 +213,38 @@ category === 'Study' ? color = 'green'
 return color
 }
 
+function hide(e) {
+  e.classList.add('hidden')
+}
+
+function show(e) {
+  e.classList.remove('hidden')
+}
+
+function resetBtns() {
+  hide(eOn)
+  hide(mOn)
+  hide(sOn)
+  show(eOff)
+  show(mOff)
+  show(sOff)
+  exerciseBtn.style.borderColor = ('var(--white')
+  exerciseBtn.style.color = ('var(--white')
+  exerciseLabel.style.color= ('var(--white)')
+  studyBtn.style.borderColor = ('var(--white)')
+  studyBtn.style.color = ('var(--white)')
+  meditateBtn.style.borderColor = ('var(--white)')
+  meditateBtn.style.color = ('var(--white)')
+  meditateLabel.style.color = ('var(--white)')
+  ring.style.borderColor = ('var(--white')
+  studyLabel.style.color = ('var(--white)')
+}
+
+function resetFadeOut(e) {
+  e.classList.remove('fade-out')
+  void e.offsetWidth;
+}
+
 function resetInputs() {
   resetBtns()
   goalValue.value = ""
@@ -241,21 +252,6 @@ function resetInputs() {
   secondsValue.value = ""
 }
 
-function resetBtns() {
-show(sOff)
-  show(mOff)
-  show(eOff)
-  hide(sOn)
-  hide(mOn)
-  hide(eOn)
-  exerciseBtn.style.borderColor = ('var(--white')
-  exerciseBtn.style.color = ('var(--white')
-  studyBtn.style.borderColor = ('var(--white)')
-  studyBtn.style.color = ('var(--white)')
-  meditateBtn.style.borderColor = ('var(--white)')
-  meditateBtn.style.color = ('var(--white)')
-  studyLabel.style.color = ('var(--white)')
-  exerciseLabel.style.color= ('var(--white)')
-  meditateLabel.style.color = ('var(--white)')
-  ring.style.borderColor = ('var(--white')
+function updateHeader() {
+  activityHeader.innerText = 'Current Activity'
 }
