@@ -47,8 +47,8 @@ h1 {
 
 .borderless {
   background-color: var(--light);
-  border-bottom: 1px solid var(--gray);
-  border-width: 0;
+  border: none;
+  border-bottom: 1px solid var(--white);
   padding-bottom: .1rem;
 }
 
