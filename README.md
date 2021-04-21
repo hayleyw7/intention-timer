@@ -24,6 +24,10 @@ Running on GitHub Pages
 
 The site is live at https://hayleyw7.github.io/intention-timer/.
 
+## Screenshots
+
+
+
 ### Form Functionality
 
 * When an activity category is clicked on (Exercise, Meditate, or Study), the associated border and icon will change colors to give a visual indication that it has been selected.
