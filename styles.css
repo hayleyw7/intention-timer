@@ -87,7 +87,9 @@ h1 {
 .scroll {
   height: 30.5rem;
   overflow-y: auto;
-  padding: 0 1.1rem;
+  /* overflow-x: none; */
+  /* padding: 0 1.1rem; */
+  padding-right: 1.1rem;
   width: 23rem;
 }
 
@@ -258,7 +260,7 @@ h3 {
   border-left: 1px solid var(--gray);
   flex-direction: column;
   height: 100vh;
-  padding: 2rem 2rem;
+  padding: 2.1rem 2rem;
   text-align: center;
 }
 
