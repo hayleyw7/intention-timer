@@ -26,7 +26,12 @@ The site is live at https://hayleyw7.github.io/intention-timer/.
 
 ## Screenshots
 
-
+* ![On Load](/assets/screenshots/on-load.png)
+* ![Entering Text](/assets/screenshots/entering-text.png)
+* ![Input Errors](/assets/screenshots/input-errors.png)
+* ![Timer](/assets/screenshots/timer.png)
+* ![Congrats Alert](/assets/screenshots/congrats-alert.png)
+* ![Create New Activity](/assets/screenshots/create-new-activity.png)
 
 ### Form Functionality
 
