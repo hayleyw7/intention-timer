@@ -89,4 +89,4 @@ The site is live at https://hayleyw7.github.io/intention-timer/.
 
 ## Contributors
 
-Project completed by Andrew Vallejo, Alex Kio, and Hayley Witherell
+Project completed by [Andrew Vallejo](https://github.com/andrewvallejo), [Alex Kio](https://github.com/alexmkio), and [Hayley Witherell](https://github.com/hayleyw7)
