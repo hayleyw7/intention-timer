@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang='en'>
+
 <head>
   <meta charset='UTF-8' />
   <meta http-equiv='X-UA-Compatible' content='IE=edge' />
@@ -10,6 +11,7 @@
   <link rel='stylesheet' href='./styles.css' />
   <title>Intention Timer</title>
 </head>
+
 <body>
   <!-- Header -->
   <header class='flex'>
@@ -25,12 +27,12 @@
           <form>
             <!-- Activity Categories -->
             <div id='category' class='category flex'>
-            <h3>Select A Category:</h3>
-            <div id='warning0' class='warning-0 hidden flex'>
-              <img src='assets/warning.svg' alt='notice icon'>
-              <p>A selection is required.</p>
+              <h3>Select A Category:</h3>
+              <div id='warning0' class='warning-0 hidden flex'>
+                <img src='assets/warning.svg' alt='notice icon'>
+                <p>A selection is required.</p>
+              </div>
             </div>
-          </div>
             <div id='boxContainer' class='box-container flex'>
               <div id='studyBtn' class='box flex'>
                 <img id='sOff' src='assets/study.svg' alt='white lightbulb study icon'>
@@ -39,7 +41,7 @@
               </div>
               <div id='meditateBtn' class='box flex'>
                 <img id='mOff' src='assets/meditate.svg' alt='white lotus study icon'>
-                <img id='mOn' src='assets/meditate-active.svg'class='hidden' alt='purple lotus study icon'>
+                <img id='mOn' src='assets/meditate-active.svg' class='hidden' alt='purple lotus study icon'>
                 <h3 id='meditateLabel'>Meditate</h3>
               </div>
               <div id='exerciseBtn' class='box flex'>
@@ -48,7 +50,7 @@
                 <h3 id='exerciseLabel'>Exercise</h3>
               </div>
             </div>
-             <!-- Goal Form -->
+            <!-- Goal Form -->
             <h3 class='accomplish-prompt'>What would you like to accomplish during this time?</h3>
             <input type='text' id='goal' name='goal' value='' class='goal borderless'>
             <label class='hidden' for='goal'>What would you like to accomplish during this time</label>
@@ -61,8 +63,8 @@
               <!-- Minutes -->
               <div id='minutesBox' class='minutes-box'>
                 <h3 class='form-padding'>Minutes</h3>
-                <input type='number' min='0' id='minutes' name='minutes' value='' class='form-padding borderless'>
-                <label class='hidden' for='minutes'>minutes</label>
+                <input type='number' min='0' id='minutes' name='minutes' value='' class='form-padding borderless minsec-form'>
+                <label class= 'hidden' for='minutes'>minutes</label>
                 <div id='warning2' class='warning hidden flex'>
                   <img src='assets/warning.svg' alt='notice icon'>
                   <p>Minutes is required.</p>
@@ -71,9 +73,10 @@
               <!-- Seconds -->
               <div id='secondsBox' class='seconds-box'>
                 <h3 class='form-padding'>Seconds</h3>
-                <input type='number' min='0' id='seconds' name='seconds' value='' class='form-padding borderless minsec-form'>
+                <input type='number' min='0' id='seconds' name='seconds' value=''
+                  class='form-padding borderless minsec-form'>
                 <label class='hidden' for='seconds'>seconds</label>
-                <div id='warning3' class='warning hidden flex'>
+                <div id='warning3' class='warning hidden'>
                   <img src='assets/warning.svg' alt='notice icon'>
                   <p>Seconds are required.</p>
                 </div>
@@ -95,15 +98,17 @@
           <!-- Log & New Activity Button -->
           <input type='button' id='logBtn' class='log-btn btn' value='LOG ACTIVITY'>
         </div>
-        <input type='button' id='createNewActivityBtn' class=' create-new-activity-btn btn hidden' value='CREATE A NEW ACTIVITY'>
+        <input type='button' id='createNewActivityBtn' class=' create-new-activity-btn btn hidden'
+          value='CREATE A NEW ACTIVITY'>
       </article>
     </section>
     <!-- Past (Right) Container -->
-    <section id='pastContainer' class='past-card past-container  flex'>
+    <section id='pastContainer' class='past-card past-container flex'>
       <h2 id='past' class='past'>Past Activities</h2>
-      <p id='pastActivitiesDefault'>You haven't logged any activities today!</br>Complete the form to the left to get started!</p>
+      <p id='pastActivitiesDefault'>You haven't logged any activities today!</br>Complete the form to the left to get
+        started!</p>
       <div class='scroll'>
-      <p id='pastActivitiesCard' class='hidden'></p>
+        <p id='pastActivitiesCard' class='hidden'></p>
       </div>
       <p id='scrollMsg' class='scroll-msg hidden'>SCROLL DOWN!</p>
     </section>
@@ -113,4 +118,5 @@
 <script src='data.js'></script>
 <script src='timer.js'></script>
 <script src='main.js'></script>
+
 </html>
