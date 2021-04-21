@@ -24,15 +24,6 @@ Running on GitHub Pages
 
 The site is live at https://hayleyw7.github.io/intention-timer/.
 
-## Screenshots
-
-* ![On Load](/assets/screenshots/on-load.png)
-* ![Entering Text](/assets/screenshots/entering-text.png)
-* ![Input Errors](/assets/screenshots/input-errors.png)
-* ![Timer](/assets/screenshots/timer.png)
-* ![Congrats Alert](/assets/screenshots/congrats-alert.png)
-* ![Create New Activity](/assets/screenshots/create-new-activity.png)
-
 ### Form Functionality
 
 * When an activity category is clicked on (Exercise, Meditate, or Study), the associated border and icon will change colors to give a visual indication that it has been selected.
@@ -67,9 +58,12 @@ The site is live at https://hayleyw7.github.io/intention-timer/.
 
 ## Screenshots
 
-[title](url)
-
-[title](url)
+![On Load](/assets/screenshots/on-load.png)
+![Entering Text](/assets/screenshots/entering-text.png)
+![Input Errors](/assets/screenshots/input-errors.png)
+![Timer](/assets/screenshots/timer.png)
+![Congrats Alert](/assets/screenshots/congrats-alert.png)
+![Create New Activity](/assets/screenshots/create-new-activity.png)
 
 ## Future additions
 
